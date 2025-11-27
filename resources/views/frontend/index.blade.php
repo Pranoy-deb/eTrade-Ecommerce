@@ -260,27 +260,30 @@
                     class="explore-product-activation slick-layout-wrapper slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide">
                     <div class="slick-single-layout">
                         <div class="row row--15">
+                            @foreach ($products as $product)
                             <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
                                 <div class="axil-product product-style-one">
                                     <div class="thumbnail">
-                                        <a href="single-product.html">
+                                        <a href="{{ route('frontend.product.single', $product)}}">
                                             <img data-sal="zoom-out" data-sal-delay="200" data-sal-duration="800"
                                                 loading="lazy" class="main-img"
-                                                src="{{ asset('frontend/assets/images/product/electric/product-01.png')}}"
+                                                src="{{ asset('storage/'. $product->featured_img) }}"
                                                 alt="Product Images">
-                                            <img class="hover-img" src="{{ asset('frontend/assets/images/product/electric/product-08.png')}}"
+                                            <img class="hover-img" src="{{ asset('storage/'. json_decode($product->gall_img)[0])}}"
                                                 alt="Product Images">
                                         </a>
+                                        @if ($product->sellign_price && $product->sellign_price > 0)
                                         <div class="label-block label-right">
-                                            <div class="product-badget">20% Off</div>
+                                            <div class="product-badget">{{ round(($product->price - $product->sellign_price) * 100 / $product->price) }}% Off</div>
                                         </div>
+                                        @endif 
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
                                                 <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
-                                                <li class="select-option">
-                                                    <a href="single-product.html">
+                                                            <li class="select-option">
+                                                                <a href="{{ route('frontend.product.single', $product)}}">
                                                         Add to Cart
                                                     </a>
                                                 </li>
@@ -291,7 +294,7 @@
                                     </div>
                                     <div class="product-content">
                                         <div class="inner">
-                                            <div class="product-rating">
+                                            {{-- <div class="product-rating">
                                                 <span class="icon">
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
@@ -300,342 +303,23 @@
                                                     <i class="fas fa-star"></i>
                                                 </span>
                                                 <span class="rating-number">(64)</span>
-                                            </div>
-                                            <h5 class="title"><a href="single-product.html">Yantiti Leather & Canvas
-                                                    Bags</a></h5>
+                                            </div> --}}
+                                            <h5 class="title"><a href="{{ route('frontend.product.single', $product)}}">{{$product->title}}</a></h5>
                                             <div class="product-price-variant">
-                                                <span class="price current-price">$29.99</span>
-                                                <span class="price old-price">$49.99</span>
+                                                @if($product->sellign_price && $product->sellign_price > 0)
+                                                <span class="price current-price">BDT {{$product->sellign_price}}</span>
+                                                <span class="price old-price">BDT {{$product->price}}</span>
+                                                @else
+                                                <span class="price current-price">BDT {{$product->price}}</span>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
                             <!-- End Single Product  -->
-                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
-                                <div class="axil-product product-style-one">
-                                    <div class="thumbnail">
-                                        <a href="single-product.html">
-                                            <img data-sal="zoom-out" data-sal-delay="300" data-sal-duration="800"
-                                                loading="lazy" src="{{ asset('frontend/assets/images/product/electric/product-02.png')}}"
-                                                alt="Product Images">
-                                            <img class="hover-img" src="{{ asset('frontend/assets/images/product/electric/product-06.png')}}"
-                                                alt="Product Images">
-                                        </a>
-                                        <div class="product-hover-action">
-                                            <ul class="cart-action">
-                                                <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
-                                                        data-bs-target="#quick-view-modal"><i
-                                                            class="far fa-eye"></i></a></li>
-                                                <li class="select-option"><a href="single-product.html">Select
-                                                        Option</a></li>
-                                                <li class="wishlist"><a href="wishlist.html"><i
-                                                            class="far fa-heart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="inner">
-                                            <h5 class="title"><a href="single-product.html">Level 20 RGB Cherry</a></h5>
-                                            <div class="product-price-variant">
-                                                <span class="price current-price">$29.99</span>
-                                                <span class="price old-price">$49.99</span>
-                                            </div>
-                                            <div class="color-variant-wrapper">
-                                                <ul class="color-variant">
-                                                    <li class="color-extra-01 active"><span><span
-                                                                class="color"></span></span>
-                                                    </li>
-                                                    <li class="color-extra-02"><span><span class="color"></span></span>
-                                                    </li>
-                                                    <li class="color-extra-03"><span><span class="color"></span></span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product  -->
-                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
-                                <div class="axil-product product-style-one">
-                                    <div class="thumbnail">
-                                        <a href="single-product.html">
-                                            <img data-sal="zoom-out" data-sal-delay="400" data-sal-duration="800"
-                                                loading="lazy" src="{{ asset('frontend/assets/images/product/electric/product-03.png')}}"
-                                                alt="Product Images">
-                                        </a>
-                                        <div class="label-block label-right">
-                                            <div class="product-badget">20% Off</div>
-                                        </div>
-                                        <div class="product-hover-action">
-                                            <ul class="cart-action">
-                                                <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
-                                                        data-bs-target="#quick-view-modal"><i
-                                                            class="far fa-eye"></i></a></li>
-                                                <li class="select-option"><a href="single-product.html">Select
-                                                        Option</a></li>
-                                                <li class="wishlist"><a href="wishlist.html"><i
-                                                            class="far fa-heart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="inner">
-                                            <h5 class="title"><a href="single-product.html">Logitech Streamcam</a></h5>
-                                            <div class="product-price-variant">
-                                                <span class="price current-price">$29.99</span>
-                                                <span class="price old-price">$49.99</span>
-                                            </div>
-                                            <div class="color-variant-wrapper">
-                                                <ul class="color-variant">
-                                                    <li class="color-extra-01 active"><span><span
-                                                                class="color"></span></span>
-                                                    </li>
-                                                    <li class="color-extra-02"><span><span class="color"></span></span>
-                                                    </li>
-                                                    <li class="color-extra-03"><span><span class="color"></span></span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product  -->
-                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
-                                <div class="axil-product product-style-one">
-                                    <div class="thumbnail">
-                                        <a href="single-product.html">
-                                            <img data-sal="zoom-out" data-sal-delay="500" data-sal-duration="800"
-                                                loading="lazy" src="{{ asset('frontend/assets/images/product/electric/product-04.png')}}"
-                                                alt="Product Images">
-                                            <img class="hover-img" src="{{ asset('frontend/assets/images/product/electric/product-05.png')}}"
-                                                alt="Product Images">
-                                        </a>
-                                        <div class="product-hover-action">
-                                            <ul class="cart-action">
-                                                <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
-                                                        data-bs-target="#quick-view-modal"><i
-                                                            class="far fa-eye"></i></a></li>
-                                                <li class="select-option"><a href="single-product.html">Select
-                                                        Option</a></li>
-                                                <li class="wishlist"><a href="wishlist.html"><i
-                                                            class="far fa-heart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="inner">
-                                            <div class="product-rating">
-                                                <span class="icon">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </span>
-                                                <span class="rating-number">(44)</span>
-                                            </div>
-                                            <h5 class="title"><a href="single-product.html">3D™ wireless headset</a>
-                                            </h5>
-                                            <div class="product-price-variant">
-                                                <span class="price current-price">$29.99</span>
-                                                <span class="price old-price">$49.99</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product  -->
-                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
-                                <div class="axil-product product-style-one">
-                                    <div class="thumbnail">
-                                        <a href="single-product.html">
-                                            <img data-sal="zoom-out" data-sal-delay="200" data-sal-duration="800"
-                                                loading="lazy" src="{{ asset('frontend/assets/images/product/electric/product-05.png')}}"
-                                                alt="Product Images">
-                                            <img class="hover-img" src="{{ asset('frontend/assets/images/product/electric/product-04.png')}}"
-                                                alt="Product Images">
-                                        </a>
-                                        <div class="label-block label-right">
-                                            <div class="product-badget">20% Off</div>
-                                        </div>
-                                        <div class="product-hover-action">
-                                            <ul class="cart-action">
-                                                <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
-                                                        data-bs-target="#quick-view-modal"><i
-                                                            class="far fa-eye"></i></a></li>
-                                                <li class="select-option"><a href="single-product.html">Select
-                                                        Option</a></li>
-                                                <li class="wishlist"><a href="wishlist.html"><i
-                                                            class="far fa-heart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="inner">
-                                            <h5 class="title"><a href="single-product.html">Bass Meets Clarity</a></h5>
-                                            <div class="product-price-variant">
-                                                <span class="price current-price">$29.99</span>
-                                                <span class="price old-price">$49.99</span>
-                                            </div>
-                                            <div class="color-variant-wrapper">
-                                                <ul class="color-variant">
-                                                    <li class="color-extra-01 active"><span><span
-                                                                class="color"></span></span>
-                                                    </li>
-                                                    <li class="color-extra-02"><span><span class="color"></span></span>
-                                                    </li>
-                                                    <li class="color-extra-03"><span><span class="color"></span></span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product  -->
-                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
-                                <div class="axil-product product-style-one">
-                                    <div class="thumbnail">
-                                        <a href="single-product.html">
-                                            <img data-sal="zoom-out" data-sal-delay="300" data-sal-duration="800"
-                                                loading="lazy" src="{{ asset('frontend/assets/images/product/electric/product-06.png')}}"
-                                                alt="Product Images">
-                                        </a>
-                                        <div class="label-block label-right">
-                                            <div class="product-badget">20% Off</div>
-                                        </div>
-                                        <div class="product-hover-action">
-                                            <ul class="cart-action">
-                                                <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
-                                                        data-bs-target="#quick-view-modal"><i
-                                                            class="far fa-eye"></i></a></li>
-                                                <li class="select-option"><a href="single-product.html">Select
-                                                        Option</a></li>
-                                                <li class="wishlist"><a href="wishlist.html"><i
-                                                            class="far fa-heart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="inner">
-                                            <h5 class="title"><a href="single-product.html">Mice Logitech</a></h5>
-                                            <div class="product-price-variant">
-                                                <span class="price current-price">$29.99</span>
-                                                <span class="price old-price">$49.99</span>
-                                            </div>
-                                            <div class="color-variant-wrapper">
-                                                <ul class="color-variant">
-                                                    <li class="color-extra-01 active"><span><span
-                                                                class="color"></span></span>
-                                                    </li>
-                                                    <li class="color-extra-02"><span><span class="color"></span></span>
-                                                    </li>
-                                                    <li class="color-extra-03"><span><span class="color"></span></span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product  -->
-                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
-                                <div class="axil-product product-style-one">
-                                    <div class="thumbnail">
-                                        <a href="single-product.html">
-                                            <img data-sal="zoom-out" data-sal-delay="400" data-sal-duration="800"
-                                                loading="lazy" src="{{ asset('frontend/assets/images/product/electric/product-07.png')}}"
-                                                alt="Product Images">
-                                            <img class="hover-img" src="{{ asset('frontend/assets/images/product/electric/product-08.png')}}"
-                                                alt="Product Images">
-                                        </a>
-                                        <div class="label-block label-right">
-                                            <div class="product-badget">20% Off</div>
-                                        </div>
-                                        <div class="product-hover-action">
-                                            <ul class="cart-action">
-                                                <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
-                                                        data-bs-target="#quick-view-modal"><i
-                                                            class="far fa-eye"></i></a></li>
-                                                <li class="select-option"><a href="single-product.html">Select
-                                                        Option</a></li>
-                                                <li class="wishlist"><a href="wishlist.html"><i
-                                                            class="far fa-heart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="inner">
-                                            <div class="product-rating">
-                                                <span class="icon">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </span>
-                                                <span class="rating-number">(64)</span>
-                                            </div>
-                                            <h5 class="title"><a href="single-product.html">Zone Headphone</a></h5>
-                                            <div class="product-price-variant">
-                                                <span class="price current-price">$29.99</span>
-                                                <span class="price old-price">$49.99</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product  -->
-                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
-                                <div class="axil-product product-style-one">
-                                    <div class="thumbnail">
-                                        <a href="single-product.html">
-                                            <img data-sal="zoom-out" data-sal-delay="500" data-sal-duration="800"
-                                                loading="lazy" src="{{ asset('frontend/assets/images/product/electric/product-08.png')}}"
-                                                alt="Product Images">
-                                        </a>
-                                        <div class="label-block label-right">
-                                            <div class="product-badget">20% Off</div>
-                                        </div>
-                                        <div class="product-hover-action">
-                                            <ul class="cart-action">
-                                                <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
-                                                        data-bs-target="#quick-view-modal"><i
-                                                            class="far fa-eye"></i></a></li>
-                                                <li class="select-option"><a href="single-product.html">Select
-                                                        Option</a></li>
-                                                <li class="wishlist"><a href="wishlist.html"><i
-                                                            class="far fa-heart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="inner">
-                                            <h5 class="title"><a href="single-product.html">3D™ wireless headset</a>
-                                            </h5>
-                                            <div class="product-price-variant">
-                                                <span class="price current-price">$29.99</span>
-                                                <span class="price old-price">$49.99</span>
-                                            </div>
-                                            <div class="color-variant-wrapper">
-                                                <ul class="color-variant">
-                                                    <li class="color-extra-01 active"><span><span
-                                                                class="color"></span></span>
-                                                    </li>
-                                                    <li class="color-extra-02"><span><span class="color"></span></span>
-                                                    </li>
-                                                    <li class="color-extra-03"><span><span class="color"></span></span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Product  -->
+                            
                         </div>
                     </div>
                     <!-- End .slick-single-layout -->
@@ -644,7 +328,7 @@
                             <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
                                 <div class="axil-product product-style-one">
                                     <div class="thumbnail">
-                                        <a href="single-product.html">
+                                        <a href="{{ route('frontend.product.single', $product)}}">
                                             <img src="{{ asset('frontend/assets/images/product/electric/product-01.png')}}"
                                                 alt="Product Images">
                                         </a>
@@ -656,7 +340,7 @@
                                                 <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
-                                                <li class="select-option"><a href="single-product.html">Select
+                                                <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Select
                                                         Option</a></li>
                                                 <li class="wishlist"><a href="wishlist.html"><i
                                                             class="far fa-heart"></i></a></li>
@@ -665,7 +349,7 @@
                                     </div>
                                     <div class="product-content">
                                         <div class="inner">
-                                            <h5 class="title"><a href="single-product.html">Yantiti Leather & Canvas
+                                            <h5 class="title"><a href="{{ route('frontend.product.single', $product)}}">Yantiti Leather & Canvas
                                                     Bags</a></h5>
                                             <div class="product-price-variant">
                                                 <span class="price current-price">$29.99</span>
@@ -679,7 +363,7 @@
                             <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
                                 <div class="axil-product product-style-one">
                                     <div class="thumbnail">
-                                        <a href="single-product.html">
+                                        <a href="{{ route('frontend.product.single', $product)}}">
                                             <img src="{{ asset('frontend/assets/images/product/electric/product-02.png')}}"
                                                 alt="Product Images">
                                         </a>
@@ -688,7 +372,7 @@
                                                 <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
-                                                <li class="select-option"><a href="single-product.html">Select
+                                                <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Select
                                                         Option</a></li>
                                                 <li class="wishlist"><a href="wishlist.html"><i
                                                             class="far fa-heart"></i></a></li>
@@ -697,7 +381,7 @@
                                     </div>
                                     <div class="product-content">
                                         <div class="inner">
-                                            <h5 class="title"><a href="single-product.html">3D™ wireless headset</a>
+                                            <h5 class="title"><a href="{{ route('frontend.product.single', $product)}}">3D™ wireless headset</a>
                                             </h5>
                                             <div class="product-price-variant">
                                                 <span class="price current-price">$29.99</span>
@@ -722,7 +406,7 @@
                             <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
                                 <div class="axil-product product-style-one">
                                     <div class="thumbnail">
-                                        <a href="single-product.html">
+                                        <a href="{{ route('frontend.product.single', $product)}}">
                                             <img src="{{ asset('frontend/assets/images/product/electric/product-03.png')}}"
                                                 alt="Product Images">
                                         </a>
@@ -734,7 +418,7 @@
                                                 <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
-                                                <li class="select-option"><a href="single-product.html">Select
+                                                <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Select
                                                         Option</a></li>
                                                 <li class="wishlist"><a href="wishlist.html"><i
                                                             class="far fa-heart"></i></a></li>
@@ -743,7 +427,7 @@
                                     </div>
                                     <div class="product-content">
                                         <div class="inner">
-                                            <h5 class="title"><a href="single-product.html">3D™ wireless headset</a>
+                                            <h5 class="title"><a href="{{ route('frontend.product.single', $product)}}">3D™ wireless headset</a>
                                             </h5>
                                             <div class="product-price-variant">
                                                 <span class="price current-price">$29.99</span>
@@ -768,7 +452,7 @@
                             <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
                                 <div class="axil-product product-style-one">
                                     <div class="thumbnail">
-                                        <a href="single-product.html">
+                                        <a href="{{ route('frontend.product.single', $product)}}">
                                             <img src="{{ asset('frontend/assets/images/product/electric/product-04.png')}}"
                                                 alt="Product Images">
                                         </a>
@@ -777,7 +461,7 @@
                                                 <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
-                                                <li class="select-option"><a href="single-product.html">Select
+                                                <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Select
                                                         Option</a></li>
                                                 <li class="wishlist"><a href="wishlist.html"><i
                                                             class="far fa-heart"></i></a></li>
@@ -786,7 +470,7 @@
                                     </div>
                                     <div class="product-content">
                                         <div class="inner">
-                                            <h5 class="title"><a href="single-product.html">3D™ wireless headset</a>
+                                            <h5 class="title"><a href="{{ route('frontend.product.single', $product)}}">3D™ wireless headset</a>
                                             </h5>
                                             <div class="product-price-variant">
                                                 <span class="price current-price">$29.99</span>
@@ -800,7 +484,7 @@
                             <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
                                 <div class="axil-product product-style-one">
                                     <div class="thumbnail">
-                                        <a href="single-product.html">
+                                        <a href="{{ route('frontend.product.single', $product)}}">
                                             <img src="{{ asset('frontend/assets/images/product/electric/product-05.png')}}"
                                                 alt="Product Images">
                                         </a>
@@ -812,7 +496,7 @@
                                                 <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
-                                                <li class="select-option"><a href="single-product.html">Select
+                                                <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Select
                                                         Option</a></li>
                                                 <li class="wishlist"><a href="wishlist.html"><i
                                                             class="far fa-heart"></i></a></li>
@@ -821,7 +505,7 @@
                                     </div>
                                     <div class="product-content">
                                         <div class="inner">
-                                            <h5 class="title"><a href="single-product.html">3D™ wireless headset</a>
+                                            <h5 class="title"><a href="{{ route('frontend.product.single', $product)}}">3D™ wireless headset</a>
                                             </h5>
                                             <div class="product-price-variant">
                                                 <span class="price current-price">$29.99</span>
@@ -846,7 +530,7 @@
                             <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
                                 <div class="axil-product product-style-one">
                                     <div class="thumbnail">
-                                        <a href="single-product.html">
+                                        <a href="{{ route('frontend.product.single', $product)}}">
                                             <img src="{{ asset('frontend/assets/images/product/electric/product-06.png')}}"
                                                 alt="Product Images">
                                         </a>
@@ -858,7 +542,7 @@
                                                 <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
-                                                <li class="select-option"><a href="single-product.html">Select
+                                                <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Select
                                                         Option</a></li>
                                                 <li class="wishlist"><a href="wishlist.html"><i
                                                             class="far fa-heart"></i></a></li>
@@ -867,7 +551,7 @@
                                     </div>
                                     <div class="product-content">
                                         <div class="inner">
-                                            <h5 class="title"><a href="single-product.html">3D™ wireless headset</a>
+                                            <h5 class="title"><a href="{{ route('frontend.product.single', $product)}}">3D™ wireless headset</a>
                                             </h5>
                                             <div class="product-price-variant">
                                                 <span class="price current-price">$29.99</span>
@@ -892,7 +576,7 @@
                             <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
                                 <div class="axil-product product-style-one">
                                     <div class="thumbnail">
-                                        <a href="single-product.html">
+                                        <a href="{{ route('frontend.product.single', $product)}}">
                                             <img src="{{ asset('frontend/assets/images/product/electric/product-07.png')}}"
                                                 alt="Product Images">
                                         </a>
@@ -904,7 +588,7 @@
                                                 <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
-                                                <li class="select-option"><a href="single-product.html">Select
+                                                <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Select
                                                         Option</a></li>
                                                 <li class="wishlist"><a href="wishlist.html"><i
                                                             class="far fa-heart"></i></a></li>
@@ -913,7 +597,7 @@
                                     </div>
                                     <div class="product-content">
                                         <div class="inner">
-                                            <h5 class="title"><a href="single-product.html">3D™ wireless headset</a>
+                                            <h5 class="title"><a href="{{ route('frontend.product.single', $product)}}">3D™ wireless headset</a>
                                             </h5>
                                             <div class="product-price-variant">
                                                 <span class="price current-price">$29.99</span>
@@ -938,7 +622,7 @@
                             <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
                                 <div class="axil-product product-style-one">
                                     <div class="thumbnail">
-                                        <a href="single-product.html">
+                                        <a href="{{ route('frontend.product.single', $product)}}">
                                             <img src="{{ asset('frontend/assets/images/product/electric/product-08.png')}}"
                                                 alt="Product Images">
                                         </a>
@@ -950,7 +634,7 @@
                                                 <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
-                                                <li class="select-option"><a href="single-product.html">Select
+                                                <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Select
                                                         Option</a></li>
                                                 <li class="wishlist"><a href="wishlist.html"><i
                                                             class="far fa-heart"></i></a></li>
@@ -959,7 +643,7 @@
                                     </div>
                                     <div class="product-content">
                                         <div class="inner">
-                                            <h5 class="title"><a href="single-product.html">3D™ wireless headset</a>
+                                            <h5 class="title"><a href="{{ route('frontend.product.single', $product)}}">3D™ wireless headset</a>
                                             </h5>
                                             <div class="product-price-variant">
                                                 <span class="price current-price">$29.99</span>
@@ -1107,7 +791,7 @@
                         <div class="slick-single-layout">
                             <div class="axil-product product-style-two">
                                 <div class="thumbnail">
-                                    <a href="single-product.html">
+                                    <a href="{{ route('frontend.product.single', $product)}}">
                                         <img data-sal="zoom-out" data-sal-delay="200" data-sal-duration="500"
                                             src="{{ asset('frontend/assets/images/product/electric/product-05.png')}}" alt="Product Images">
                                     </a>
@@ -1128,7 +812,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <h5 class="title"><a href="single-product.html">Demon's Souls</a></h5>
+                                        <h5 class="title"><a href="{{ route('frontend.product.single', $product)}}">Demon's Souls</a></h5>
                                         <div class="product-price-variant">
                                             <span class="price old-price">$40</span>
                                             <span class="price current-price">$30</span>
@@ -1138,7 +822,7 @@
                                                 <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
-                                                <li class="select-option"><a href="single-product.html">Add to Cart</a>
+                                                <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Add to Cart</a>
                                                 </li>
                                                 <li class="wishlist"><a href="wishlist.html"><i
                                                             class="far fa-heart"></i></a></li>
@@ -1152,7 +836,7 @@
                         <div class="slick-single-layout">
                             <div class="axil-product product-style-two">
                                 <div class="thumbnail">
-                                    <a href="single-product.html">
+                                    <a href="{{ route('frontend.product.single', $product)}}">
                                         <img data-sal="zoom-out" data-sal-delay="300" data-sal-duration="500"
                                             src="{{ asset('frontend/assets/images/product/electric/product-06.png')}}" alt="Product Images">
                                     </a>
@@ -1170,7 +854,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <h5 class="title"><a href="single-product.html">Google Home</a></h5>
+                                        <h5 class="title"><a href="{{ route('frontend.product.single', $product)}}">Google Home</a></h5>
                                         <div class="product-price-variant">
                                             <span class="price old-price">$50</span>
                                             <span class="price current-price">$40</span>
@@ -1181,7 +865,7 @@
                                             <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
                                                     data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a>
                                             </li>
-                                            <li class="select-option"><a href="single-product.html">Select Option</a>
+                                            <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Select Option</a>
                                             </li>
                                             <li class="wishlist"><a href="wishlist.html"><i
                                                         class="far fa-heart"></i></a></li>
@@ -1194,7 +878,7 @@
                         <div class="slick-single-layout">
                             <div class="axil-product product-style-two">
                                 <div class="thumbnail">
-                                    <a href="single-product.html">
+                                    <a href="{{ route('frontend.product.single', $product)}}">
                                         <img data-sal="zoom-out" data-sal-delay="400" data-sal-duration="500"
                                             src="{{ asset('frontend/assets/images/product/electric/product-07.png')}}" alt="Product Images">
                                     </a>
@@ -1216,7 +900,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <h5 class="title"><a href="single-product.html">Netfilx Remot</a></h5>
+                                        <h5 class="title"><a href="{{ route('frontend.product.single', $product)}}">Netfilx Remot</a></h5>
                                         <div class="product-price-variant">
                                             <span class="price old-price">$60</span>
                                             <span class="price current-price">$45</span>
@@ -1226,7 +910,7 @@
                                                 <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
-                                                <li class="select-option"><a href="single-product.html">Add to Cart</a>
+                                                <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Add to Cart</a>
                                                 </li>
                                                 <li class="wishlist"><a href="wishlist.html"><i
                                                             class="far fa-heart"></i></a></li>
@@ -1240,7 +924,7 @@
                         <div class="slick-single-layout">
                             <div class="axil-product product-style-two">
                                 <div class="thumbnail">
-                                    <a href="single-product.html">
+                                    <a href="{{ route('frontend.product.single', $product)}}">
                                         <img data-sal="zoom-out" data-sal-delay="500" data-sal-duration="500"
                                             src="{{ asset('frontend/assets/images/product/electric/product-08.png')}}" alt="Product Images">
                                     </a>
@@ -1262,7 +946,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <h5 class="title"><a href="single-product.html">Digital Accessories</a></h5>
+                                        <h5 class="title"><a href="{{ route('frontend.product.single', $product)}}">Digital Accessories</a></h5>
                                         <div class="product-price-variant">
                                             <span class="price old-price">$30</span>
                                             <span class="price current-price">$20</span>
@@ -1272,7 +956,7 @@
                                                 <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
-                                                <li class="select-option"><a href="single-product.html">Add to Cart</a>
+                                                <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Add to Cart</a>
                                                 </li>
                                                 <li class="wishlist"><a href="wishlist.html"><i
                                                             class="far fa-heart"></i></a></li>
@@ -1286,7 +970,7 @@
                         <div class="slick-single-layout">
                             <div class="axil-product product-style-two">
                                 <div class="thumbnail">
-                                    <a href="single-product.html">
+                                    <a href="{{ route('frontend.product.single', $product)}}">
                                         <img data-sal="zoom-out" data-sal-delay="100" data-sal-duration="500"
                                             src="{{ asset('frontend/assets/images/product/electric/product-04.png')}}" alt="Product Images">
                                     </a>
@@ -1307,7 +991,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <h5 class="title"><a href="single-product.html">PS5 Smart Remote</a></h5>
+                                        <h5 class="title"><a href="{{ route('frontend.product.single', $product)}}">PS5 Smart Remote</a></h5>
                                         <div class="product-price-variant">
                                             <span class="price old-price">$50</span>
                                             <span class="price current-price">$25</span>
@@ -1317,7 +1001,7 @@
                                                 <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
-                                                <li class="select-option"><a href="single-product.html">Add to Cart</a>
+                                                <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Add to Cart</a>
                                                 </li>
                                                 <li class="wishlist"><a href="wishlist.html"><i
                                                             class="far fa-heart"></i></a></li>
@@ -1346,7 +1030,7 @@
                         <div class="col">
                             <div class="axil-product-list">
                                 <div class="thumbnail">
-                                    <a href="single-product.html">
+                                    <a href="{{ route('frontend.product.single', $product)}}">
                                         <img data-sal="zoom-in" data-sal-delay="100" data-sal-duration="1500"
                                             src="{{ asset('frontend/assets/images/product/electric/product-09.png')}}"
                                             alt="Yantiti Leather Bags">
@@ -1363,7 +1047,7 @@
                                         </span>
                                         <span class="rating-number"><span>100+</span> Reviews</span>
                                     </div>
-                                    <h6 class="product-title"><a href="single-product.html">Media Remote</a></h6>
+                                    <h6 class="product-title"><a href="{{ route('frontend.product.single', $product)}}">Media Remote</a></h6>
                                     <div class="product-price-variant">
                                         <span class="price current-price">$29.99</span>
                                         <span class="price old-price">$49.99</span>
@@ -1378,7 +1062,7 @@
                         <div class="col">
                             <div class="axil-product-list">
                                 <div class="thumbnail">
-                                    <a href="single-product.html">
+                                    <a href="{{ route('frontend.product.single', $product)}}">
                                         <img data-sal="zoom-in" data-sal-delay="200" data-sal-duration="1500"
                                             src="{{ asset('frontend/assets/images/product/electric/product-10.png')}}"
                                             alt="Yantiti Leather Bags">
@@ -1395,7 +1079,7 @@
                                         </span>
                                         <span class="rating-number"><span>50+</span> Reviews</span>
                                     </div>
-                                    <h6 class="product-title"><a href="single-product.html">HD Camera</a></h6>
+                                    <h6 class="product-title"><a href="{{ route('frontend.product.single', $product)}}">HD Camera</a></h6>
                                     <div class="product-price-variant">
                                         <span class="price current-price">$49.99</span>
                                     </div>
@@ -1409,7 +1093,7 @@
                         <div class="col">
                             <div class="axil-product-list">
                                 <div class="thumbnail">
-                                    <a href="single-product.html">
+                                    <a href="{{ route('frontend.product.single', $product)}}">
                                         <img data-sal="zoom-in" data-sal-delay="300" data-sal-duration="1500"
                                             src="{{ asset('frontend/assets/images/product/electric/product-11.png')}}"
                                             alt="Yantiti Leather Bags">
@@ -1426,7 +1110,7 @@
                                         </span>
                                         <span class="rating-number"><span>120+</span> Reviews</span>
                                     </div>
-                                    <h6 class="product-title"><a href="single-product.html">Gaming Controller</a></h6>
+                                    <h6 class="product-title"><a href="{{ route('frontend.product.single', $product)}}">Gaming Controller</a></h6>
                                     <div class="product-price-variant">
                                         <span class="price current-price">$50.00</span>
                                     </div>
@@ -1440,7 +1124,7 @@
                         <div class="col">
                             <div class="axil-product-list">
                                 <div class="thumbnail">
-                                    <a href="single-product.html">
+                                    <a href="{{ route('frontend.product.single', $product)}}">
                                         <img data-sal="zoom-in" data-sal-delay="400" data-sal-duration="1500"
                                             src="{{ asset('frontend/assets/images/product/electric/product-12.png')}}"
                                             alt="Yantiti Leather Bags">
@@ -1457,7 +1141,7 @@
                                         </span>
                                         <span class="rating-number"><span>30+</span> Reviews</span>
                                     </div>
-                                    <h6 class="product-title"><a href="single-product.html">Wall Mount </a></h6>
+                                    <h6 class="product-title"><a href="{{ route('frontend.product.single', $product)}}">Wall Mount </a></h6>
                                     <div class="product-price-variant">
                                         <span class="price current-price">$19.00</span>
                                     </div>
@@ -1471,7 +1155,7 @@
                         <div class="col">
                             <div class="axil-product-list">
                                 <div class="thumbnail">
-                                    <a href="single-product.html">
+                                    <a href="{{ route('frontend.product.single', $product)}}">
                                         <img data-sal="zoom-in" data-sal-delay="500" data-sal-duration="1500"
                                             src="{{ asset('frontend/assets/images/product/electric/product-13.png')}}"
                                             alt="Yantiti Leather Bags">
@@ -1488,7 +1172,7 @@
                                         </span>
                                         <span class="rating-number"><span>700+</span> Reviews</span>
                                     </div>
-                                    <h6 class="product-title"><a href="single-product.html">Lenevo Laptop</a></h6>
+                                    <h6 class="product-title"><a href="{{ route('frontend.product.single', $product)}}">Lenevo Laptop</a></h6>
                                     <div class="product-price-variant">
                                         <span class="price current-price">$999.99</span>
                                     </div>
@@ -1502,7 +1186,7 @@
                         <div class="col">
                             <div class="axil-product-list">
                                 <div class="thumbnail">
-                                    <a href="single-product.html">
+                                    <a href="{{ route('frontend.product.single', $product)}}">
                                         <img data-sal="zoom-in" data-sal-delay="600" data-sal-duration="1500"
                                             src="{{ asset('frontend/assets/images/product/electric/product-14.png')}}"
                                             alt="Yantiti Leather Bags">
@@ -1519,7 +1203,7 @@
                                         </span>
                                         <span class="rating-number"><span>300+</span> Reviews</span>
                                     </div>
-                                    <h6 class="product-title"><a href="single-product.html">Juice Grinder Machine</a>
+                                    <h6 class="product-title"><a href="{{ route('frontend.product.single', $product)}}">Juice Grinder Machine</a>
                                     </h6>
                                     <div class="product-price-variant">
                                         <span class="price current-price">$99.00</span>
@@ -1534,7 +1218,7 @@
                         <div class="col">
                             <div class="axil-product-list">
                                 <div class="thumbnail">
-                                    <a href="single-product.html">
+                                    <a href="{{ route('frontend.product.single', $product)}}">
                                         <img data-sal="zoom-in" data-sal-delay="400" data-sal-duration="1500"
                                             src="{{ asset('frontend/assets/images/product/electric/product-15.png')}}"
                                             alt="Yantiti Leather Bags">
@@ -1551,7 +1235,7 @@
                                         </span>
                                         <span class="rating-number"><span>100+</span> Reviews</span>
                                     </div>
-                                    <h6 class="product-title"><a href="single-product.html">Wireless Headphone</a></h6>
+                                    <h6 class="product-title"><a href="{{ route('frontend.product.single', $product)}}">Wireless Headphone</a></h6>
                                     <div class="product-price-variant">
                                         <span class="price current-price">$59.99</span>
                                     </div>
@@ -1565,7 +1249,7 @@
                         <div class="col">
                             <div class="axil-product-list">
                                 <div class="thumbnail">
-                                    <a href="single-product.html">
+                                    <a href="{{ route('frontend.product.single', $product)}}">
                                         <img data-sal="zoom-in" data-sal-delay="500" data-sal-duration="1500"
                                             src="{{ asset('frontend/assets/images/product/electric/product-16.png')}}"
                                             alt="Yantiti Leather Bags">
@@ -1582,7 +1266,7 @@
                                         </span>
                                         <span class="rating-number"><span>100+</span> Reviews</span>
                                     </div>
-                                    <h6 class="product-title"><a href="single-product.html">Asus Zenbook Laptop</a></h6>
+                                    <h6 class="product-title"><a href="{{ route('frontend.product.single', $product)}}">Asus Zenbook Laptop</a></h6>
                                     <div class="product-price-variant">
                                         <span class="price current-price">$899.00</span>
                                     </div>

@@ -33,7 +33,7 @@
                         <td>{{ $product->sellign_price}} Tk.</td>
                         <td>{{ $product->sku}}</td>
                         <td>{{ $product->brand}}</td>
-                        <td>{{ $product->category_id}}</td>
+                        <td>{{ $product->category->title ?? 'N/A' }}</td>
                         <td>
                             <span class="badge {{ $product->status ? 'bg-success' : 'bg-danger' }}">{{ $product->status ? 'Active' : 'Deactive'}}</span>
                         </td>

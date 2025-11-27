@@ -67,7 +67,7 @@
                      <div class="form-group my-3">
                         <label for="">Gallery Images</label>
                         <input type="file" value="" multiple name="gall_img[]" class="form_control">
-                        @error('gall_img')
+                        @error('gall_img.*')
                          <samp class="text-danger">{{ $message }}</samp>
                         @enderror
                     </div>

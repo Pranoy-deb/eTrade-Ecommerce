@@ -12,7 +12,7 @@
                     <div class="form-group">
                         <label for="">Product Title <span class="text-danger">*</span></label>
                         <input type="text" value="{{$products->title}}" name="title" required class="form-control">
-                        @error('product_title')
+                        @error('title')
                         <samp class="text-danger">{{ $message }}</samp>
                         @enderror
                     </div>
@@ -82,7 +82,7 @@
                         <label for="">Add New Gallery Images</label>
                         <div class="d-flex flex-wrap gap-1">
                         <input type="file" multiple name="gall_img[]" class="form_control">
-                        @error('gall_img')
+                        @error('gall_img.*')
                          <samp class="text-danger">{{ $message }}</samp>
                         @enderror
                         </div>
@@ -90,17 +90,17 @@
                     <div class="form-group my-3">
                       <label for="">Select a Category <span class="text-danger">*</span></label>
                         <select name="category_id" class="form-control">
-                            <option>Choose one......</option>
+                            <option value="">Choose one......</option>
                             @foreach ($categorise as $category)
                                 <option value="{{ $category->id }}"
-                                    {{ $products->category_id == $category->id ? 'selected' : '' }}>
+                                    {{ old('category_id', $products->category_id) == $category->id ? 'selected' : '' }}>
                                     {{ $category->title }}
-                                </option>
+                            </option>
                             @endforeach
                         </select>
-                        @error('category')
+                    @error('category_id')
                         <samp class="text-danger">{{ $message }}</samp>
-                        @enderror
+                    @enderror
                     </div>
                     <button class="btn btn-primary">Update</button>
                 </div>
