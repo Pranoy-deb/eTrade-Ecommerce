@@ -15,9 +15,8 @@
                                 <h6 class="title">CATEGORIES</h6>
                                 <div class="shop-submenu">
                                     <ul>
-                                      {{-- <li class="current-cat"><a href="shop-sidebar.html#">{{ $category->title}}</a></li> --}}
                                         @foreach ($categories as $category)
-                                        <li class=""><a href="{{ $category->slug}}">{{ $category->title}}</a></li>
+                                        <li class="{{ request()->category == $category->slug ? 'current-cat' : '' }}"><a href="{{ request()->url()."?category=".$category->slug}}">{{ $category->title}}</a></li>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -48,11 +47,12 @@
                         </div>
                         <!-- End .row -->
                         <div class="row row--15">
-                            @foreach ($products as $product)
+                            @forelse ($products as $product)
                             <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
                                 <div class="axil-product product-style-one">
                                     <div class="thumbnail">
                                         <a href="{{ route('frontend.product.single', $product)}}">
+                                            {{-- <a href="{{ route('frontend.product.single', $product['slug']) }}"> --}}
                                             <img data-sal="zoom-out" data-sal-delay="200" data-sal-duration="800"
                                                 loading="lazy" class="main-img"
                                                 src="{{ asset('storage/'. $product->featured_img) }}"
@@ -105,7 +105,9 @@
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
+                            @empty
+                            <h4 class="text-center">No products found!</h4>     
+                            @endforelse
                             <!-- End Single Product  -->
                         </div>
                         <nav>{{ $products->links()}}</nav>

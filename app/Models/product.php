@@ -20,9 +20,11 @@ class product extends Model
     "features",
     "status"
 ];
-    public function category()
-    {
-        return $this->belongsTo(Category::class, 'category_id');
+    function category(){
+
+        return $this->belongsTo(Category::class);
     }
+
+
 }
 

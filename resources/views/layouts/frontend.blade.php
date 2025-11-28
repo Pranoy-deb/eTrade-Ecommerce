@@ -256,7 +256,7 @@
                                 <ul>
                                     <li><a href="my-account.html">My Account</a></li>
                                     <li><a href="sign-up.html">Login / Register</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
+                                    <li><a href="{{ route('frontend.cart') }}">Cart</a></li>
                                     <li><a href="wishlist.html">Wishlist</a></li>
                                     <li><a href="shop.html">Shop</a></li>
                                 </ul>
@@ -487,7 +487,7 @@
 
                                             <!-- Start Product Action  -->
                                             <ul class="product-action d-flex-center mb--0">
-                                                <li class="add-to-cart"><a href="cart.html"
+                                                <li class="add-to-cart"><a href="{{ route('frontend.cart') }}"
                                                         class="axil-btn btn-bg-primary">Add to Cart</a></li>
                                                 <li class="wishlist"><a href="wishlist.html"
                                                         class="axil-btn wishlist-btn"><i class="far fa-heart"></i></a>
@@ -550,7 +550,7 @@
                                 <span class="price old-price">$49.99</span>
                             </div>
                             <div class="product-cart">
-                                <a href="cart.html" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
+                                <a href="{{ route('frontend.cart') }}" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
                                 <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a>
                             </div>
                         </div>
@@ -578,7 +578,7 @@
                                 <span class="price old-price">$49.99</span>
                             </div>
                             <div class="product-cart">
-                                <a href="cart.html" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
+                                <a href="{{ route('frontend.cart') }}" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
                                 <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a>
                             </div>
                         </div>
@@ -678,7 +678,7 @@
                     <span class="subtotal-amount">$610.00</span>
                 </h3>
                 <div class="group-btn">
-                    <a href="cart.html" class="axil-btn btn-bg-primary viewcart-btn">View Cart</a>
+                    <a href="{{ route('frontend.cart') }}" class="axil-btn btn-bg-primary viewcart-btn">View Cart</a>
                     <a href="checkout.html" class="axil-btn btn-bg-secondary checkout-btn">Checkout</a>
                 </div>
             </div>

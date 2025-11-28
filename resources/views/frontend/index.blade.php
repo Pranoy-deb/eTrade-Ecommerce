@@ -196,7 +196,7 @@
                     @foreach ($categroise as $category)
                     <div class="slick-single-layout">
                         <div class="categrie-product" data-sal="zoom-out" data-sal-delay="200" data-sal-duration="500">
-                            <a href="index-1.html#">
+                            <a href="{{ route('frontend.shop')}}?category={{ $category->slug}}">
                                 <img style="width:64px;height:64px;object-fit:cover;cover-position:center;" class="img-fluid" src="{{ asset('storage/'.$category->icon)}}"
                                     alt="product categorie">
                                 <h6 class="cat-title">{{ $category->title}}</h6>
@@ -1053,7 +1053,7 @@
                                         <span class="price old-price">$49.99</span>
                                     </div>
                                     <div class="product-cart">
-                                        <a href="cart.html" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
+                                        <a href="{{ route('frontend.cart') }}" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
                                         <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a>
                                     </div>
                                 </div>
@@ -1084,7 +1084,7 @@
                                         <span class="price current-price">$49.99</span>
                                     </div>
                                     <div class="product-cart">
-                                        <a href="cart.html" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
+                                        <a href="{{ route('frontend.cart') }}" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
                                         <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a>
                                     </div>
                                 </div>
@@ -1115,7 +1115,7 @@
                                         <span class="price current-price">$50.00</span>
                                     </div>
                                     <div class="product-cart">
-                                        <a href="cart.html" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
+                                        <a href="{{ route('frontend.cart') }}" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
                                         <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a>
                                     </div>
                                 </div>
@@ -1146,7 +1146,7 @@
                                         <span class="price current-price">$19.00</span>
                                     </div>
                                     <div class="product-cart">
-                                        <a href="cart.html" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
+                                        <a href="{{ route('frontend.cart') }}" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
                                         <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a>
                                     </div>
                                 </div>
@@ -1177,7 +1177,7 @@
                                         <span class="price current-price">$999.99</span>
                                     </div>
                                     <div class="product-cart">
-                                        <a href="cart.html" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
+                                        <a href="{{ route('frontend.cart') }}" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
                                         <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a>
                                     </div>
                                 </div>
@@ -1209,7 +1209,7 @@
                                         <span class="price current-price">$99.00</span>
                                     </div>
                                     <div class="product-cart">
-                                        <a href="cart.html" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
+                                        <a href="{{ route('frontend.cart') }}" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
                                         <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a>
                                     </div>
                                 </div>
@@ -1240,7 +1240,7 @@
                                         <span class="price current-price">$59.99</span>
                                     </div>
                                     <div class="product-cart">
-                                        <a href="cart.html" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
+                                        <a href="{{ route('frontend.cart') }}" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
                                         <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a>
                                     </div>
                                 </div>
@@ -1271,7 +1271,7 @@
                                         <span class="price current-price">$899.00</span>
                                     </div>
                                     <div class="product-cart">
-                                        <a href="cart.html" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
+                                        <a href="{{ route('frontend.cart') }}" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
                                         <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a>
                                     </div>
                                 </div>
