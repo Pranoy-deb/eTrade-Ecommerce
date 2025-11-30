@@ -47,9 +47,9 @@
                     <div class="col-sm-6">
                         <div class="header-top-link">
                             <ul class="quick-link">
-                                <li><a href="index-1.html#">Help</a></li>
-                                <li><a href="sign-up.html">Join Us</a></li>
-                                <li><a href="sign-in.html">Sign In</a></li>
+                                <li><a href="{{ url('/') }}">Help</a></li>
+                                <li><a href="{{route('frontend.customer.signup')}}">Join Us</a></li>
+                                <li><a href="{{route('frontend.customer.login')}}">Sign In</a></li>
                             </ul>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
                                 </li>
                                 <li><a href="about-us.html">About</a></li>
                                 <li class="menu-item-has-children">
-                                    <a href="index-1.html#">Blog</a>
+                                    <a href="{{ url('/') }}">Blog</a>
                                     <ul class="axil-submenu">
                                         <li><a href="blog.html">Blog List</a></li>
                                         <li><a href="blog-grid.html">Blog Grid</a></li>
@@ -116,7 +116,7 @@
                                 </a>
                             </li>
                             <li class="shopping-cart">
-                                <a href="index-1.html#" class="cart-dropdown-btn">
+                                <a href="{{ url('/') }}" class="cart-dropdown-btn">
                                     <span class="cart-count">3</span>
                                     <i class="flaticon-shopping-cart"></i>
                                 </a>
@@ -132,13 +132,13 @@
                                             <a href="my-account.html">My Account</a>
                                         </li>
                                         <li>
-                                            <a href="index-1.html#">Initiate return</a>
+                                            <a href="{{ url('/') }}">Initiate return</a>
                                         </li>
                                         <li>
-                                            <a href="index-1.html#">Support</a>
+                                            <a href="{{ url('/') }}">Support</a>
                                         </li>
                                         <li>
-                                            <a href="index-1.html#">Language</a>
+                                            <a href="{{ url('/') }}">Language</a>
                                         </li>
                                     </ul>
                                     <div class="login-btn">
@@ -272,7 +272,7 @@
                                 <ul>
                                     <li><a href="privacy-policy.html">Privacy Policy</a></li>
                                     <li><a href="terms-of-service.html">Terms Of Use</a></li>
-                                    <li><a href="index-1.html#">FAQ</a></li>
+                                    <li><a href="{{ url('/') }}">FAQ</a></li>
                                     <li><a href="contact.html">Contact</a></li>
                                     <li><a href="contact.html">Contact</a></li>
                                 </ul>
@@ -291,10 +291,10 @@
                                         <img src="{{ asset('frontend/assets/images/others/qr.png')}}" alt="Axilthemes">
                                     </div>
                                     <div class="app-link">
-                                        <a href="index-1.html#">
+                                        <a href="{{ url('/') }}">
                                             <img src="{{ asset('frontend/assets/images/others/app-store.png')}}" alt="App Store">
                                         </a>
-                                        <a href="index-1.html#">
+                                        <a href="{{ url('/') }}">
                                             <img src="{{ asset('frontend/assets/images/others/play-store.png')}}" alt="Play Store">
                                         </a>
                                     </div>
@@ -313,11 +313,11 @@
                 <div class="row align-items-center">
                     <div class="col-xl-4">
                         <div class="social-share">
-                            <a href="index-1.html#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="index-1.html#"><i class="fab fa-instagram"></i></a>
-                            <a href="index-1.html#"><i class="fab fa-twitter"></i></a>
-                            <a href="index-1.html#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="index-1.html#"><i class="fab fa-discord"></i></a>
+                            <a href="{{ url('/') }}"><i class="fab fa-facebook-f"></i></a>
+                            <a href="{{ url('/') }}"><i class="fab fa-instagram"></i></a>
+                            <a href="{{ url('/') }}"><i class="fab fa-twitter"></i></a>
+                            <a href="{{ url('/') }}"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="{{ url('/') }}"><i class="fab fa-discord"></i></a>
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-12">
@@ -429,7 +429,7 @@
                                                 <img src="{{ asset('frontend/assets/images/icons/rate.png')}}" alt="Rate Images">
                                             </div>
                                             <div class="review-link">
-                                                <a href="index-1.html#">(<span>1</span> customer reviews)</a>
+                                                <a href="{{ url('/') }}">(<span>1</span> customer reviews)</a>
                                             </div>
                                         </div>
                                         <h3 class="product-title">Serif Coffee Table</h3>
@@ -513,7 +513,7 @@
         <button class="card-close sidebar-close"><i class="fas fa-times"></i></button>
         <div class="header-search-wrap">
             <div class="card-header">
-                <form action="index-1.html#">
+                <form action="{{ url('/') }}">
                     <div class="input-group">
                         <input type="search" class="form-control" name="prod-search" id="prod-search"
                             placeholder="Write Something....">

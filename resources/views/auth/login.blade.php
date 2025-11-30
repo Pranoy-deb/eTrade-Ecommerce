@@ -49,7 +49,7 @@
           <div class="card-body">
             <!-- Logo -->
             <div class="app-brand justify-content-center">
-              <a href="index.html" class="app-brand-link gap-2">
+              <a href="{{ url('/') }}" class="app-brand-link gap-2">
                 <img src="{{ asset('frontend/assets/images/logo/logo.png') }}" alt="">
               </a>
             </div>

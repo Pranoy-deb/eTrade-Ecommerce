@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    function cartpage(){
+    function addToCard(Request $request){
+        dd($request->all());
         return view('frontend.cart');
     }
 }

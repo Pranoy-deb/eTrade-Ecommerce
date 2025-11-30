@@ -36,7 +36,7 @@
         <div class="signin-header">
             <div class="row align-items-center">
                 <div class="col-xl-4 col-sm-6">
-                    <a href="index.html" class="site-logo"><img src="assets/images/logo/logo.png" alt="logo"></a>
+                    <a href="{{ url('/') }}" class="site-logo"><img src="assets/images/logo/logo.png" alt="logo"></a>
                 </div>
                 <div class="col-md-2 d-lg-block d-none">
                     <a href="forgot-password.html" class="back-btn"><i class="far fa-angle-left"></i></a>

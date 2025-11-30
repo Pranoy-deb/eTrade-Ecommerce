@@ -227,7 +227,7 @@
                                     <h2 class="title">Enhance Your Music Experience</h2>
                                 </div>
                                 <div class="poster-countdown countdown mb--40"></div>
-                                <a href="index-1.html#" class="axil-btn btn-bg-primary">Check it Out!</a>
+                                <a href="{{ url('/') }}" class="axil-btn btn-bg-primary">Check it Out!</a>
                             </div>
                         </div>
                         <div class="col-xl-7 col-lg-6">
@@ -261,6 +261,9 @@
                     <div class="slick-single-layout">
                         <div class="row row--15">
                             @foreach ($products as $product)
+                             @php
+                                $Gall_img = json_decode($product->gall_img,true) ?? [];
+                            @endphp
                             <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
                                 <div class="axil-product product-style-one">
                                     <div class="thumbnail">
@@ -269,8 +272,9 @@
                                                 loading="lazy" class="main-img"
                                                 src="{{ asset('storage/'. $product->featured_img) }}"
                                                 alt="Product Images">
-                                            <img class="hover-img" src="{{ asset('storage/'. json_decode($product->gall_img)[0])}}"
-                                                alt="Product Images">
+                                            @if(count($Gall_img) > 0)
+                                            <img class="hover-img" src="{{ asset('storage/' . $Gall_img[0]) }}" alt="Product Images">
+                                        @endif
                                         </a>
                                         @if ($product->sellign_price && $product->sellign_price > 0)
                                         <div class="label-block label-right">
@@ -279,7 +283,7 @@
                                         @endif 
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
-                                                <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
+                                                <li class="quickview"><a href="{{ url('/') }}" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
                                                             <li class="select-option">
@@ -337,7 +341,7 @@
                                         </div>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
-                                                <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
+                                                <li class="quickview"><a href="{{ url('/') }}" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
                                                 <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Select
@@ -369,7 +373,7 @@
                                         </a>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
-                                                <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
+                                                <li class="quickview"><a href="{{ url('/') }}" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
                                                 <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Select
@@ -415,7 +419,7 @@
                                         </div>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
-                                                <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
+                                                <li class="quickview"><a href="{{ url('/') }}" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
                                                 <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Select
@@ -458,7 +462,7 @@
                                         </a>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
-                                                <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
+                                                <li class="quickview"><a href="{{ url('/') }}" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
                                                 <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Select
@@ -493,7 +497,7 @@
                                         </div>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
-                                                <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
+                                                <li class="quickview"><a href="{{ url('/') }}" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
                                                 <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Select
@@ -539,7 +543,7 @@
                                         </div>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
-                                                <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
+                                                <li class="quickview"><a href="{{ url('/') }}" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
                                                 <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Select
@@ -585,7 +589,7 @@
                                         </div>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
-                                                <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
+                                                <li class="quickview"><a href="{{ url('/') }}" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
                                                 <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Select
@@ -631,7 +635,7 @@
                                         </div>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
-                                                <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
+                                                <li class="quickview"><a href="{{ url('/') }}" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
                                                 <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Select
@@ -672,7 +676,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12 text-center mt--20 mt_sm--0">
-                        <a href="shop.html" class="axil-btn btn-bg-lighter btn-load-more">View All Products</a>
+                        <a href="{{ route('frontend.shop')}}" class="axil-btn btn-bg-lighter btn-load-more">View All Products</a>
                     </div>
                 </div>
 
@@ -819,7 +823,7 @@
                                         </div>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
-                                                <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
+                                                <li class="quickview"><a href="{{ url('/') }}" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
                                                 <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Add to Cart</a>
@@ -862,7 +866,7 @@
                                     </div>
                                     <div class="product-hover-action">
                                         <ul class="cart-action">
-                                            <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
+                                            <li class="quickview"><a href="{{ url('/') }}" data-bs-toggle="modal"
                                                     data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a>
                                             </li>
                                             <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Select Option</a>
@@ -907,7 +911,7 @@
                                         </div>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
-                                                <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
+                                                <li class="quickview"><a href="{{ url('/') }}" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
                                                 <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Add to Cart</a>
@@ -953,7 +957,7 @@
                                         </div>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
-                                                <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
+                                                <li class="quickview"><a href="{{ url('/') }}" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
                                                 <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Add to Cart</a>
@@ -998,7 +1002,7 @@
                                         </div>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
-                                                <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
+                                                <li class="quickview"><a href="{{ url('/') }}" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
                                                 <li class="select-option"><a href="{{ route('frontend.product.single', $product)}}">Add to Cart</a>

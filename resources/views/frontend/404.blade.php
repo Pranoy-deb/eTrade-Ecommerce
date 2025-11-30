@@ -86,10 +86,10 @@
             <div class="container">
                 <div class="header-navbar">
                     <div class="header-brand">
-                        <a href="index.html" class="logo logo-dark">
+                        <a href="{{ url('/') }}" class="logo logo-dark">
                             <img src="assets/images/logo/logo.png" alt="Site Logo">
                         </a>
-                        <a href="index.html" class="logo logo-light">
+                        <a href="{{ url('/') }}" class="logo logo-light">
                             <img src="assets/images/logo/logo-light.png" alt="Site Logo">
                         </a>
                     </div>
@@ -98,7 +98,7 @@
                         <nav class="mainmenu-nav">
                             <button class="mobile-close-btn mobile-nav-toggler"><i class="fas fa-times"></i></button>
                             <div class="mobile-nav-brand">
-                                <a href="index.html" class="logo">
+                                <a href="{{ url('/') }}" class="logo">
                                     <img src="assets/images/logo/logo.png" alt="Site Logo">
                                 </a>
                             </div>
@@ -112,7 +112,7 @@
                                         <li><a href="index-4.html">Home - Jewellery</a></li>
                                         <li><a href="index-5.html">Home - Furniture</a></li>
                                         <li><a href="index-7.html">Home - Multipurpose</a></li>
-                                        <li><a href="../etrade-rtl/index.html">RTL Version</a></li>
+                                        <li><a href="../etrade-rtl/{{ url('/') }}">RTL Version</a></li>
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">
@@ -255,7 +255,7 @@
                         <span class="title-highlighter highlighter-secondary"> <i class="fal fa-exclamation-circle"></i> Oops! Somthing's missing.</span>
                         <h1 class="title">Page not found</h1>
                         <p>It seems like we dont find what you searched. The page you were looking for doesn't exist, isn't available loading incorrectly.</p>
-                        <a href="index.html" class="axil-btn btn-bg-secondary right-icon">Back To Home <i class="fal fa-long-arrow-right"></i></a>
+                        <a href="{{ url('/') }}" class="axil-btn btn-bg-secondary right-icon">Back To Home <i class="fal fa-long-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -329,7 +329,7 @@
                         <div class="axil-footer-widget">
                             <h5 class="widget-title">Support</h5>
                             <!-- <div class="logo mb--30">
-                            <a href="index.html">
+                            <a href="{{ url('/') }}">
                                 <img class="light-logo" src="assets/images/logo/logo.png" alt="Logo Images">
                             </a>
                         </div> -->

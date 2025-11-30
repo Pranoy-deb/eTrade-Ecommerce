@@ -98,7 +98,7 @@
                                     <div class="product-variations-wrapper">
 
                                         <!-- Start Product Variation  -->
-                                        <div class="product-variation">
+                                        {{-- <div class="product-variation">
                                             <h6 class="title">Colors:</h6>
                                             <div class="color-variant-wrapper">
                                                 <ul class="color-variant">
@@ -110,11 +110,11 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <!-- End Product Variation  -->
 
                                         <!-- Start Product Variation  -->
-                                        <div class="product-variation product-size-variation">
+                                        {{-- <div class="product-variation product-size-variation">
                                             <h6 class="title">Size:</h6>
                                             <ul class="range-variant">
                                                 <li>xs</li>
@@ -123,25 +123,28 @@
                                                 <li>l</li>
                                                 <li>xl</li>
                                             </ul>
-                                        </div>
+                                        </div> --}}
                                         <!-- End Product Variation  -->
 
                                     </div>
 
                                     <!-- Start Product Action Wrapper  -->
+                                    <form action="{{route('frontend.cart')}}" method="POST">
+                                        @csrf
                                     <div class="product-action-wrapper d-flex-center">
                                         <!-- Start Quentity Action  -->
-                                        <div class="pro-qty"><input type="text" value="1"></div>
+                                        <div class="pro-qty"><input type="text" name="qty" value="1"></div>
+                                       <input type="hidden" name="product_id" value="{{ $product->id }}">
                                         <!-- End Quentity Action  -->
 
                                         <!-- Start Product Action  -->
                                         <ul class="product-action d-flex-center mb--0">
-                                            <li class="add-to-cart"><a href="{{ route('frontend.cart') }}" class="axil-btn btn-bg-primary">Add to Cart</a></li>
+                                            <li class="add-to-cart"><button type="submit" class="axil-btn btn-bg-primary">Add to Cart</button></li>
                                             <li class="wishlist"><a href="wishlist.html" class="axil-btn wishlist-btn"><i class="far fa-heart"></i></a></li>
                                         </ul>
                                         <!-- End Product Action  -->
-
                                     </div>
+                                </form>
                                     <!-- End Product Action Wrapper  -->
                                 </div>
                             </div>
@@ -190,19 +193,19 @@
                                         <ul class="pro-des-features">
                                             <li class="single-features">
                                                 <div class="icon">
-                                                    <img src="assets/images/product/product-thumb/icon-3.png" alt="icon">
+                                                    <img src="{{ asset('frontend/assets/images/product/product-thumb/icon-3.png')}}" alt="icon">
                                                 </div>
                                                 Easy Returns
                                             </li>
                                             <li class="single-features">
                                                 <div class="icon">
-                                                    <img src="assets/images/product/product-thumb/icon-2.png" alt="icon">
+                                                    <img src="{{ asset('frontend/assets/images/product/product-thumb/icon-2.png')}}" alt="icon">
                                                 </div>
                                                 Quality Service
                                             </li>
                                             <li class="single-features">
                                                 <div class="icon">
-                                                    <img src="assets/images/product/product-thumb/icon-1.png" alt="icon">
+                                                    <img src="{{ asset('frontend/assets/images/product/product-thumb/icon-1.png')}}" alt="icon">
                                                 </div>
                                                 Original Product
                                             </li>
@@ -280,7 +283,7 @@
                                                     <div class="comment-body">
                                                         <div class="single-comment">
                                                             <div class="comment-img">
-                                                                <img src="assets/images/blog/author-image-4.png" alt="Author Images">
+                                                                <img src="{{ asset('frontend/assets/images/blog/author-image-4.png')}}" alt="Author Images">
                                                             </div>
                                                             <div class="comment-inner">
                                                                 <h6 class="commenter">
@@ -311,7 +314,7 @@
                                                     <div class="comment-body">
                                                         <div class="single-comment">
                                                             <div class="comment-img">
-                                                                <img src="assets/images/blog/author-image-4.png" alt="Author Images">
+                                                                <img src="{{ asset('frontend/assets/images/blog/author-image-4.png')}}" alt="Author Images">
                                                             </div>
                                                             <div class="comment-inner">
                                                                 <h6 class="commenter">
@@ -342,7 +345,7 @@
                                                     <div class="comment-body">
                                                         <div class="single-comment">
                                                             <div class="comment-img">
-                                                                <img src="assets/images/blog/author-image-5.png" alt="Author Images">
+                                                                <img src="{{ asset('frontend/assets/images/blog/author-image-5.png')}}" alt="Author Images">
                                                             </div>
                                                             <div class="comment-inner">
                                                                 <h6 class="commenter">
@@ -442,7 +445,7 @@
                         <div class="axil-product">
                             <div class="thumbnail">
                                 <a href="single-product.html">
-                                    <img src="assets/images/product/electric/product-01.png" alt="Product Images">
+                                    <img src="{{ asset('frontend/assets/images/product/electric/product-01.png')}}" alt="Product Images">
                                 </a>
                                 <div class="label-block label-right">
                                     <div class="product-badget">20% OFF</div>
@@ -481,7 +484,7 @@
                         <div class="axil-product">
                             <div class="thumbnail">
                                 <a href="single-product.html">
-                                    <img src="assets/images/product/electric/product-02.png" alt="Product Images">
+                                    <img src="{{ asset('frontend/assets/images/product/electric/product-02.png')}}" alt="Product Images">
                                 </a>
                                 <div class="label-block label-right">
                                     <div class="product-badget">40% OFF</div>
@@ -520,7 +523,7 @@
                         <div class="axil-product">
                             <div class="thumbnail">
                                 <a href="single-product.html">
-                                    <img src="assets/images/product/electric/product-03.png" alt="Product Images">
+                                    <img src="{{ asset('frontend/assets/images/product/electric/product-03.png')}}" alt="Product Images">
                                 </a>
                                 <div class="label-block label-right">
                                     <div class="product-badget">30% OFF</div>
@@ -559,7 +562,7 @@
                         <div class="axil-product">
                             <div class="thumbnail">
                                 <a href="single-product.html">
-                                    <img src="assets/images/product/electric/product-04.png" alt="Product Images">
+                                    <img src="{{ asset('frontend/assets/images/product/electric/product-04.png')}}" alt="Product Images">
                                 </a>
                                 <div class="label-block label-right">
                                     <div class="product-badget">50% OFF</div>
@@ -598,7 +601,7 @@
                         <div class="axil-product">
                             <div class="thumbnail">
                                 <a href="single-product.html">
-                                    <img src="assets/images/product/electric/product-05.png" alt="Product Images">
+                                    <img src="{{ asset('frontend/assets/images/product/electric/product-05.png')}}" alt="Product Images">
                                 </a>
                                 <div class="label-block label-right">
                                     <div class="product-badget">25% OFF</div>
@@ -638,7 +641,7 @@
                         <div class="axil-product">
                             <div class="thumbnail">
                                 <a href="single-product.html">
-                                    <img src="assets/images/product/electric/product-03.png" alt="Product Images">
+                                    <img src="{{ asset('frontend/assets/images/product/electric/product-03.png')}}" alt="Product Images">
                                 </a>
                                 <div class="label-block label-right">
                                     <div class="product-badget">30% OFF</div>
@@ -677,7 +680,7 @@
                         <div class="axil-product">
                             <div class="thumbnail">
                                 <a href="single-product.html">
-                                    <img src="assets/images/product/electric/product-04.png" alt="Product Images">
+                                    <img src="{{ asset('frontend/assets/images/product/electric/product-04.png')}}" alt="Product Images">
                                 </a>
                                 <div class="label-block label-right">
                                     <div class="product-badget">50% OFF</div>
@@ -716,7 +719,7 @@
                         <div class="axil-product">
                             <div class="thumbnail">
                                 <a href="single-product.html">
-                                    <img src="assets/images/product/electric/product-05.png" alt="Product Images">
+                                    <img src="{{ asset('frontend/assets/images/product/electric/product-05.png')}}" alt="Product Images">
                                 </a>
                                 <div class="label-block label-right">
                                     <div class="product-badget">25% OFF</div>

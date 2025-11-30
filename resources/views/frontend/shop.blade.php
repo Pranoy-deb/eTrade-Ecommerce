@@ -30,13 +30,22 @@
                                 <div class="axil-shop-top mb--40">
                                     <div class="category-select align-items-center justify-content-lg-end justify-content-between">
                                         <!-- Start Single Select  -->
-                                        <span class="filter-results">Showing 1-12 of 84 results</span>
-                                        <select class="single-select">
-                                            <option>Short by Latest</option>
-                                            <option>Short by Oldest</option>
-                                            <option>Short by Name</option>
-                                            <option>Short by Price</option>
+                                        {{-- <span class="filter-results">Showing 1-12 of 84 results</span> --}}
+                                        <span class="filter-results">Showing {{$count}} results</span>
+                                    <form method="GET" id="sortingForm">
+                                        <select name="sort" onchange="document.getElementById('sortingForm').submit()" class="">
+                                            <option value="">Default</option>
+                                            <option value="price_asc"  {{ request('sort') == 'price_asc'  ? 'selected' : '' }}>Price: Low to High</option>
+                                            <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>Price: High to Low</option>
+                                            <option value="newest"     {{ request('sort') == 'newest'     ? 'selected' : '' }}>Newest</option>
+                                            <option value="oldest"     {{ request('sort') == 'oldest'     ? 'selected' : '' }}>Oldest</option>
                                         </select>
+
+                                        @if(request('category'))
+                                            <input type="hidden" name="category" value="{{ request('category') }}">
+                                        @endif
+                                    </form>
+
                                         <!-- End Single Select  -->
                                     </div>
                                     <div class="d-lg-none">
@@ -46,8 +55,13 @@
                             </div>
                         </div>
                         <!-- End .row -->
+
+                        <!-- Start single product  -->
                         <div class="row row--15">
                             @forelse ($products as $product)
+                            @php
+                                $Gall_img = json_decode($product->gall_img,true) ?? [];
+                            @endphp
                             <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
                                 <div class="axil-product product-style-one">
                                     <div class="thumbnail">
@@ -57,8 +71,10 @@
                                                 loading="lazy" class="main-img"
                                                 src="{{ asset('storage/'. $product->featured_img) }}"
                                                 alt="Product Images">
-                                            <img class="hover-img" src="{{ asset('storage/'. json_decode($product->gall_img)[0])}}"
-                                                alt="Product Images">
+                                            @if (count($Gall_img) > 0)
+                                            <img class="hover-img" src="{{ asset('storage/'. $Gall_img[0])}}"
+                                            alt="Product Images">
+                                            @endif
                                         </a>
                                         @if ($product->sellign_price && $product->sellign_price > 0)
                                         <div class="label-block label-right">
@@ -67,7 +83,7 @@
                                         @endif 
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
-                                                <li class="quickview"><a href="index-1.html#" data-bs-toggle="modal"
+                                                <li class="quickview"><a href="{{ url('/') }}" data-bs-toggle="modal"
                                                         data-bs-target="#quick-view-modal"><i
                                                             class="far fa-eye"></i></a></li>
                                                             <li class="select-option">
