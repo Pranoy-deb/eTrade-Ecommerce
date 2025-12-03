@@ -48,8 +48,12 @@
                         <div class="header-top-link">
                             <ul class="quick-link">
                                 <li><a href="{{ url('/') }}">Help</a></li>
+                                @auth('customer')
+                                <li><a href="{{route('frontend.customer.profile')}}">My-profile</a></li>
+                                @else
                                 <li><a href="{{route('frontend.customer.signup')}}">Join Us</a></li>
                                 <li><a href="{{route('frontend.customer.login')}}">Sign In</a></li>
+                                @endauth
                             </ul>
                         </div>
                     </div>

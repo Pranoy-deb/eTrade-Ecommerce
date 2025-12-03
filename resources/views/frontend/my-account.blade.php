@@ -1,4 +1,4 @@
- @extends('layouts.frontend')
+@extends('layouts.frontend')
 @section('title','My-profile')
 @section('frontend')
  <!-- Start My Account Area  -->
@@ -8,11 +8,11 @@
                     <div class="axil-dashboard-author">
                         <div class="media">
                             <div class="thumbnail">
-                                <img src="assets/images/product/author1.png" alt="Hello Annie">
+                                <img src="https://api.dicebear.com/9.x/notionists/svg?seed={{auth('customer')->user()->name}}" alt="Hello Annie" width="100px">
                             </div>
                             <div class="media-body">
-                                <h5 class="title mb-0">Hello Annie</h5>
-                                <span class="joining-date">eTrade Member Since Sep 2020</span>
+                                <h5 class="title mb-0">Hello {{auth('customer')->user()->name}}</h5>
+                                <span class="joining-date">eTrade Member Since {{auth('customer')->user()->created_at->format('M d,Y')}}</span>
                             </div>
                         </div>
                     </div>
@@ -35,7 +35,13 @@
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="nav-dashboard" role="tabpanel">
                                     <div class="axil-dashboard-overview">
-                                        <div class="welcome-text">Hello Annie (not <span>Annie?</span> <a href="sign-in.html">Log Out</a>)</div>
+                                        <div class="welcome-text d-flex justify-content-between">Hello {{auth('customer')->user()->name}}
+                                            <form method="POST" action="{{route('frontend.customer.logout')}}">
+                                                @csrf
+                                                <button class="btn btn-danger">Logout</button>
+                                            </form>
+                                        </div>
+    
                                         <p>From your account dashboard you can view your recent orders, manage your shipping and billing addresses, and edit your password and account details.</p>
                                     </div>
                                 </div>

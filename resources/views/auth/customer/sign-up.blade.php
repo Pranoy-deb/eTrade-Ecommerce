@@ -35,14 +35,23 @@
                             <div class="form-group">
                                 <label>User Name</label>
                                 <input type="text" class="form-control" name="name" value="Pranoy">
+                                @error('name')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="email" class="form-control" name="email" value="debp75463.@gmail.com">
+                                <input type="email" class="form-control" name="email" value="pranoydeb591@gmail.com">
+                                @error('email')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label>Password</label>
                                 <input type="password" class="form-control" name="password" value="password">
+                                @error('password')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="axil-btn btn-bg-primary submit-btn">Create Account</button>

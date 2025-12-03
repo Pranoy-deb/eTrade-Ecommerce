@@ -5,18 +5,21 @@ namespace App\Http\Controllers\Auth;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 
 class CustomerAuthController extends Controller
 {
 
     use RegistersUsers;
+    use AuthenticatesUsers;
 
-    protected $redirectTo = '/customer/profile';
+
+    protected $redirectTo = '/customer/my-profile';
 
 
 
@@ -54,4 +57,5 @@ class CustomerAuthController extends Controller
     function showProfile(){
         return view('frontend.my-account');
     }
+
 }
