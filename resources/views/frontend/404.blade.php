@@ -72,8 +72,8 @@
                         <div class="header-top-link">
                             <ul class="quick-link">
                                 <li><a href="404.html#">Help</a></li>
-                                <li><a href="sign-up.html">Join Us</a></li>
-                                <li><a href="sign-in.html">Sign In</a></li>
+                                <li><a href="{{ route('frontend.customer.signup') }}">Join Us</a></li>
+                                <li><a href="{{ route('frontend.customer.login') }}">Sign In</a></li>
                             </ul>
                         </div>
                     </div>
@@ -136,9 +136,9 @@
                                         <li><a href="wishlist.html">Wishlist</a></li>
                                         <li><a href="{{ route('frontend.cart') }}">Cart</a></li>
                                         <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="my-account.html">Account</a></li>
-                                        <li><a href="sign-up.html">Sign Up</a></li>
-                                        <li><a href="sign-in.html">Sign In</a></li>
+                                        <li><a href="{{ route('frontend.customer.profile') }}">Account</a></li>
+                                        <li><a href="{{ route('frontend.customer.signup') }}">Sign Up</a></li>
+                                        <li><a href="{{ route('frontend.customer.login') }}">Sign In</a></li>
                                         <li><a href="forgot-password.html">Forgot Password</a></li>
                                         <li><a href="reset-password.html">Reset Password</a></li>
                                         <li><a href="privacy-policy.html">Privacy Policy</a></li>
@@ -197,7 +197,7 @@
                                     <span class="title">QUICKLINKS</span>
                                     <ul>
                                         <li>
-                                            <a href="my-account.html">My Account</a>
+                                            <a href="{{ route('frontend.customer.profile') }}">My Account</a>
                                         </li>
                                         <li>
                                             <a href="404.html#">Initiate return</a>
@@ -209,8 +209,8 @@
                                             <a href="404.html#">Language</a>
                                         </li>
                                     </ul>
-                                    <a href="sign-in.html" class="axil-btn btn-bg-primary">Login</a>
-                                    <div class="reg-footer text-center">No account yet? <a href="sign-up.html" class="btn-link">REGISTER HERE.</a></div>
+                                    <a href="{{ route('frontend.customer.login') }}" class="axil-btn btn-bg-primary">Login</a>
+                                    <div class="reg-footer text-center">No account yet? <a href="{{ route('frontend.customer.signup') }}" class="btn-link">REGISTER HERE.</a></div>
                                 </div>
                             </li>
                             <li class="axil-mobile-toggle">
@@ -353,8 +353,8 @@
                             <h5 class="widget-title">Account</h5>
                             <div class="inner">
                                 <ul>
-                                    <li><a href="my-account.html">My Account</a></li>
-                                    <li><a href="sign-up.html">Login / Register</a></li>
+                                    <li><a href="{{ route('frontend.customer.profile') }}">My Account</a></li>
+                                    <li><a href="{{ route('frontend.customer.signup') }}">Login / Register</a></li>
                                     <li><a href="{{ route('frontend.cart') }}">Cart</a></li>
                                     <li><a href="wishlist.html">Wishlist</a></li>
                                     <li><a href="shop.html">Shop</a></li>

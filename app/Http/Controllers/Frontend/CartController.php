@@ -24,6 +24,11 @@ class CartController extends Controller
         ]);
     }
     return back();
-
   }
+  
+  function viewCard(){
+    return view('frontend.cart');
+  }
+
+
 }

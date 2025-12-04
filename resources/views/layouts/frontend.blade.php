@@ -121,7 +121,7 @@
                             </li>
                             <li class="shopping-cart">
                                 <a href="{{ url('/') }}" class="cart-dropdown-btn">
-                                    <span class="cart-count">3</span>
+                                    <span class="cart-count">{{$carts['count']}}</span>
                                     <i class="flaticon-shopping-cart"></i>
                                 </a>
                             </li>
@@ -133,7 +133,7 @@
                                     <span class="title">QUICKLINKS</span>
                                     <ul>
                                         <li>
-                                            <a href="my-account.html">My Account</a>
+                                            <a href="{{ route('frontend.customer.profile') }}">My Account</a>
                                         </li>
                                         <li>
                                             <a href="{{ url('/') }}">Initiate return</a>
@@ -146,9 +146,9 @@
                                         </li>
                                     </ul>
                                     <div class="login-btn">
-                                        <a href="sign-in.html" class="axil-btn btn-bg-primary">Login</a>
+                                        <a href="{{ route('frontend.customer.login') }}" class="axil-btn btn-bg-primary">Login</a>
                                     </div>
-                                    <div class="reg-footer text-center">No account yet? <a href="sign-up.html"
+                                    <div class="reg-footer text-center">No account yet? <a href="{{ route('frontend.customer.signup') }}"
                                             class="btn-link">REGISTER HERE.</a></div>
                                 </div>
                             </li>
@@ -258,9 +258,9 @@
                             <h5 class="widget-title">Account</h5>
                             <div class="inner">
                                 <ul>
-                                    <li><a href="my-account.html">My Account</a></li>
-                                    <li><a href="sign-up.html">Login / Register</a></li>
-                                    <li><a href="{{ route('frontend.cart') }}">Cart</a></li>
+                                    <li><a href="{{ route('frontend.customer.profile') }}">My Account</a></li>
+                                    <li><a href="{{ route('frontend.customer.signup') }}">Login / Register</a></li>
+                                    <li><a href="{{ route('frontend.carts.view') }}">Cart</a></li>
                                     <li><a href="wishlist.html">Wishlist</a></li>
                                     <li><a href="shop.html">Shop</a></li>
                                 </ul>
@@ -609,7 +609,7 @@
                             <button class="close-btn"><i class="fas fa-times"></i></button>
                         </div>
                         <div class="item-content">
-                            <div class="product-rating">
+                            {{-- <div class="product-rating">
                                 <span class="icon">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -618,7 +618,7 @@
                                     <i class="fas fa-star"></i>
                                 </span>
                                 <span class="rating-number">(64)</span>
-                            </div>
+                            </div> --}}
                             <h3 class="item-title"><a href="single-product-3.html">Wireless PS Handler</a></h3>
                             <div class="item-price"><span class="currency-symbol">$</span>155.00</div>
                             <div class="pro-qty item-quantity">
@@ -626,7 +626,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="cart-item">
+                    {{-- <li class="cart-item">
                         <div class="item-img">
                             <a href="single-product-2.html"><img src="{{ asset('frontend/assets/images/product/electric/product-02.png')}}"
                                     alt="Commodo Blown Lamp"></a>
@@ -673,7 +673,7 @@
                                 <input type="number" class="quantity-input" value="100">
                             </div>
                         </div>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
             <div class="cart-footer">
@@ -682,7 +682,7 @@
                     <span class="subtotal-amount">$610.00</span>
                 </h3>
                 <div class="group-btn">
-                    <a href="{{ route('frontend.cart') }}" class="axil-btn btn-bg-primary viewcart-btn">View Cart</a>
+                    <a href="{{ route('frontend.carts.view') }}" class="axil-btn btn-bg-primary viewcart-btn">View Cart</a>
                     <a href="checkout.html" class="axil-btn btn-bg-secondary checkout-btn">Checkout</a>
                 </div>
             </div>

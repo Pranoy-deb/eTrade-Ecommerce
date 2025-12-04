@@ -16,6 +16,8 @@ Route::get('/shop', [ShopController::class, 'shopPage'])->name('frontend.shop');
 Route::get('/product/{product:slug}', [HomeController::class, 'showSingleProduct'])->name('frontend.product.single');
 
 // Cart page route
+Route::get('/cart/view', [CartController::class, 'viewCard'])->name('frontend.carts.view')->middleware('customer');
+
 Route::post('/add-to-cart', [CartController::class, 'addToCard'])->name('frontend.cart')->middleware('customer');
 
 // Customer Auth Routes

@@ -43,7 +43,7 @@
                 </div>
                 <div class="col-xl-6 col-lg-4 col-sm-6">
                     <div class="singin-header-btn">
-                        <p>Already a member? <a href="sign-in.html" class="sign-in-btn">Sign In</a></p>
+                        <p>Already a member? <a href="{{ route('frontend.customer.login') }}" class="sign-in-btn">Sign In</a></p>
                     </div>
                 </div>
             </div>
