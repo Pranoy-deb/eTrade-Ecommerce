@@ -12,23 +12,26 @@ class CartController extends Controller
 {
     function addToCard(Request $request){
 
-    $cartItem = Cart::where('product_id', $request->product_id)->where('customer_id', auth('customer')->id())->first();
+      $cartItem = Cart::where('product_id', $request->product_id)->where('customer_id', auth('customer')->id())->first();
 
-    if ($cartItem) {
-        $cartItem->increment('qty', $request->qty);
-    } else {
-        Cart::create([
-            'product_id' => $request->product_id,
-            'qty' => $request->qty,
-            'customer_id' => auth('customer')->id(),
-        ]);
+      if ($cartItem) {
+          $cartItem->increment('qty', $request->qty);
+      } else {
+          Cart::create([
+              'product_id' => $request->product_id,
+              'qty' => $request->qty,
+              'customer_id' => auth('customer')->id(),
+          ]);
+      }
+      return back();
     }
-    return back();
-  }
   
-  function viewCard(){
-    return view('frontend.cart');
-  }
+    function viewCard(){
+      return view('frontend.cart');
+    }
 
+    function showCartItem(Cart $cart){
+      return view('layouts.frontend',compact('cart'));
+    }
 
 }

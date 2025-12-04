@@ -601,11 +601,16 @@
                 <button class="cart-close sidebar-close"><i class="fas fa-times"></i></button>
             </div>
             <div class="cart-body">
+                @if ($carts['data'])
                 <ul class="cart-item-list">
+                    @php
+                    $total_price = 0;
+                    @endphp
+                    @foreach ($carts['data'] as $cartItem)
                     <li class="cart-item">
                         <div class="item-img">
-                            <a href="single-product.html"><img src="{{ asset('frontend/assets/images/product/electric/product-01.png')}}"
-                                    alt="Commodo Blown Lamp"></a>
+                            <a href="single-product.html"><img src="{{ asset('storage/'.$cartItem->product->featured_img)}}"
+                                    alt="{{$cartItem->product->title}}"></a>
                             <button class="close-btn"><i class="fas fa-times"></i></button>
                         </div>
                         <div class="item-content">
@@ -619,62 +624,20 @@
                                 </span>
                                 <span class="rating-number">(64)</span>
                             </div> --}}
-                            <h3 class="item-title"><a href="single-product-3.html">Wireless PS Handler</a></h3>
-                            <div class="item-price"><span class="currency-symbol">$</span>155.00</div>
+                            <h3 class="item-title"><a href="single-product-3.html">{{$cartItem->product->title}}</a></h3>
+                            @php
+                            $price = $cartItem->product->sellign_price && $cartItem->product->sellign_price >0 ? $cartItem->product->sellign_price : $cartItem->product->price;
+                            @endphp
+                            <div class="item-price"><span class="currency-symbol">BDT </span>{{number_format($price,2) }}</div>
                             <div class="pro-qty item-quantity">
-                                <input type="number" class="quantity-input" value="15">
+                                <input type="number" class="quantity-input" value="{{round($cartItem->qty)}}">
                             </div>
                         </div>
                     </li>
-                    {{-- <li class="cart-item">
-                        <div class="item-img">
-                            <a href="single-product-2.html"><img src="{{ asset('frontend/assets/images/product/electric/product-02.png')}}"
-                                    alt="Commodo Blown Lamp"></a>
-                            <button class="close-btn"><i class="fas fa-times"></i></button>
-                        </div>
-                        <div class="item-content">
-                            <div class="product-rating">
-                                <span class="icon">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </span>
-                                <span class="rating-number">(4)</span>
-                            </div>
-                            <h3 class="item-title"><a href="single-product-2.html">Gradient Light Keyboard</a></h3>
-                            <div class="item-price"><span class="currency-symbol">$</span>255.00</div>
-                            <div class="pro-qty item-quantity">
-                                <input type="number" class="quantity-input" value="5">
-                            </div>
-                        </div>
-                    </li>
-                    <li class="cart-item">
-                        <div class="item-img">
-                            <a href="single-product-3.html"><img src="{{ asset('frontend/assets/images/product/electric/product-03.png')}}"
-                                    alt="Commodo Blown Lamp"></a>
-                            <button class="close-btn"><i class="fas fa-times"></i></button>
-                        </div>
-                        <div class="item-content">
-                            <div class="product-rating">
-                                <span class="icon">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </span>
-                                <span class="rating-number">(6)</span>
-                            </div>
-                            <h3 class="item-title"><a href="single-product.html">HD CC Camera</a></h3>
-                            <div class="item-price"><span class="currency-symbol">$</span>200.00</div>
-                            <div class="pro-qty item-quantity">
-                                <input type="number" class="quantity-input" value="100">
-                            </div>
-                        </div>
-                    </li> --}}
+                    @endforeach
                 </ul>
+                @endif
+
             </div>
             <div class="cart-footer">
                 <h3 class="cart-subtotal">

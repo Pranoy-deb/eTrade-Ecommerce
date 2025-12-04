@@ -23,44 +23,24 @@
                                     <th scope="col" class="product-subtotal">Subtotal</th>
                                 </tr>
                             </thead>
+                            @if($carts['data'])
                             <tbody>
+                                @foreach ($carts['data'] as $CartItem)
                                 <tr>
                                     <td class="product-remove"><a href="{{ route('frontend.cart') }}#" class="remove-wishlist"><i class="fal fa-times"></i></a></td>
-                                    <td class="product-thumbnail"><a href="single-product.html"><img src="assets/images/product/electric/product-01.png" alt="Digital Product"></a></td>
-                                    <td class="product-title"><a href="single-product.html">Wireless PS Handler</a></td>
+                                    <td class="product-thumbnail"><a href="single-product.html"><img src="{{asset('storage/'. $CartItem->product->featured_img)}}" alt="Digital Product"></a></td>
+                                    <td class="product-title"><a href="single-product.html">{{$CartItem->product->title}}</a></td>
                                     <td class="product-price" data-title="Price"><span class="currency-symbol">$</span>124.00</td>
                                     <td class="product-quantity" data-title="Qty">
                                         <div class="pro-qty">
-                                            <input type="number" class="quantity-input" value="1">
+                                            <input type="number" class="quantity-input" value="{{$CartItem->qty}}">
                                         </div>
                                     </td>
                                     <td class="product-subtotal" data-title="Subtotal"><span class="currency-symbol">$</span>275.00</td>
-                                </tr>
-                                <tr>
-                                    <td class="product-remove"><a href="{{ route('frontend.cart') }}#" class="remove-wishlist"><i class="fal fa-times"></i></a></td>
-                                    <td class="product-thumbnail"><a href="single-product-2.html"><img src="assets/images/product/electric/product-02.png" alt="Digital Product"></a></td>
-                                    <td class="product-title"><a href="single-product-2.html">Gradient Light Keyboard</a></td>
-                                    <td class="product-price" data-title="Price"><span class="currency-symbol">$</span>124.00</td>
-                                    <td class="product-quantity" data-title="Qty">
-                                        <div class="pro-qty">
-                                            <input type="number" class="quantity-input" value="1">
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal" data-title="Subtotal"><span class="currency-symbol">$</span>275.00</td>
-                                </tr>
-                                <tr>
-                                    <td class="product-remove"><a href="{{ route('frontend.cart') }}#" class="remove-wishlist"><i class="fal fa-times"></i></a></td>
-                                    <td class="product-thumbnail"><a href="single-product-3.html"><img src="assets/images/product/electric/product-03.png" alt="Digital Product"></a></td>
-                                    <td class="product-title"><a href="single-product-3.html">HD CC Camera</a></td>
-                                    <td class="product-price" data-title="Price"><span class="currency-symbol">$</span>124.00</td>
-                                    <td class="product-quantity" data-title="Qty">
-                                        <div class="pro-qty">
-                                            <input type="number" class="quantity-input" value="1">
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal" data-title="Subtotal"><span class="currency-symbol">$</span>275.00</td>
-                                </tr>
+                                </tr>                                
+                                @endforeach
                             </tbody>
+                        @endif
                         </table>
                     </div>
                     <div class="cart-update-btn-area">
