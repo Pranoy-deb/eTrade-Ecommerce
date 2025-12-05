@@ -203,22 +203,39 @@
 
         priceRangeSlider: function(e) {
             $('#slider-range').slider({
-                range: true,
-                min: 0,
-                max: 1000000,
-                values: [0, 1000000],
-                slide: function(event, ui) {
-                    $('#amount').val(
-                        'Tk' + ui.values[0].toLocaleString() + 
-                        '  Tk' + ui.values[1].toLocaleString()
-                    );
-                }
-            });
+            range: true,
+            min: 0,
+            max: 1000000,
+            values: [0, 1000000],
 
-            $('#amount').val(
-                'Tk' + $('#slider-range').slider('values', 0).toLocaleString() +
-                '  Tk' + $('#slider-range').slider('values', 1).toLocaleString()
-            );
+            slide: function(event, ui) {
+
+                // show Tk format
+                $('#amount').val(
+                    'Tk ' + ui.values[0].toLocaleString() + 
+                    ' - Tk ' + ui.values[1].toLocaleString()
+                );
+
+                // set hidden fields
+                $('#min_price').val(ui.values[0]);
+                $('#max_price').val(ui.values[1]);
+            },
+
+            change: function(event, ui) {
+                // auto submit form when drag stops
+                $('#priceForm').submit();
+            }
+        });
+
+        // Default value on load
+        $('#amount').val(
+            'Tk ' + $('#slider-range').slider('values', 0).toLocaleString() +
+            ' - Tk ' + $('#slider-range').slider('values', 1).toLocaleString()
+        );
+
+        $('#min_price').val($('#slider-range').slider('values', 0));
+        $('#max_price').val($('#slider-range').slider('values', 1));
+
         },
 
 

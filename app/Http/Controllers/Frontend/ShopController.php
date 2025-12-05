@@ -50,6 +50,32 @@ class ShopController extends Controller
                     $products->orderBy('created_at', 'asc');
                     break;
             }
+
+            // PRICE RANGE FILTER
+        if ($request->min_price && $request->max_price) {
+
+            $min = $request->min_price;
+            $max = $request->max_price;
+
+            $products->where(function ($q) use ($min, $max) {
+
+                //  If selling_price > 0 → use selling_price
+                $q->where(function($sub) use ($min, $max) {
+                    $sub->whereNotNull('selling_price')
+                        ->where('selling_price', '>', 0)
+                        ->whereBetween('selling_price', [$min, $max]);
+                })
+
+                //  else → use main price
+                ->orWhere(function($sub) use ($min, $max) {
+                    $sub->where(function($s) {
+                        $s->whereNull('selling_price')
+                        ->orWhere('selling_price', 0);
+                    })
+                    ->whereBetween('price', [$min, $max]); 
+                });
+            });
+        }
         }
 
         // Status Active + Pagination + Keep Query Params

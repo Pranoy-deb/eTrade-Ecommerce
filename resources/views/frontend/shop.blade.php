@@ -24,13 +24,17 @@
                             <div class="toggle-list product-price-range active">
                                 <h6 class="title">PRICE</h6>
                                 <div class="shop-submenu">
-                                    <form action="shop-sidebar.html#" class="mt--30">
-                                        <div id="slider-range"></div>
-                                        <div class="flex-center mt--20">
-                                            <span class="input-range">Price: </span>
-                                            <input type="text" id="amount" class="amount-range" readonly>
-                                        </div>
-                                    </form>
+                                   <form method="GET" id="priceForm" action="#" class="mt--30">
+                                    <div id="slider-range"></div>
+
+                                    <input type="hidden" id="min_price" name="min_price">
+                                    <input type="hidden" id="max_price" name="max_price">
+
+                                    <div class="flex-center mt--20">
+                                        <span class="input-range">Price: </span>
+                                        <input type="text" id="amount" class="amount-range" readonly>
+                                    </div>
+                                </form>
                                 </div>
                             </div>
                         </div>
@@ -95,16 +99,20 @@
                                         @endif 
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
-                                                <li class="quickview"><a href="{{ url('/') }}" data-bs-toggle="modal"
-                                                        data-bs-target="#quick-view-modal"><i
-                                                            class="far fa-eye"></i></a></li>
-                                                            <li class="select-option">
-                                                                <a href="{{ route('frontend.product.single', $product)}}">
+                                                <li class="quickview">
+                                                    <a href="{{ route('frontend.product.single', $product) }}">
+                                                        <i class="far fa-eye"></i>
+                                                    </a>
+                                                </li>
+
+                                                <li class="select-option">
+                                                    <a href="{{ route('frontend.product.single', $product)}}">
                                                         Add to Cart
                                                     </a>
                                                 </li>
-                                                <li class="wishlist"><a href="wishlist.html"><i
-                                                            class="far fa-heart"></i></a></li>
+                                                <li class="wishlist">
+                                                    <a href="wishlist.html"><i class="far fa-heart"></i></a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>

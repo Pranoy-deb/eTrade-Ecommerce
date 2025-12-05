@@ -89,7 +89,7 @@
                                <li class="menu-item">
                                     <a href="{{ route('frontend.shop') }}">Shop</a>
                                 </li>
-                                <li><a href="about-us.html">About</a></li>
+                                <li><a href="{{ route('frontend.about-us') }}">About</a></li>
                                 <li class="menu-item-has-children">
                                     <a href="{{ url('/') }}">Blog</a>
                                     <ul class="axil-submenu">
@@ -102,7 +102,7 @@
                                         <li><a href="blog-quote.html">Quote Post</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="{{ route('frontend.contact') }}">Contact</a></li>
                             </ul>
                         </nav>
                         <!-- End Mainmanu Nav -->
@@ -277,8 +277,8 @@
                                     <li><a href="privacy-policy.html">Privacy Policy</a></li>
                                     <li><a href="terms-of-service.html">Terms Of Use</a></li>
                                     <li><a href="{{ url('/') }}">FAQ</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="{{ route('frontend.contact') }}">Contact</a></li>
+                                    <li><a href="{{ route('frontend.contact') }}">Contact</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -351,7 +351,7 @@
     <!-- End Footer Area  -->
 
     <!-- Product Quick View Modal Start -->
-    <div class="modal fade quick-view-product" id="quick-view-modal" tabindex="-1" aria-hidden="true">
+    {{-- <div class="modal fade quick-view-product" id="quick-view-modal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -509,7 +509,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Product Quick View Modal End -->
 
     <!-- Header Search Modal End -->
@@ -602,6 +602,7 @@
             </div>
             <div class="cart-body">
                 @if ($carts['data'])
+                {{-- @dd($carts['data']) --}}
                 <ul class="cart-item-list">
                     @php
                     $total_price = 0;

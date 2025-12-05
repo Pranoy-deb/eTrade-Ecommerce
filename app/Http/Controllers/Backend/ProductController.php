@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\product;
 use Illuminate\Support\Facades\Storage;
@@ -173,6 +174,8 @@ class ProductController extends Controller
                 }
             }
         }
+
+        Cart::where('product_id', $product->id)->delete();
 
         $product->delete();
 

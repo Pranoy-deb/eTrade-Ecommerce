@@ -8,7 +8,7 @@ use App\Http\Controllers\Backend\ProductController;
 use Faker\Guesser\Name;
 
 Route::middleware('auth')->group(function(){
-    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('/admin/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
     //*Category route
     Route::controller(CategoryController::class)->prefix('/categories')->name('category.')->group(function(){

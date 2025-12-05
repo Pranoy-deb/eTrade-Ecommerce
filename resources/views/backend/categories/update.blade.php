@@ -47,7 +47,7 @@
                             <td>{{ $category->status ? 'Active' : 'Deactive'}}</td>
                             <td>
                                 <div class="btn-group">
-                                    <a href="{{route('backend.category.edit',$category)}}" class="btn btn-sm btn-success">Edit</a>
+                                    <a href="{{route('backend.category.edit',$category)}}" class="btn btn-sm btn-dark">Edit</a>
                                     <a href="" class="btn btn-sm btn-danger">Delete</a>
 
                                 </div>
