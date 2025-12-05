@@ -26,7 +26,11 @@
                                         <a class="nav-item nav-link" data-bs-toggle="tab" href="{{ route('frontend.customer.profile') }}#nav-downloads" role="tab" aria-selected="false"><i class="fas fa-file-download"></i>Downloads</a>
                                         <a class="nav-item nav-link" data-bs-toggle="tab" href="{{ route('frontend.customer.profile') }}#nav-address" role="tab" aria-selected="false"><i class="fas fa-home"></i>Addresses</a>
                                         <a class="nav-item nav-link" data-bs-toggle="tab" href="{{ route('frontend.customer.profile') }}#nav-account" role="tab" aria-selected="false"><i class="fas fa-user"></i>Account Details</a>
-                                        <a class="nav-item nav-link" href="{{ route('frontend.customer.login') }}"><i class="fal fa-sign-out"></i>Logout</a>
+                                        {{-- <a class="nav-item nav-link" hre""><i class="fal fa-sign-out"></i>Logout</a> --}}
+                                        <form method="POST" action="{{route('frontend.customer.logout')}}">
+                                                @csrf
+                                                <button class="nav-item nav-link"><i class="fal fa-sign-out"></i>Logout</button>
+                                            </form>
                                     </div>
                                 </nav>
                             </aside>

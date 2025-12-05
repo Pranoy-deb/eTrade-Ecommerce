@@ -17,8 +17,10 @@ Route::get('/product/{product:slug}', [HomeController::class, 'showSingleProduct
 
 // Cart page route
 Route::get('/cart/view', [CartController::class, 'viewCard'])->name('frontend.carts.view')->middleware('customer');
-
 Route::post('/add-to-cart', [CartController::class, 'addToCard'])->name('frontend.cart')->middleware('customer');
+
+// Checkout page route
+Route::get('/checkout', [CartController::class, 'checkOutPage'])->name('frontend.checkout')->middleware('customer');
 
 // Customer Auth Routes
 Route::get('/customer/sign-in', [CustomerAuthController::class, 'showLoginForm'])->name('frontend.customer.login');
@@ -29,3 +31,9 @@ Route::post('/customer/logout', [CustomerAuthController::class, 'logout'])->name
 Route::get('/customer/my-profile', [CustomerAuthController::class, 'showProfile'])->name('frontend.customer.profile')->middleware('customer');
 
 Auth::routes();
+
+// Show 404 page for undefined routes
+Route::fallback(function(){
+    return response()->view('frontend.404', [], 404);
+
+});

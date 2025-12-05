@@ -213,7 +213,7 @@
                                         <div class="input-group justify-content-between align-items-center">
                                             <input type="radio" id="radio6" name="payment" checked>
                                             <label for="radio6">Paypal</label>
-                                            <img src="assets/images/others/payment.png" alt="Paypal payment">
+                                            <img src="{{asset('frontend/assets/images/others/payment.png')}}" alt="Paypal payment">
                                         </div>
                                         <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
                                     </div>

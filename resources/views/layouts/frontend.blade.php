@@ -627,6 +627,7 @@
                             <h3 class="item-title"><a href="single-product-3.html">{{$cartItem->product->title}}</a></h3>
                             @php
                             $price = $cartItem->product->sellign_price && $cartItem->product->sellign_price >0 ? $cartItem->product->sellign_price : $cartItem->product->price;
+                            $total_price += $price * $cartItem->qty;
                             @endphp
                             <div class="item-price"><span class="currency-symbol">BDT </span>{{number_format($price,2) }}</div>
                             <div class="pro-qty item-quantity">
@@ -642,11 +643,11 @@
             <div class="cart-footer">
                 <h3 class="cart-subtotal">
                     <span class="subtotal-title">Subtotal:</span>
-                    <span class="subtotal-amount">$610.00</span>
+                    <span class="subtotal-amount">BTD {{$total_price}}</span>
                 </h3>
                 <div class="group-btn">
                     <a href="{{ route('frontend.carts.view') }}" class="axil-btn btn-bg-primary viewcart-btn">View Cart</a>
-                    <a href="checkout.html" class="axil-btn btn-bg-secondary checkout-btn">Checkout</a>
+                    <a href="{{route('frontend.checkout')}}" class="axil-btn btn-bg-secondary checkout-btn">Checkout</a>
                 </div>
             </div>
         </div>

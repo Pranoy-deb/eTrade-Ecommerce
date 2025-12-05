@@ -25,18 +25,25 @@
                             </thead>
                             @if($carts['data'])
                             <tbody>
+                                @php
+                                $total_price = 0;
+                                @endphp
                                 @foreach ($carts['data'] as $CartItem)
                                 <tr>
                                     <td class="product-remove"><a href="{{ route('frontend.cart') }}#" class="remove-wishlist"><i class="fal fa-times"></i></a></td>
                                     <td class="product-thumbnail"><a href="single-product.html"><img src="{{asset('storage/'. $CartItem->product->featured_img)}}" alt="Digital Product"></a></td>
                                     <td class="product-title"><a href="single-product.html">{{$CartItem->product->title}}</a></td>
-                                    <td class="product-price" data-title="Price"><span class="currency-symbol">$</span>124.00</td>
+                                    @php
+                                    $price = $CartItem->product->sellign_price && $CartItem->product->sellign_price >0 ? $CartItem->product->sellign_price : $CartItem->product->price;
+                                    $total_price += $price * $CartItem->qty;
+                                    @endphp
+                                    <td class="product-price" data-title="Price"><span class="currency-symbol">BDT </span>{{number_format($price,2)}}</td>
                                     <td class="product-quantity" data-title="Qty">
                                         <div class="pro-qty">
                                             <input type="number" class="quantity-input" value="{{$CartItem->qty}}">
                                         </div>
                                     </td>
-                                    <td class="product-subtotal" data-title="Subtotal"><span class="currency-symbol">$</span>275.00</td>
+                                    <td class="product-subtotal" data-title="Subtotal"><span class="currency-symbol">BDT </span>{{number_format($total_price,2)}}</td>
                                 </tr>                                
                                 @endforeach
                             </tbody>

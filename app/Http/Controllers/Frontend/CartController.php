@@ -34,4 +34,7 @@ class CartController extends Controller
       return view('layouts.frontend',compact('cart'));
     }
 
+    function checkOutPage(){
+      return view('frontend.checkout');
+    }
 }
