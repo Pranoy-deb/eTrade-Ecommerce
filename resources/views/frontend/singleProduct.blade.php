@@ -136,11 +136,13 @@
                                         <div class="pro-qty"><input type="text" name="qty" value="1"></div>
                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
                                         <!-- End Quentity Action  -->
-
+                                        @php
+                                           $checkWishlist = in_array($product->id, $wishlist);
+                                        @endphp
                                         <!-- Start Product Action  -->
                                         <ul class="product-action d-flex-center mb--0">
                                             <li class="add-to-cart"><button type="submit" class="axil-btn btn-bg-primary">Add to Cart</button></li>
-                                            <li class="wishlist"><a href="wishlist.html" class="axil-btn wishlist-btn"><i class="far fa-heart"></i></a></li>
+                                            <li class="wishlist"><a href="{{ route('frontend.wishlist') }}" class="axil-btn wishlist-btn"><i class="{{ $checkWishlist ? 'fas fa-heart text-danger' : 'far fa-heart'}}"></i></a></li>
                                         </ul>
                                         <!-- End Product Action  -->
                                     </div>
@@ -452,7 +454,7 @@
                                 </div>
                                 <div class="product-hover-action">
                                     <ul class="cart-action">
-                                        <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
+                                        <li class="wishlist"><a href="{{ route('frontend.wishlist') }}"><i class="far fa-heart"></i></a></li>
                                         <li class="select-option"><a href="{{ route('frontend.cart') }}">Add to Cart</a></li>
                                         <li class="quickview"><a href="single-product-3.html#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
                                     </ul>
@@ -491,7 +493,7 @@
                                 </div>
                                 <div class="product-hover-action">
                                     <ul class="cart-action">
-                                        <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
+                                        <li class="wishlist"><a href="{{ route('frontend.wishlist') }}"><i class="far fa-heart"></i></a></li>
                                         <li class="select-option"><a href="{{ route('frontend.cart') }}">Add to Cart</a></li>
                                         <li class="quickview"><a href="single-product-3.html#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
                                     </ul>
@@ -530,7 +532,7 @@
                                 </div>
                                 <div class="product-hover-action">
                                     <ul class="cart-action">
-                                        <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
+                                        <li class="wishlist"><a href="{{ route('frontend.wishlist') }}"><i class="far fa-heart"></i></a></li>
                                         <li class="select-option"><a href="{{ route('frontend.cart') }}">Add to Cart</a></li>
                                         <li class="quickview"><a href="single-product-3.html#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
                                     </ul>
@@ -569,7 +571,7 @@
                                 </div>
                                 <div class="product-hover-action">
                                     <ul class="cart-action">
-                                        <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
+                                        <li class="wishlist"><a href="{{ route('frontend.wishlist') }}"><i class="far fa-heart"></i></a></li>
                                         <li class="select-option"><a href="{{ route('frontend.cart') }}">Add to Cart</a></li>
                                         <li class="quickview"><a href="single-product-3.html#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
                                     </ul>
@@ -608,7 +610,7 @@
                                 </div>
                                 <div class="product-hover-action">
                                     <ul class="cart-action">
-                                        <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
+                                        <li class="wishlist"><a href="{{ route('frontend.wishlist') }}"><i class="far fa-heart"></i></a></li>
                                         <li class="select-option"><a href="{{ route('frontend.cart') }}">Add to Cart</a></li>
                                         <li class="quickview"><a href="single-product-3.html#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
                                     </ul>
@@ -648,7 +650,7 @@
                                 </div>
                                 <div class="product-hover-action">
                                     <ul class="cart-action">
-                                        <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
+                                        <li class="wishlist"><a href="{{ route('frontend.wishlist') }}"><i class="far fa-heart"></i></a></li>
                                         <li class="select-option"><a href="{{ route('frontend.cart') }}">Add to Cart</a></li>
                                         <li class="quickview"><a href="single-product-3.html#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
                                     </ul>
@@ -687,7 +689,7 @@
                                 </div>
                                 <div class="product-hover-action">
                                     <ul class="cart-action">
-                                        <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
+                                        <li class="wishlist"><a href="{{ route('frontend.wishlist') }}"><i class="far fa-heart"></i></a></li>
                                         <li class="select-option"><a href="{{ route('frontend.cart') }}">Add to Cart</a></li>
                                         <li class="quickview"><a href="single-product-3.html#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
                                     </ul>
@@ -726,7 +728,7 @@
                                 </div>
                                 <div class="product-hover-action">
                                     <ul class="cart-action">
-                                        <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
+                                        <li class="wishlist"><a href="{{ route('frontend.wishlist') }}"><i class="far fa-heart"></i></a></li>
                                         <li class="select-option"><a href="{{ route('frontend.cart') }}">Add to Cart</a></li>
                                         <li class="quickview"><a href="single-product-3.html#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
                                     </ul>

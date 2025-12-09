@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Wishlist;
 use Illuminate\Database\Eloquent\Model;
 
 class product extends Model
@@ -21,8 +22,11 @@ class product extends Model
     "status"
 ];
     function category(){
-
         return $this->belongsTo(Category::class);
+    }
+
+    function wishlists(){
+        return $this->hasMany(Wishlist::class, 'product_id');
     }
 
 

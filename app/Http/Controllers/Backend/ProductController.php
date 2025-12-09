@@ -134,7 +134,6 @@ class ProductController extends Controller
             // Save in database
             $product->gall_img = json_encode($newGallery);
         }
-
         // Update Another field
             $product->category_id = $request->category_id;
             $product->title = $request->title;

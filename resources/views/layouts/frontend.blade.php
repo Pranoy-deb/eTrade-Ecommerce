@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>@yield('title')-eTrade</title>
+    <title>@yield('title') || eTrade</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -115,7 +115,7 @@
                                 </a>
                             </li>
                             <li class="wishlist">
-                                <a href="wishlist.html">
+                                <a href="{{ route('frontend.wishlist') }}">
                                     <i class="flaticon-heart"></i>
                                 </a>
                             </li>
@@ -146,7 +146,14 @@
                                         </li>
                                     </ul>
                                     <div class="login-btn">
+                                        @if (auth('customer')->check())
+                                         <form method="POST" action="{{route('frontend.customer.logout')}}">
+                                            @csrf
+                                            <button class="axil-btn btn bg-danger text-white">LogOut</button>
+                                        </form>
+                                       @else
                                         <a href="{{ route('frontend.customer.login') }}" class="axil-btn btn-bg-primary">Login</a>
+                                        @endif
                                     </div>
                                     <div class="reg-footer text-center">No account yet? <a href="{{ route('frontend.customer.signup') }}"
                                             class="btn-link">REGISTER HERE.</a></div>
@@ -261,7 +268,7 @@
                                     <li><a href="{{ route('frontend.customer.profile') }}">My Account</a></li>
                                     <li><a href="{{ route('frontend.customer.signup') }}">Login / Register</a></li>
                                     <li><a href="{{ route('frontend.carts.view') }}">Cart</a></li>
-                                    <li><a href="wishlist.html">Wishlist</a></li>
+                                    <li><a href="{{ route('frontend.wishlist') }}">Wishlist</a></li>
                                     <li><a href="shop.html">Shop</a></li>
                                 </ul>
                             </div>
@@ -493,7 +500,7 @@
                                             <ul class="product-action d-flex-center mb--0">
                                                 <li class="add-to-cart"><a href="{{ route('frontend.cart') }}"
                                                         class="axil-btn btn-bg-primary">Add to Cart</a></li>
-                                                <li class="wishlist"><a href="wishlist.html"
+                                                <li class="wishlist"><a href="{{ route('frontend.wishlist') }}"
                                                         class="axil-btn wishlist-btn"><i class="far fa-heart"></i></a>
                                                 </li>
                                             </ul>
@@ -555,7 +562,7 @@
                             </div>
                             <div class="product-cart">
                                 <a href="{{ route('frontend.cart') }}" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
-                                <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a>
+                                <a href="{{ route('frontend.wishlist') }}" class="cart-btn"><i class="fal fa-heart"></i></a>
                             </div>
                         </div>
                     </div>
@@ -583,7 +590,7 @@
                             </div>
                             <div class="product-cart">
                                 <a href="{{ route('frontend.cart') }}" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
-                                <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a>
+                                <a href="{{ route('frontend.wishlist') }}" class="cart-btn"><i class="fal fa-heart"></i></a>
                             </div>
                         </div>
                     </div>

@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\ShopController;
 use App\Http\Controllers\Frontend\AboutUsController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Auth\CustomerAuthController;
+use App\Http\Controllers\Frontend\WishlistController;
 
 // Home page route
 Route::get('/', [HomeController::class, 'index'])->name('frontend.home');
@@ -38,6 +39,11 @@ Route::get('/contact', [ContactController::class, 'contactPage'])->name('fronten
 
 // About Us page route
 Route::get('/about-us', [AboutUsController::class, 'aboutUsPage'])->name('frontend.about-us');
+
+// wishlist page route
+Route::get('/wishlist', [WishlistController::class, 'wishlistPage'])->name('frontend.wishlist')->middleware('customer');
+Route::post('/wishlist/additem', [WishlistController::class, 'addWishlist'])->name('frontend.wishlist.add')->middleware('customer');
+Route::post('/wishlist/deleteitem', [WishlistController::class, 'deleteWishlist'])->name('frontend.wishlist.delete')->middleware('customer');
 
 Auth::routes();
 

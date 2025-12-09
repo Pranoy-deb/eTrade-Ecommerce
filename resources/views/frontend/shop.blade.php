@@ -1,8 +1,10 @@
 @extends('layouts.frontend')
 @section('title','Shop')
 @section('frontend')
-    
-        <!-- Start Shop Area  -->
+
+{{-- @dd($wishlist) --}}
+
+<!-- Start Shop Area  -->
         <div class="axil-shop-area axil-section-gap bg-color-white">
             <div class="container">
                 <div class="row">
@@ -110,8 +112,16 @@
                                                         Add to Cart
                                                     </a>
                                                 </li>
+                                                @php
+                                                    $checkWishlist = in_array($product->id, $wishlist);
+                                                @endphp
+                                               
                                                 <li class="wishlist">
-                                                    <a href="wishlist.html"><i class="far fa-heart"></i></a>
+                                                <form action="{{route('frontend.wishlist.add')}}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                                    <button href="{{ route('frontend.wishlist') }}"><i class="{{ $checkWishlist ? 'fas fa-heart text-danger' : 'far fa-heart' }}"></i></button>
+                                                </form>
                                                 </li>
                                             </ul>
                                         </div>

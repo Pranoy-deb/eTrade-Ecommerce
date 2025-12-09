@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\product;
+use App\Models\Category;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 
 class ShopController extends Controller
 {
@@ -15,7 +16,7 @@ class ShopController extends Controller
 
         // Category Filter
         if ($request->has('category') && $request->category != '') {
-            $products->whereHas('category', function ($q) use ($request) {
+            $products->whereHas('category', function($q) use($request) {
                 $q->where('slug', $request->category);
             });
         }
@@ -78,7 +79,6 @@ class ShopController extends Controller
         }
         }
 
-        // Status Active + Pagination + Keep Query Params
         $products = $products->where('status', true)->paginate(20)->withQueryString();
         $count = count($products);
         // dd($count);
@@ -86,7 +86,10 @@ class ShopController extends Controller
         // All Categories
         $categories = Category::where('status', true)->select('id', 'title', 'slug')->get();
 
-        return view('frontend.shop', compact('products', 'categories', 'count'));
+        // wishlist
+        $wishlist = Wishlist::where('customer_id', auth('customer')->id())->pluck('product_id')->toArray();
+        // dd($wishlist);
+        return view('frontend.shop', compact('products', 'categories', 'count','wishlist'));
     }
 
 }
