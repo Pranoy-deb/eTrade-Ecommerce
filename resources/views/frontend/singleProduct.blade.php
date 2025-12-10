@@ -159,67 +159,19 @@
             <div class="woocommerce-tabs wc-tabs-wrapper bg-vista-white">
                 <div class="container">
                     <ul class="nav tabs" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <a class="active" id="description-tab" data-bs-toggle="tab" href="single-product-3.html#description" role="tab" aria-controls="description" aria-selected="true">Description</a>
-                        </li>
                         <li class="nav-item " role="presentation">
-                            <a id="additional-info-tab" data-bs-toggle="tab" href="single-product-3.html#additional-info" role="tab" aria-controls="additional-info" aria-selected="false">Additional Information</a>
+                            <a class="active" id="additional-info-tab" data-bs-toggle="tab" href="single-product-3.html#additional-info" role="tab" aria-controls="additional-info" aria-selected="false">Additional Information</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a  id="description-tab" data-bs-toggle="tab" href="single-product-3.html#description" role="tab" aria-controls="description" aria-selected="true">Description</a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a id="reviews-tab" data-bs-toggle="tab" href="single-product-3.html#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews</a>
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-                            <div class="product-desc-wrapper">
-                                <div class="row">
-                                    <div class="col-lg-6 mb--30">
-                                        <div class="single-desc">
-                                            <h5 class="title">Specifications:</h5>
-                                            <p>We’ve created a full-stack structure for our working workflow processes, were from the funny the century initial all the made, have spare to negatives. But the structure was from the funny the century rather,
-                                                initial all the made, have spare to negatives.</p>
-                                        </div>
-                                    </div>
-                                    <!-- End .col-lg-6 -->
-                                    <div class="col-lg-6 mb--30">
-                                        <div class="single-desc">
-                                            <h5 class="title">Care & Maintenance:</h5>
-                                            <p>Use warm water to describe us as a product team that creates amazing UI/UX experiences, by crafting top-notch user experience.</p>
-                                        </div>
-                                    </div>
-                                    <!-- End .col-lg-6 -->
-                                </div>
-                                <!-- End .row -->
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <ul class="pro-des-features">
-                                            <li class="single-features">
-                                                <div class="icon">
-                                                    <img src="{{ asset('frontend/assets/images/product/product-thumb/icon-3.png')}}" alt="icon">
-                                                </div>
-                                                Easy Returns
-                                            </li>
-                                            <li class="single-features">
-                                                <div class="icon">
-                                                    <img src="{{ asset('frontend/assets/images/product/product-thumb/icon-2.png')}}" alt="icon">
-                                                </div>
-                                                Quality Service
-                                            </li>
-                                            <li class="single-features">
-                                                <div class="icon">
-                                                    <img src="{{ asset('frontend/assets/images/product/product-thumb/icon-1.png')}}" alt="icon">
-                                                </div>
-                                                Original Product
-                                            </li>
-                                        </ul>
-                                        <!-- End .pro-des-features -->
-                                    </div>
-                                </div>
-                                <!-- End .row -->
-                            </div>
-                            <!-- End .product-desc-wrapper -->
-                        </div>
-                        <div class="tab-pane fade" id="additional-info" role="tabpanel" aria-labelledby="additional-info-tab">
+
+                        <div class="tab-pane fade show active" id="additional-info" role="tabpanel" aria-labelledby="additional-info-tab">
                             <div class="product-additional-info">
                                 <div class="table-responsive">
                                     <table>
@@ -273,6 +225,57 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="tab-pane fade" id="description" role="tabpanel" aria-labelledby="description-tab">
+                            <div class="product-desc-wrapper">
+                                <div class="row">
+                                    <div class="col-lg-6 mb--30">
+                                        <div class="single-desc">
+                                            <h5 class="title">Specifications:</h5>
+                                            <p>We’ve created a full-stack structure for our working workflow processes, were from the funny the century initial all the made, have spare to negatives. But the structure was from the funny the century rather,
+                                                initial all the made, have spare to negatives.</p>
+                                        </div>
+                                    </div>
+                                    <!-- End .col-lg-6 -->
+                                    <div class="col-lg-6 mb--30">
+                                        <div class="single-desc">
+                                            <h5 class="title">Care & Maintenance:</h5>
+                                            <p>Use warm water to describe us as a product team that creates amazing UI/UX experiences, by crafting top-notch user experience.</p>
+                                        </div>
+                                    </div>
+                                    <!-- End .col-lg-6 -->
+                                </div>
+                                <!-- End .row -->
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <ul class="pro-des-features">
+                                            <li class="single-features">
+                                                <div class="icon">
+                                                    <img src="{{ asset('frontend/assets/images/product/product-thumb/icon-3.png')}}" alt="icon">
+                                                </div>
+                                                Easy Returns
+                                            </li>
+                                            <li class="single-features">
+                                                <div class="icon">
+                                                    <img src="{{ asset('frontend/assets/images/product/product-thumb/icon-2.png')}}" alt="icon">
+                                                </div>
+                                                Quality Service
+                                            </li>
+                                            <li class="single-features">
+                                                <div class="icon">
+                                                    <img src="{{ asset('frontend/assets/images/product/product-thumb/icon-1.png')}}" alt="icon">
+                                                </div>
+                                                Original Product
+                                            </li>
+                                        </ul>
+                                        <!-- End .pro-des-features -->
+                                    </div>
+                                </div>
+                                <!-- End .row -->
+                            </div>
+                            <!-- End .product-desc-wrapper -->
+                        </div>
+                        
                         <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                             <div class="reviews-wrapper">
                                 <div class="row">

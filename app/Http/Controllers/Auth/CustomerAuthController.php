@@ -20,6 +20,7 @@ class CustomerAuthController extends Controller
 
 
     protected $redirectTo = '/customer/my-profile';
+    // protected return redirect()->intended('/customer/my-profile');
 
 
 

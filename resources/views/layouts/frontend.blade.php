@@ -269,7 +269,7 @@
                                     <li><a href="{{ route('frontend.customer.signup') }}">Login / Register</a></li>
                                     <li><a href="{{ route('frontend.carts.view') }}">Cart</a></li>
                                     <li><a href="{{ route('frontend.wishlist') }}">Wishlist</a></li>
-                                    <li><a href="shop.html">Shop</a></li>
+                                    <li><a href="{{ route('frontend.shop') }}">Shop</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -535,7 +535,7 @@
             <div class="card-body">
                 <div class="search-result-header">
                     <h6 class="title">24 Result Found</h6>
-                    <a href="shop.html" class="view-all">View All</a>
+                    <a href="{{ route('frontend.shop') }}" class="view-all">View All</a>
                 </div>
                 <div class="psearch-results">
                     <div class="axil-product-list">
@@ -617,7 +617,7 @@
                     @foreach ($carts['data'] as $cartItem)
                     <li class="cart-item">
                         <div class="item-img">
-                            <a href="single-product.html"><img src="{{ asset('storage/'.$cartItem->product->featured_img)}}"
+                            <a href="{{ route('frontend.product.single', $cartItem->product) }}"><img src="{{ asset('storage/'.$cartItem->product->featured_img)}}"
                                     alt="{{$cartItem->product->title}}"></a>
                             <button class="close-btn"><i class="fas fa-times"></i></button>
                         </div>
@@ -632,12 +632,13 @@
                                 </span>
                                 <span class="rating-number">(64)</span>
                             </div> --}}
-                            <h3 class="item-title"><a href="single-product-3.html">{{$cartItem->product->title}}</a></h3>
+                            <h3 class="item-title"><a href="{{ route('frontend.product.single', $cartItem->product) }}">{{$cartItem->product->title}}</a></h3>
                             @php
                             $price = $cartItem->product->sellign_price && $cartItem->product->sellign_price >0 ? $cartItem->product->sellign_price : $cartItem->product->price;
-                            $total_price += $price * $cartItem->qty;
+                            $subtotal_price = $price * $cartItem->qty;
+                            $total_price += $subtotal_price;
                             @endphp
-                            <div class="item-price"><span class="currency-symbol">BDT </span>{{number_format($price,2) }}</div>
+                            <div class="item-price"><span class="currency-symbol">BDT </span>{{number_format($subtotal_price,2) }}</div>
                             <div class="pro-qty item-quantity">
                                 <input type="number" class="quantity-input" value="{{round($cartItem->qty)}}">
                             </div>
@@ -650,8 +651,8 @@
             </div>
             <div class="cart-footer">
                 <h3 class="cart-subtotal">
-                    <span class="subtotal-title">Subtotal:</span>
-                    <span class="subtotal-amount">BTD {{$total_price}}</span>
+                    <span class="subtotal-title">Total:</span>
+                    <span class="subtotal-amount">BTD {{number_format($total_price,2)}}</span>
                 </h3>
                 <div class="group-btn">
                     <a href="{{ route('frontend.carts.view') }}" class="axil-btn btn-bg-primary viewcart-btn">View Cart</a>
@@ -673,7 +674,7 @@
                         <h3 class="title">Best Sales Offer<br> Grab Yours</h3>
                     </div>
                     <div class="poster-countdown countdown"></div>
-                    <a href="shop.html" class="axil-btn btn-bg-primary">Shop Now <i
+                    <a href="{{ route('frontend.shop') }}" class="axil-btn btn-bg-primary">Shop Now <i
                             class="fal fa-long-arrow-right"></i></a>
                 </div>
             </div>

@@ -14,7 +14,7 @@
                                     <h1 class="title">Roco Wireless Headphone</h1>
                                     <div class="slide-action">
                                         <div class="shop-btn">
-                                            <a href="shop.html" class="axil-btn btn-bg-white"><i
+                                            <a href="{{ route('frontend.shop') }}" class="axil-btn btn-bg-white"><i
                                                     class="fal fa-shopping-cart"></i>Shop Now</a>
                                         </div>
                                         <div class="item-rating">
@@ -46,7 +46,7 @@
                                     <h1 class="title">Smart Digital Watch</h1>
                                     <div class="slide-action">
                                         <div class="shop-btn">
-                                            <a href="shop.html" class="axil-btn btn-bg-white"><i
+                                            <a href="{{ route('frontend.shop') }}" class="axil-btn btn-bg-white"><i
                                                     class="fal fa-shopping-cart"></i>Shop Now</a>
                                         </div>
                                         <div class="item-rating">
@@ -78,7 +78,7 @@
                                     <h1 class="title">Roco Wireless Headphone</h1>
                                     <div class="slide-action">
                                         <div class="shop-btn">
-                                            <a href="shop.html" class="axil-btn btn-bg-white"><i
+                                            <a href="{{ route('frontend.shop') }}" class="axil-btn btn-bg-white"><i
                                                     class="fal fa-shopping-cart"></i>Shop Now</a>
                                         </div>
                                         <div class="item-rating">
@@ -110,7 +110,7 @@
                                     <h1 class="title">Smart Digital Watch</h1>
                                     <div class="slide-action">
                                         <div class="shop-btn">
-                                            <a href="shop.html" class="axil-btn btn-bg-white"><i
+                                            <a href="{{ route('frontend.shop') }}" class="axil-btn btn-bg-white"><i
                                                     class="fal fa-shopping-cart"></i>Shop Now</a>
                                         </div>
                                         <div class="item-rating">
@@ -1350,7 +1350,7 @@
                 <div class="row">
                     <div class="col-lg-6 mb--30">
                         <div class="single-poster">
-                            <a href="shop.html">
+                            <a href="{{ route('frontend.shop') }}">
                                 <img src="{{ asset('frontend/assets/images/product/poster/poster-01.png')}}" alt="eTrade promotion poster">
                                 <div class="poster-content">
                                     <div class="inner">

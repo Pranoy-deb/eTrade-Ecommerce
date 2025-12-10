@@ -49,13 +49,13 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>First Name <span>*</span></label>
-                                            <input type="text" id="first-name" placeholder="Adam">
+                                            <input type="text" id="first-name" value="{{ auth('customer')->user()->name}}" placeholder="Enter your first name">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Last Name <span>*</span></label>
-                                            <input type="text" id="last-name" placeholder="John">
+                                            <input type="text" id="last-name" placeholder="Enter your last name">
                                         </div>
                                     </div>
                                 </div>
@@ -66,17 +66,12 @@
                                 <div class="form-group">
                                     <label>Country/ Region <span>*</span></label>
                                     <select id="Region">
-                                        <option value="3">Australia</option>
-                                        <option value="4">England</option>
-                                        <option value="6">New Zealand</option>
-                                        <option value="5">Switzerland</option>
-                                        <option value="1">United Kindom (UK)</option>
-                                        <option value="2">United States (USA)</option>
+                                        <option value="bangladesh" selected>Bangladesh</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Street Address <span>*</span></label>
-                                    <input type="text" id="address1" class="mb--15" placeholder="House number and street name">
+                                    <input type="text" id="address1" value="{{auth('customer')->user()->address}}" class="mb--15" placeholder="House number and street name">
                                     <input type="text" id="address2" placeholder="Apartment, suite, unit, etc. (optonal)">
                                 </div>
                                 <div class="form-group">
@@ -84,16 +79,12 @@
                                     <input type="text" id="town">
                                 </div>
                                 <div class="form-group">
-                                    <label>Country</label>
-                                    <input type="text" id="country">
-                                </div>
-                                <div class="form-group">
                                     <label>Phone <span>*</span></label>
-                                    <input type="tel" id="phone">
+                                    <input type="tel" value="{{auth('customer')->user()->phone_num}}" id="phone">
                                 </div>
                                 <div class="form-group">
                                     <label>Email Address <span>*</span></label>
-                                    <input type="email" id="email">
+                                    <input type="email" value="{{auth('customer')->user()->email}}" id="email">
                                 </div>
                                 <div class="form-group input-group">
                                     <input type="checkbox" id="checkbox1" name="account-create">
@@ -155,23 +146,31 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @php
+                                                $total_price = 0;
+                                                $shipping_cost = 512;
+                                            @endphp
+                                            @foreach ($carts['data'] as $cart_item)
                                             <tr class="order-product">
-                                                <td>Commodo Blown Lamp <span class="quantity">x1</span></td>
-                                                <td>$117.00</td>
+                                                @php
+                                                    $price = $cart_item->product->sellign_price && $cart_item->product->sellign_price >0 ? $cart_item->product->sellign_price : $cart_item->product->price;
+                                                    $subtotal_price = $price * $cart_item->qty;
+                                                    $total_price += $subtotal_price;
+                                                @endphp
+                                                <td>{{ $cart_item->product->title}} <span class="quantity">x{{round($cart_item->qty)}}</span></td>
+                                                <td>BDT {{number_format($subtotal_price,2)}}</td>
                                             </tr>
-                                            <tr class="order-product">
-                                                <td>Commodo Blown Lamp <span class="quantity">x1</span></td>
-                                                <td>$198.00</td>
-                                            </tr>
+                                            @endforeach
+                                            
                                             <tr class="order-subtotal">
                                                 <td>Subtotal</td>
-                                                <td>$117.00</td>
+                                                <td>BDT {{number_format($total_price,2)}}</td>
                                             </tr>
                                             <tr class="order-shipping">
                                                 <td colspan="2">
                                                     <div class="shipping-amount">
                                                         <span class="title">Shipping Method</span>
-                                                        <span class="amount">$35.00</span>
+                                                        <span class="amount">BDT {{number_format($shipping_cost,2)}}</span>
                                                     </div>
                                                     <div class="input-group">
                                                         <input type="radio" id="radio1" name="shipping" checked>
@@ -189,7 +188,7 @@
                                             </tr>
                                             <tr class="order-total">
                                                 <td>Total</td>
-                                                <td class="order-total-amount">$323.00</td>
+                                                <td class="order-total-amount">BDT {{number_format($total_price+$shipping_cost,2)}}</td>
                                             </tr>
                                         </tbody>
                                     </table>
