@@ -49,13 +49,13 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>First Name <span>*</span></label>
-                                            <input type="text" id="first-name" value="{{ auth('customer')->user()->name}}" placeholder="Enter your first name">
+                                            <input type="text" id="first-name" name="f-name" value="{{ auth('customer')->user()->name}}" placeholder="Enter your first name">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Last Name <span>*</span></label>
-                                            <input type="text" id="last-name" placeholder="Enter your last name">
+                                            <input type="text" id="last-name" name="l-name" placeholder="Enter your last name">
                                         </div>
                                     </div>
                                 </div>
@@ -71,20 +71,20 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Street Address <span>*</span></label>
-                                    <input type="text" id="address1" value="{{auth('customer')->user()->address}}" class="mb--15" placeholder="House number and street name">
+                                    <input type="text" id="address1" name="address" value="{{auth('customer')->user()->address}}" class="mb--15" placeholder="House number and street name">
                                     <input type="text" id="address2" placeholder="Apartment, suite, unit, etc. (optonal)">
                                 </div>
                                 <div class="form-group">
                                     <label>Town/ City <span>*</span></label>
-                                    <input type="text" id="town">
+                                    <input type="text" name="city" id="town" value="Chattogram">
                                 </div>
                                 <div class="form-group">
                                     <label>Phone <span>*</span></label>
-                                    <input type="tel" value="{{auth('customer')->user()->phone_num}}" id="phone">
+                                    <input type="tel" name="phone" value="{{auth('customer')->user()->phone_num}}" id="phone">
                                 </div>
                                 <div class="form-group">
                                     <label>Email Address <span>*</span></label>
-                                    <input type="email" value="{{auth('customer')->user()->email}}" id="email">
+                                    <input type="email" name="email" value="{{auth('customer')->user()->email}}" id="email">
                                 </div>
                                 <div class="form-group input-group">
                                     <input type="checkbox" id="checkbox1" name="account-create">
@@ -217,7 +217,12 @@
                                         <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
                                     </div>
                                 </div>
-                                <button type="submit" class="axil-btn btn-bg-primary checkout-btn">Process to Checkout</button>
+                                <button id="sslczPayBtn"
+        token="if you have any token validation"
+        postdata=""
+        order="If you already have the transaction generated for current order"
+        endpoint="/pay-via-ajax"> Pay Now
+</button>
                             </div>
                         </div>
                     </div>
@@ -225,4 +230,36 @@
             </div>
         </div>
     <!-- End Checkout Area  -->
+
+@push('js')
+    <script>
+        var obj = {};
+    $('#sslczPayBtn').click(function(){
+        obj.cus_name = $('input[name="f-name"]').val() + " " + $('input[name="l-name"]').val();
+        obj.cus_phone = $('input[name="phone"]').val();
+        obj.cus_city = $('input[name="city"]').val();
+        obj.cus_email = $('#email').val();
+        obj.cus_addr1 = $('input[name="address"]').val();
+        obj.amount = '{{ $total_price}}';
+        
+        $('#sslczPayBtn').prop('postdata', obj);
+    })
+    </script>
+
+
+
+    <script>
+    (function (window, document) {
+        var loader = function () {
+            var script = document.createElement("script"), tag = document.getElementsByTagName("script")[0];
+            script.src = "https://sandbox.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(7);
+            tag.parentNode.insertBefore(script, tag);
+        };
+
+        window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
+    })(window, document);
+    </script>
+
+
+@endpush
 @endsection

@@ -700,6 +700,7 @@
     <script src="{{ asset('frontend/assets/js/vendor/waypoints.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
 
+      @stack('js')
 
 </body>
 

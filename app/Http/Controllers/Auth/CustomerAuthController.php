@@ -56,7 +56,8 @@ class CustomerAuthController extends Controller
     }
 
     function showProfile(){
-        return view('frontend.my-account');
+        $customer = Auth::guard('customer')->user();
+        return view('frontend.my-account', compact('customer'));
     }
 
 }

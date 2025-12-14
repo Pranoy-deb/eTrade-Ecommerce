@@ -10,4 +10,8 @@ class ContactController extends Controller
     function contactPage(){
         return view('frontend.contact');
     }
+
+    function createContact(Request $request){
+        dd($request);
+    }
 }

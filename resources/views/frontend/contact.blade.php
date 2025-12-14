@@ -7,11 +7,6 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-8">
                         <div class="inner">
-                            <ul class="axil-breadcrumb">
-                                <li class="axil-breadcrumb-item"><a href="index.html">Home</a></li>
-                                <li class="separator"></li>
-                                <li class="axil-breadcrumb-item active" aria-current="page">Contact</li>
-                            </ul>
                             <h1 class="title">Contact With Us</h1>
                         </div>
                     </div>
@@ -36,24 +31,25 @@
                             <div class="contact-form">
                                 <h3 class="title mb--10">We would love to hear from you.</h3>
                                 <p>If you’ve got great products your making or looking to work with us then drop us a line.</p>
-                                <form id="contact-form" method="POST" action="https://new.axilthemes.com/demo/template/etrade/mail.php" class="axil-contact-form">
+                                <form action="{{route('frontend.contact.create')}}" id="contact-form" method="POST"  class="axil-contact-form">
+                                    @csrf
                                     <div class="row row--10">
                                         <div class="col-lg-4">
                                             <div class="form-group">
                                                 <label for="contact-name">Name <span>*</span></label>
-                                                <input type="text" name="contact-name" id="contact-name">
+                                                <input type="text" name="contact-name" id="contact-name" placeholder="Enter your name...">
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="form-group">
                                                 <label for="contact-phone">Phone <span>*</span></label>
-                                                <input type="text" name="contact-phone" id="contact-phone">
+                                                <input type="text" name="contact-phone" id="contact-phone" placeholder="Enter your phone number...">
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="form-group">
                                                 <label for="contact-email">E-mail <span>*</span></label>
-                                                <input type="email" name="contact-email" id="contact-email">
+                                                <input type="email" name="contact-email" id="contact-email" placeholder="Enter your Email...">
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -64,7 +60,7 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group mb--0">
-                                                <button name="submit" type="submit" id="submit" class="axil-btn btn-bg-primary">Send Message</button>
+                                                <button type="submit" class="axil-btn btn-bg-primary">Send Message</button>
                                             </div>
                                         </div>
                                     </div>

@@ -1,6 +1,8 @@
 @extends('layouts.frontend')
 @section('title','My-profile')
 @section('frontend')
+
+{{-- @dd($customer) --}}
  <!-- Start My Account Area  -->
         <div class="axil-dashboard-area axil-section-gap">
             <div class="container">
@@ -153,7 +155,7 @@
                                                     <div class="col-lg-6">
                                                         <div class="form-group">
                                                             <label>First Name</label>
-                                                            <input type="text" class="form-control" value="Annie">
+                                                            <input type="text" name="first_name" class="form-control" value="{{$customer->name}}">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
@@ -166,10 +168,7 @@
                                                         <div class="form-group mb--40">
                                                             <label>Country/ Region</label>
                                                             <select class="select2">
-                                                                <option value="1">United Kindom (UK)</option>
-                                                                <option value="1">United States (USA)</option>
-                                                                <option value="1">United Arab Emirates (UAE)</option>
-                                                                <option value="1">Australia</option>
+                                                                <option value="bangladesh" selected>Bangladesh</option>
                                                             </select>
                                                             <p class="b3 mt--10">This will be how your name will be displayed in the account section and in reviews</p>
                                                         </div>
@@ -178,7 +177,7 @@
                                                         <h5 class="title">Password Change</h5>
                                                         <div class="form-group">
                                                             <label>Password</label>
-                                                            <input type="password" class="form-control" value="123456789101112131415">
+                                                            <input type="password" class="form-control" value="{{$customer->password}}">
                                                         </div>
                                                         <div class="form-group">
                                                             <label>New Password</label>
