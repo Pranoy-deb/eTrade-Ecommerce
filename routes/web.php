@@ -37,7 +37,7 @@ Route::get('/customer/my-profile', [CustomerAuthController::class, 'showProfile'
 
 // Contact page route
 Route::get('/contact', [ContactController::class, 'contactPage'])->name('frontend.contact');
-Route::post('/contact/create', [ContactController::class, 'createContact'])->name('frontend.contact.create');
+Route::post('/contact/sendmsg', [ContactController::class, 'sendMsg'])->name('frontend.contact.sendmsg');
 
 // About Us page route
 Route::get('/about-us', [AboutUsController::class, 'aboutUsPage'])->name('frontend.about-us');

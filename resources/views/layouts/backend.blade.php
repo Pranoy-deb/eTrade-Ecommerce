@@ -17,10 +17,8 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-        rel="stylesheet" />
-
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+    
     <!-- Icons. Uncomment required icon fonts -->
     <link rel="stylesheet" href="{{ asset('backend/assets/vendor/fonts/boxicons.css') }}" />
     <link rel="stylesheet" href="{{ asset('backend/assets/vendor/css/core.css') }}"
@@ -99,7 +97,7 @@
                                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
                                     data-bs-toggle="dropdown">
                                     <div class="avatar avatar-online">
-                                        <img src="{{ asset('backend/assets/img/avatars/1.png')}}" alt
+                                        <img src="https://api.dicebear.com/9.x/initials/svg?seed={{auth('web')->user()->name}}" alt
                                             class="w-px-40 h-auto rounded-circle" />
                                     </div>
                                 </a>
@@ -109,12 +107,12 @@
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0 me-3">
                                                     <div class="avatar avatar-online">
-                                                        <img src="{{ asset('backend/assets/img/avatars/1.png')}}" alt
+                                                        <img src="https://api.dicebear.com/9.x/initials/svg?seed={{auth('web')->user()->name}}" alt
                                                             class="w-px-40 h-auto rounded-circle" />
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <span class="fw-semibold d-block">John Doe</span>
+                                                    <span class="fw-semibold d-block">{{auth('web')->user()->name}}</span>
                                                     <small class="text-muted">Admin</small>
                                                 </div>
                                             </div>

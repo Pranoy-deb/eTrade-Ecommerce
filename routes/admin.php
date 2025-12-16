@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\MessageController;
 use App\Http\Controllers\Backend\ProductController;
 use Faker\Guesser\Name;
 
@@ -28,4 +29,8 @@ Route::middleware('auth')->group(function(){
         Route::post('/update/{product}', 'Update')->name('update');
         Route::get('/delete/{product}', 'Delete')->name('delete');
     });
+
+    //* Message Route
+    Route::get('/message', [MessageController::class , 'showUserMsg'])->name('message');
+    Route::post('/message/markasread/{message}', [MessageController::class, 'markAsRead'])->name('message.markasread');
 });

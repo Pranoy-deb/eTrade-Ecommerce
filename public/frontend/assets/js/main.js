@@ -54,37 +54,38 @@
             this._window.on('load', axilInit.l).on('scroll', axilInit.res)
         },
 
+        // Contact form js
         contactForm: function() {
             $('.axil-contact-form').on('submit', function(e) {
-                e.preventDefault();
+                // e.preventDefault();
                 var _self = $(this);
                 var _selector = _self.closest('input,textarea');
                 _self.closest('div').find('input,textarea').removeAttr('style');
                 _self.find('.error-msg').remove();
                 _self.closest('div').find('button[type="submit"]').attr('disabled', 'disabled');
                 var data = $(this).serialize();
-                $.ajax({
-                    url: 'mail.php',
-                    type: "post",
-                    dataType: 'json',
-                    data: data,
-                    success: function(data) {
-                        _self.closest('div').find('button[type="submit"]').removeAttr('disabled');
-                        if (data.code == false) {
-                            _self.closest('div').find('[name="' + data.field + '"]');
-                            _self.find('.axil-btn').after('<div class="error-msg"><p>*' + data.err + '</p></div>');
-                        } else {
-                            $('.error-msg').hide();
-                            $('.form-group').removeClass('focused');
-                            _self.find('.axil-btn').after('<div class="success-msg"><p>' + data.success + '</p></div>');
-                            _self.closest('div').find('input,textarea').val('');
+                // $.ajax({
+                //     url: '/contact/sendmsg',
+                //     type: "post",
+                //     dataType: 'json',
+                //     data: data,
+                //     success: function(data) {
+                //         _self.closest('div').find('button[type="submit"]').removeAttr('disabled');
+                //         if (data.code == false) {
+                //             _self.closest('div').find('[name="' + data.field + '"]');
+                //             _self.find('.axil-btn').after('<div class="error-msg"><p>*' + data.err + '</p></div>');
+                //         } else {
+                //             $('.error-msg').hide();
+                //             $('.form-group').removeClass('focused');
+                //             _self.find('.axil-btn').after('<div class="success-msg"><p>' + data.success + '</p></div>');
+                //             _self.closest('div').find('input,textarea').val('');
 
-                            setTimeout(function() {
-                                $('.success-msg').fadeOut('slow');
-                            }, 5000);
-                        }
-                    }
-                });
+                //             setTimeout(function() {
+                //                 $('.success-msg').fadeOut('slow');
+                //             }, 5000);
+                //         }
+                //     }
+                // });
             });
         },
 

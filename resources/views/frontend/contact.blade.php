@@ -31,31 +31,43 @@
                             <div class="contact-form">
                                 <h3 class="title mb--10">We would love to hear from you.</h3>
                                 <p>If you’ve got great products your making or looking to work with us then drop us a line.</p>
-                                <form action="{{route('frontend.contact.create')}}" id="contact-form" method="POST"  class="axil-contact-form">
+                                <form action="{{route('frontend.contact.sendmsg')}}" method="POST"  class="axil-contact-form">
                                     @csrf
                                     <div class="row row--10">
                                         <div class="col-lg-4">
                                             <div class="form-group">
                                                 <label for="contact-name">Name <span>*</span></label>
-                                                <input type="text" name="contact-name" id="contact-name" placeholder="Enter your name...">
+                                                <input type="text" name="user_name" value="{{old('user_name')}}" placeholder="Enter your name...">
+                                                @error('user_name')
+                                                <samp class="text-danger">{{$message}}</samp>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="form-group">
                                                 <label for="contact-phone">Phone <span>*</span></label>
-                                                <input type="text" name="contact-phone" id="contact-phone" placeholder="Enter your phone number...">
+                                                <input type="text" name="user_phone" value="{{old('user_phone')}}" placeholder="Enter your phone number...">
+                                                @error('user_phone')
+                                                <samp class="text-danger">{{$message}}</samp>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="form-group">
                                                 <label for="contact-email">E-mail <span>*</span></label>
-                                                <input type="email" name="contact-email" id="contact-email" placeholder="Enter your Email...">
+                                                <input type="email" name="user_email" value="{{old('user_email')}}"  placeholder="Enter your Email...">
+                                                @error('user_email')
+                                                <samp class="text-danger">{{$message}}</samp>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="contact-message">Your Message</label>
-                                                <textarea name="contact-message" id="contact-message" cols="1" rows="2"></textarea>
+                                                <textarea name="user_msg" cols="1" rows="2">{{old('user_msg')}}</textarea>
+                                                @error('user_msg')
+                                                <samp class="text-danger">{{$message}}</samp>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -99,4 +111,5 @@
             </div>
         </div>
         <!-- End Contact Area  -->
+
 @endsection

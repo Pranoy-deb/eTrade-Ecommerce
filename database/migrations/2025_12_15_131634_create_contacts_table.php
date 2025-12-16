@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('msg');
             $table->string('phone',20);
             $table->string('email');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

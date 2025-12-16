@@ -13,7 +13,6 @@
         </a>
     </li>
 
-    <!-- Layouts -->
     <li class="menu-item">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons bx bx-layout"></i>
@@ -30,5 +29,12 @@
                     <div data-i18n="Without navbar">All Products</div>
                 </a>
             </li>
-
+    
         </ul>
+    </li>
+    <li class="menu-item {{ request()->routeIs('') ? 'active' : '' }}">
+            <a href="{{route('backend.message')}}" class="menu-link ">
+                <i class="menu-icon tf-icons bx bx-chat"></i>
+                <div data-i18n="Analytics">Message</div>
+            </a>
+    </li>

@@ -699,6 +699,31 @@
     <script src="{{ asset('frontend/assets/js/vendor/counterup.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/vendor/waypoints.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+        });
+        </script>
+        @if(session('swal'))
+<script>
+    Swal.fire({
+        title: "{{ session('swal.title') }}",
+        text: "{{ session('swal.text') }}",
+        icon: "{{ session('swal.icon') }}",
+        draggable: true
+    });
+</script>
+@endif
+
 
       @stack('js')
 

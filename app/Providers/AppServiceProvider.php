@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        view()->composer(['layouts.frontend','frontend.cart','frontend.checkout'], function($view){
+        view()->composer(['layouts.frontend','frontend.cart','frontend.checkout','frontend.contact'], function($view){
             $cartItems = Cart::with('product')->where('customer_id', auth('customer')?->user()?->id ?? 0)->get();
             // dd($cartItems);
              $view->with('carts',[
