@@ -6,14 +6,15 @@
             <div data-i18n="Analytics">Dashboard</div>
         </a>
     </li>
+        <!-- Categories -->
     <li class="menu-item {{ request()->routeIs('backend.category.*') ? 'active' : '' }}">
         <a href="{{ route('backend.category.index') }}" class="menu-link ">
             <i class="menu-icon tf-icons bx bx-category-alt"></i>
             <div data-i18n="Analytics">Categories</div>
         </a>
     </li>
-
-    <li class="menu-item">
+    <!-- Products -->
+    <li class="menu-item {{ request()->routeIs('backend.product.*') ? 'active' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons bx bx-layout"></i>
             <div data-i18n="Layouts">Products</div>
@@ -32,9 +33,17 @@
     
         </ul>
     </li>
-    <li class="menu-item {{ request()->routeIs('') ? 'active' : '' }}">
+    <!-- Message -->
+    <li class="menu-item {{ request()->routeIs('backend.message') ? 'active' : '' }}">
             <a href="{{route('backend.message')}}" class="menu-link ">
                 <i class="menu-icon tf-icons bx bx-chat"></i>
                 <div data-i18n="Analytics">Message</div>
+            </a>
+    </li>
+    <!-- Customers -->
+    <li class="menu-item {{ request()->routeIs('backend.customers') ? 'active' : '' }}">
+            <a href="{{route('backend.customers')}}" class="menu-link ">
+                <i class="menu-icon tf-icons bx bx-group"></i>
+                <div data-i18n="Analytics">Customers</div>
             </a>
     </li>

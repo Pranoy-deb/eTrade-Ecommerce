@@ -87,6 +87,7 @@ class ProductController extends Controller
 
     //* Update part
     function Update(Request $request, product $product){
+        // dd($request->all());
     // Validation in form
         $request->validate([
             'title' => 'required|min:3',

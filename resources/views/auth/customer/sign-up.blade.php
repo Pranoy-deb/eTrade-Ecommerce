@@ -33,9 +33,16 @@
                         <form class="singin-form" method="POST" action="{{route('frontend.customer.register')}}">
                             @csrf
                             <div class="form-group">
-                                <label>User Name</label>
-                                <input type="text" class="form-control" name="name" value="Pranoy">
-                                @error('name')
+                                <label>First Name</label>
+                                <input type="text" class="form-control" name="fname" value="Pranoy">
+                                @error('fname')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" class="form-control" name="lname" value="Deb">
+                                @error('lname')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>

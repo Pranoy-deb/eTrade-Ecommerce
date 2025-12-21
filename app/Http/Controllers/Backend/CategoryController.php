@@ -82,7 +82,7 @@ class CategoryController extends Controller{
             'icon' => 'success',
             'msg'  => 'Category updated successfully!'
         ]);
-}
+    }
 
     function delete(Category $category){
         if(Storage::disk('public')->exists($category->icon)){
@@ -94,6 +94,7 @@ class CategoryController extends Controller{
             'msg'=> 'Category Deleted Successfully!'
         ]);
     }
+
 }
     
 

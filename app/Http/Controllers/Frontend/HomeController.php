@@ -19,6 +19,7 @@ class HomeController extends Controller
     }
 
     function showSingleProduct(product $product){
+        $product = product::with('category')->findOrFail($product->id);
         $wishlist = Wishlist::where('customer_id', auth('customer')->id())->pluck('product_id')->toArray();
         return view('frontend.singleProduct',compact('product','wishlist'));
     }

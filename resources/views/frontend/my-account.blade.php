@@ -2,16 +2,70 @@
 @section('title','My-profile')
 @section('frontend')
 
-{{-- @dd($customer) --}}
  <!-- Start My Account Area  -->
         <div class="axil-dashboard-area axil-section-gap">
             <div class="container">
                 <div class="axil-dashboard-warp">
                     <div class="axil-dashboard-author">
                         <div class="media">
-                            <div class="thumbnail">
-                                <img src="https://api.dicebear.com/9.x/notionists/svg?seed={{auth('customer')->user()->name}}" alt="Hello Annie" width="100px">
+                            <div class="thumbnail position-relative d-inline-block" style="width:130px; height:130px;">
+                            <!-- Profile Image -->
+                            <img <img src="{{ auth('customer')->user()->profile_imge? asset('storage/' . auth('customer')->user()->profile_imge) : 'https://api.dicebear.com/9.x/notionists/svg?seed=' . auth('customer')->user()->name }}"
+                                alt="Profile"
+                                class="rounded-circle border shadow-sm"
+                                style="width:100%; height:100%; object-fit:cover;">
+
+                            <!-- Camera Icon Overlay (triggers modal) -->
+                            <button type="button"
+                                    class="position-absolute bottom-0 end-0 btn btn-light rounded-circle d-flex align-items-center justify-content-center shadow"
+                                    style="width:34px; height:34px; cursor:pointer; padding:0;"
+                                    title="Change photo"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#updateProfileImageModal">
+                                <i class="bx bxs-camera text-primary fs-5"></i>
+                            </button>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="updateProfileImageModal" tabindex="-1" aria-labelledby="updateProfileImageModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content border-0 rounded-4 shadow-lg" style="backdrop-filter:blur(8px); background:rgba(255,255,255,0.95);">
+
+                            <!-- Header -->
+                            <div class="modal-header border-0 bg-gradient text-white" style="background:linear-gradient(135deg,#667eea,#764ba2);">
+                                <h5 class="modal-title fw-bold" id="updateProfileImageModalLabel">Image Edit</h5>
+                                <!-- Close Icon -->
+                                <button type="button" class="btn-close btn-close-white fs-4" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
+
+                            <!-- Body -->
+                            <form method="POST" action="{{ route('frontend.customer.update.profile') }}" enctype="multipart/form-data">
+                                @csrf
+                                <div class="modal-body text-center">
+
+                                <!-- Image Preview Box -->
+                                <div class="border rounded-3 mx-auto mb-4 shadow-sm" style="width:400px; height:400px; overflow:hidden;">
+                                    <img id="previewImage"
+                                        src="https://api.dicebear.com/9.x/notionists/svg?seed={{ auth('customer')->user()->name }}"
+                                        alt="Preview"
+                                        style="width:100%; height:100%; object-fit:cover;">
+                                </div>
+
+                                <!-- Bigger File Input -->
+                                <div class="mb-4 px-5 py-2 fw-bold">
+                                    <input type="file" name="profile_imge" id="profileImageInput" 
+                                        class="form-control form-control-lg" accept="image/*">
+                                </div>
+
+                                <!-- Bigger Upload Button -->
+                                <button type="submit" class="btn btn-primary btn-lg px-5 py-2 fw-bold">
+                                    <i class="bx bx-upload me-2"></i> Upload
+                                </button>
+                                </div>
+                            </form>
+
+                            </div>
+                        </div>
+                        </div>
                             <div class="media-body">
                                 <h5 class="title mb-0">Hello {{auth('customer')->user()->name}}</h5>
                                 <span class="joining-date">eTrade Member Since {{auth('customer')->user()->created_at->format('M d,Y')}}</span>
@@ -57,49 +111,25 @@
                                             <table class="table">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">Order</th>
+                                                        <th scope="col">TrxID</th>
                                                         <th scope="col">Date</th>
                                                         <th scope="col">Status</th>
-                                                        <th scope="col">Total</th>
+                                                        <th scope="col">Total Amount</th>
                                                         <th scope="col">Actions</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @forelse ($orders as $order)
                                                     <tr>
-                                                        <th scope="row">#6523</th>
-                                                        <td>September 10, 2020</td>
-                                                        <td>Processing</td>
-                                                        <td>$326.63 for 3 items</td>
-                                                        <td><a href="{{ route('frontend.customer.profile') }}#" class="axil-btn view-btn">View</a></td>
+                                                        <th scope="row">{{$order->transaction_id}}</th>
+                                                        <td>{{$order->created_at->format('M d,Y')}}</td>
+                                                        <td>{{$order->status}}</td>
+                                                        <td>{{$order->amount}}BDT</td>
+                                                        <td><a href="{{ route('frontend.customer.profile') }}" class="axil-btn view-btn">View</a></td>
                                                     </tr>
-                                                    <tr>
-                                                        <th scope="row">#6523</th>
-                                                        <td>September 10, 2020</td>
-                                                        <td>On Hold</td>
-                                                        <td>$326.63 for 3 items</td>
-                                                        <td><a href="{{ route('frontend.customer.profile') }}#" class="axil-btn view-btn">View</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">#6523</th>
-                                                        <td>September 10, 2020</td>
-                                                        <td>Processing</td>
-                                                        <td>$326.63 for 3 items</td>
-                                                        <td><a href="{{ route('frontend.customer.profile') }}#" class="axil-btn view-btn">View</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">#6523</th>
-                                                        <td>September 10, 2020</td>
-                                                        <td>Processing</td>
-                                                        <td>$326.63 for 3 items</td>
-                                                        <td><a href="{{ route('frontend.customer.profile') }}#" class="axil-btn view-btn">View</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">#6523</th>
-                                                        <td>September 10, 2020</td>
-                                                        <td>Processing</td>
-                                                        <td>$326.63 for 3 items</td>
-                                                        <td><a href="{{ route('frontend.customer.profile') }}#" class="axil-btn view-btn">View</a></td>
-                                                    </tr>
+                                                    @empty
+                                                    <td><h5 class="text-center">You have no Order!</h5></td>
+                                                    @endforelse
                                                 </tbody>
                                             </table>
                                         </div>
@@ -147,55 +177,103 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="nav-account" role="tabpanel">
-                                    <div class="col-lg-9">
-                                        <div class="axil-dashboard-account">
-                                            <form class="account-details-form">
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="form-group">
-                                                            <label>First Name</label>
-                                                            <input type="text" name="first_name" class="form-control" value="{{$customer->name}}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="form-group">
-                                                            <label>Last Name</label>
-                                                            <input type="text" class="form-control" value="Mario">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div class="form-group mb--40">
-                                                            <label>Country/ Region</label>
-                                                            <select class="select2">
-                                                                <option value="bangladesh" selected>Bangladesh</option>
-                                                            </select>
-                                                            <p class="b3 mt--10">This will be how your name will be displayed in the account section and in reviews</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <h5 class="title">Password Change</h5>
-                                                        <div class="form-group">
-                                                            <label>Password</label>
-                                                            <input type="password" class="form-control" value="{{$customer->password}}">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>New Password</label>
-                                                            <input type="password" class="form-control">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Confirm New Password</label>
-                                                            <input type="password" class="form-control">
-                                                        </div>
-                                                        <div class="form-group mb--0">
-                                                            <input type="submit" class="axil-btn" value="Save Changes">
-                                                        </div>
+                               <div class="tab-pane fade" id="nav-account" role="tabpanel">
+                                <div class="col-lg-9">
+                                    <div class="axil-dashboard-account">
+                                        <form class="account-details-form">
+                                            <div class="row">
+
+                                                <!-- First Name -->
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>First Name</label>
+                                                        <input type="text" name="first_name" class="form-control text-dark" value="{{ $customer->first_name ?? '' }}" required>
                                                     </div>
                                                 </div>
-                                            </form>
-                                        </div>
+
+                                                <!-- Last Name -->
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Last Name</label>
+                                                        <input type="text" name="last_name" class="form-contro text-darkl text-dark" value="{{ $customer->last_name ?? '' }}" required>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Email -->
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Email Address</label>
+                                                        <input type="email" name="email" class="form-control text-dark" value="{{ $customer->email ?? '' }}" required>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Phone -->
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Phone Number</label>
+                                                        <input type="text" name="phone" class="form-control text-dark" value="{{ $customer->phone ?? '' }}" required>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Country -->
+                                                <div class="col-lg-6">
+                                                    <div class="form-group text-dark">
+                                                        <label>Country / Region</label>
+                                                        <select name="country" class="form-control select2" required>
+                                                            <option value="Bangladesh" {{ ($customer->country ?? '') == 'Bangladesh' ? 'selected' : '' }}>Bangladesh</option>
+                                                            <option value="India">India</option>
+                                                            <option value="Pakistan">Pakistan</option>
+                                                            <option value="Nepal">Nepal</option>
+                                                            <option value="Other">Other</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <!-- City -->
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>City</label>
+                                                        <input type="text" name="city" class="form-control text-dark" value="{{ $customer->city ?? '' }}" required>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Address -->
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label>Street Address</label>
+                                                        <input type="text" name="address" class="form-control text-dark" value="{{ $customer->address ?? '' }}" required>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Postal Code -->
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Postal Code / ZIP</label>
+                                                        <input type="text" name="postal_code" class="form-control text-dark" value="{{ $customer->postal_code ?? '' }}" required>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Company (optional) -->
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Company (Optional)</label>
+                                                        <input type="text" name="company" class="form-control text-dark" value="{{ $customer->company ?? '' }}">
+                                                    </div>
+                                                </div>
+
+                                                <!-- Save Button -->
+                                                <div class="col-12">
+                                                    <div class="form-group mb--0 mt-3">
+                                                        <input type="submit" class="axil-btn float-end" value="Save Changes">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </form>
                                     </div>
+                                 </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -203,4 +281,23 @@
             </div>
         </div>
         <!-- End My Account Area  -->
+
+       @push('js')
+<script>
+document.getElementById('profileImageInput').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if(file){
+        const reader = new FileReader();
+        reader.onload = function(ev){
+            document.getElementById('previewImage').src = ev.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+});
+</script>
+@endpush
+
+
+
+
 @endsection

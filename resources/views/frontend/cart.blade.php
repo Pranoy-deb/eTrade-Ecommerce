@@ -30,7 +30,7 @@
                                 @endphp
                                 @foreach ($carts['data'] as $CartItem)
                                 <tr>
-                                    <td class="product-remove"><a href="{{ route('frontend.cart') }}#" class="remove-wishlist"><i class="fal fa-times"></i></a></td>
+                                    <td class="product-remove"><a href="{{ route('frontend.cart') }}" class="remove-wishlist"><i class="fal fa-times"></i></a></td>
                                     <td class="product-thumbnail"><a href="single-product.html"><img src="{{asset('storage/'. $CartItem->product->featured_img)}}" alt="Digital Product"></a></td>
                                     <td class="product-title"><a href="single-product.html">{{$CartItem->product->title}}</a></td>
                                     @php
