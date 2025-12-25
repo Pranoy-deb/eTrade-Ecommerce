@@ -30,8 +30,8 @@
                                         <button href="{{ route('frontend.wishlist') }}" class="remove-wishlist"><i class="fal fa-times"></i></button>
                                     </form>
                                 </td>
-                                <td class="product-thumbnail"><a href="single-product.html"><img src="{{asset('storage/'. $wishlist_item->product->featured_img)}}" alt="Digital Product"></a></td>
-                                <td class="product-title"><a href="single-product.html">{{$wishlist_item->product->title}}</a></td>
+                                <td class="product-thumbnail"><a href="{{ route('frontend.product.single', $wishlist_item->product) }}"><img src="{{asset('storage/'. $wishlist_item->product->featured_img)}}" alt="Digital Product"></a></td>
+                                <td class="product-title"><a href="{{ route('frontend.product.single', $wishlist_item->product) }}">{{$wishlist_item->product->title}}</a></td>
                                 <td class="product-price" data-title="Price"><span class="currency-symbol">BDT </span>{{ number_format($wishlist_item->product->sellign_price && $wishlist_item->product->sellign_price > 0 ? $wishlist_item->product->sellign_price : $wishlist_item->product->price,2)}}</td>
                                 <td class="product-stock-status" data-title="Status">In Stock</td>
                                 <td class="product-add-cart">

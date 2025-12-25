@@ -49,34 +49,34 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>First Name <span>*</span></label>
-                                            <input type="text" id="first-name" name="f-name" value="{{ auth('customer')->user()->name}}" placeholder="Enter your first name">
+                                            <input type="text" id="first-name" name="f-name" value="{{ auth('customer')->user()->first_name}}" placeholder="Enter your first name">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Last Name <span>*</span></label>
-                                            <input type="text" id="last-name" name="l-name" placeholder="Enter your last name">
+                                            <input type="text" id="last-name" name="l-name" value="{{ auth('customer')->user()->last_name}}" placeholder="Enter your last name">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Company Name</label>
-                                    <input type="text" id="company-name">
+                                    <input type="text" value="{{ auth('customer')->user()->company}}" id="company-name">
                                 </div>
                                 <div class="form-group">
                                     <label>Country/ Region <span>*</span></label>
                                     <select id="Region">
-                                        <option value="bangladesh" selected>Bangladesh</option>
+                                        <option value="{{ auth('customer')->user()->country}}" selected>Bangladesh</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Street Address <span>*</span></label>
-                                    <input type="text" id="address1" name="address" value="{{auth('customer')->user()->address}}" class="mb--15" placeholder="House number and street name">
+                                    <input type="text" id="address1" name="address" value="{{auth('customer')->user()->street_addr}}" class="mb--15" placeholder="House number and street name">
                                     <input type="text" id="address2" placeholder="Apartment, suite, unit, etc. (optonal)">
                                 </div>
                                 <div class="form-group">
                                     <label>Town/ City <span>*</span></label>
-                                    <input type="text" name="city" id="town" value="Chattogram">
+                                    <input type="text" name="city" id="town" value="{{ auth('customer')->user()->city}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Phone <span>*</span></label>
@@ -128,7 +128,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group"> 
                                     <label>Other Notes (optional)</label>
                                     <textarea id="notes" rows="2" placeholder="Notes about your order, e.g. speacial notes for delivery."></textarea>
                                 </div>
@@ -208,21 +208,29 @@
                                         </div>
                                         <p>Pay with cash upon delivery.</p>
                                     </div>
-                                    <div class="single-payment">
+                                    {{-- <div class="single-payment">
                                         <div class="input-group justify-content-between align-items-center">
                                             <input type="radio" id="radio6" name="payment" checked>
                                             <label for="radio6">Paypal</label>
                                             <img src="{{asset('frontend/assets/images/others/payment.png')}}" alt="Paypal payment">
                                         </div>
                                         <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
+                                    </div> --}}
+                                    <div class="single-payment">
+                                        <div class="input-group justify-content-between align-items-center">
+                                            <input type="radio" id="radio6" name="payment" checked>
+                                            <label for="radio6">SSLCommerz</label>
+                                            <img src="https://sslcommerz.com/wp-content/uploads/2021/11/logo.png" alt="Paypal payment" width="120px">
+                                        </div>
+                                        <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
                                     </div>
                                 </div>
                                 <button id="sslczPayBtn"
-        token="if you have any token validation"
-        postdata=""
-        order="If you already have the transaction generated for current order"
-        endpoint="/pay-via-ajax"> Pay Now
-</button>
+                                        token="if you have any token validation"
+                                        postdata=""
+                                        order="If you already have the transaction generated for current order"
+                                        endpoint="/pay-via-ajax"> Pay Now
+                                </button>
                             </div>
                         </div>
                     </div>

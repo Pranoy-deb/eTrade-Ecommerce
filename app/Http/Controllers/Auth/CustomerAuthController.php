@@ -42,7 +42,8 @@ class CustomerAuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'unique:customers'],
             'password' => ['required', 'string', 'min:8'],
         ]);
@@ -51,7 +52,8 @@ class CustomerAuthController extends Controller
     protected function create(array $data)
     {
         return Customer::create([
-            'name' => $data['name'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
@@ -64,28 +66,51 @@ class CustomerAuthController extends Controller
     }
 
 
-    public function updateProfile(Request $request)
-{
-    $customerId = auth('customer')->id();
-    $customer   = Customer::findOrFail($customerId);
+    public function updateProfile(Request $request){
 
-    if ($request->hasFile('profile_imge')) {
+        $request->validate([
+            'first_name' => 'required|string|max:255', 
+            'last_name' => 'required|string|max:255', 
+            'email' => 'required|email|max:255|unique:customers,email,' . auth('customer')->id(), 
+            'phone' => 'nullable|string|max:20', 
+            'city' => 'nullable|string|max:100', 
+            'street_addr' => 'nullable|string', 
+            'zip_code' => 'nullable|string|max:20', 
+            'company' => 'nullable|string|max:255',
+        ]);
 
-        // delete old image
-        if ($customer->profile_imge && Storage::disk('public')->exists($customer->profile_imge)) {
-            Storage::disk('public')->delete($customer->profile_imge);
+        $customerId = auth('customer')->id();
+        $customer   = Customer::findOrFail($customerId);
+
+        if ($request->hasFile('profile_imge')) {
+            // delete old image
+            if ($customer->profile_imge && Storage::disk('public')->exists($customer->profile_imge)) {
+                Storage::disk('public')->delete($customer->profile_imge);
+            }
+
+            // store new image
+            $path = $request->file('profile_imge')->store('cus_profile', 'public');
+
+            // update db
+            $customer->profile_imge = $path;
+            $customer->save();
         }
 
-        // store new image
-        $path = $request->file('profile_imge')->store('cus_profile', 'public');
+        $customer->first_name = $request->first_name;
+        $customer->last_name = $request->last_name;
+        $customer->email = $request->email;
+        $customer->phone_num = $request->phone;
+        $customer->country = $request->country;
+        $customer->city = $request->city;
+        $customer->street_addr = $request->street_addr;
+        $customer->zip_code = $request->zip_code;
+        $customer->company = $request->company;
+        
+        $customer->update();
+        
 
-        // update db
-        $customer->profile_imge = $path;
-        $customer->save();
+        return back();
     }
-
-    return back();
-}
     
 
 

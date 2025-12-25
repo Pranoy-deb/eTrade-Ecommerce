@@ -67,7 +67,7 @@
                         </div>
                         </div>
                             <div class="media-body">
-                                <h5 class="title mb-0">Hello {{auth('customer')->user()->name}}</h5>
+                                <h5 class="title mb-0">Hello {{auth('customer')->user()->first_name}}</h5>
                                 <span class="joining-date">eTrade Member Since {{auth('customer')->user()->created_at->format('M d,Y')}}</span>
                             </div>
                         </div>
@@ -180,7 +180,8 @@
                                <div class="tab-pane fade" id="nav-account" role="tabpanel">
                                 <div class="col-lg-9">
                                     <div class="axil-dashboard-account">
-                                        <form class="account-details-form">
+                                        <form method="POST" action="{{route('frontend.customer.update.profile')}}" class="account-details-form">
+                                            @csrf
                                             <div class="row">
 
                                                 <!-- First Name -->
@@ -189,6 +190,9 @@
                                                         <label>First Name</label>
                                                         <input type="text" name="first_name" class="form-control text-dark" value="{{ $customer->first_name ?? '' }}" required>
                                                     </div>
+                                                    @error('first_name')
+                                                        <samp class="text-danger">{{$message}}</samp>
+                                                    @enderror
                                                 </div>
 
                                                 <!-- Last Name -->
@@ -197,6 +201,9 @@
                                                         <label>Last Name</label>
                                                         <input type="text" name="last_name" class="form-contro text-darkl text-dark" value="{{ $customer->last_name ?? '' }}" required>
                                                     </div>
+                                                    @error('last_name')
+                                                        <samp class="text-danger">{{$message}}</samp>
+                                                    @enderror
                                                 </div>
 
                                                 <!-- Email -->
@@ -205,14 +212,20 @@
                                                         <label>Email Address</label>
                                                         <input type="email" name="email" class="form-control text-dark" value="{{ $customer->email ?? '' }}" required>
                                                     </div>
+                                                    @error('email')
+                                                        <samp class="text-danger">{{$message}}</samp>
+                                                    @enderror
                                                 </div>
 
                                                 <!-- Phone -->
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                         <label>Phone Number</label>
-                                                        <input type="text" name="phone" class="form-control text-dark" value="{{ $customer->phone ?? '' }}" required>
+                                                        <input type="text" name="phone" class="form-control text-dark" value="{{ $customer->phone_num ?? '' }}" required>
                                                     </div>
+                                                    @error('phone')
+                                                        <samp class="text-danger">{{$message}}</samp>
+                                                    @enderror
                                                 </div>
 
                                                 <!-- Country -->
@@ -221,10 +234,6 @@
                                                         <label>Country / Region</label>
                                                         <select name="country" class="form-control select2" required>
                                                             <option value="Bangladesh" {{ ($customer->country ?? '') == 'Bangladesh' ? 'selected' : '' }}>Bangladesh</option>
-                                                            <option value="India">India</option>
-                                                            <option value="Pakistan">Pakistan</option>
-                                                            <option value="Nepal">Nepal</option>
-                                                            <option value="Other">Other</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -235,22 +244,31 @@
                                                         <label>City</label>
                                                         <input type="text" name="city" class="form-control text-dark" value="{{ $customer->city ?? '' }}" required>
                                                     </div>
+                                                    @error('city')
+                                                        <samp class="text-danger">{{$message}}</samp>
+                                                    @enderror
                                                 </div>
 
                                                 <!-- Address -->
                                                 <div class="col-12">
                                                     <div class="form-group">
                                                         <label>Street Address</label>
-                                                        <input type="text" name="address" class="form-control text-dark" value="{{ $customer->address ?? '' }}" required>
+                                                        <input type="text" name="street_addr" class="form-control text-dark" value="{{ $customer->street_addr ?? '' }}" >
                                                     </div>
+                                                    @error('street_addr')
+                                                        <samp class="text-danger">{{$message}}</samp>
+                                                    @enderror
                                                 </div>
 
                                                 <!-- Postal Code -->
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                         <label>Postal Code / ZIP</label>
-                                                        <input type="text" name="postal_code" class="form-control text-dark" value="{{ $customer->postal_code ?? '' }}" required>
+                                                        <input type="text" name="zip_code" class="form-control text-dark" value="{{ $customer->zip_code ?? '' }}" >
                                                     </div>
+                                                    @error('zip_code')
+                                                        <samp class="text-danger">{{$message}}</samp>
+                                                    @enderror
                                                 </div>
 
                                                 <!-- Company (optional) -->
@@ -259,14 +277,17 @@
                                                         <label>Company (Optional)</label>
                                                         <input type="text" name="company" class="form-control text-dark" value="{{ $customer->company ?? '' }}">
                                                     </div>
+                                                    @error('company')
+                                                        <samp class="text-danger">{{$message}}</samp>
+                                                    @enderror
                                                 </div>
 
                                                 <!-- Save Button -->
                                                 <div class="col-12">
                                                     <div class="form-group mb--0 mt-3">
-                                                        <input type="submit" class="axil-btn float-end" value="Save Changes">
-                                                    </div>
+                                                    <button type="submit" class="axil-btn float-end btn-primary"> Save Changes </button>                                                    </div>
                                                 </div>
+                                                
 
                                             </div>
                                         </form>
@@ -282,20 +303,20 @@
         </div>
         <!-- End My Account Area  -->
 
-       @push('js')
-<script>
-document.getElementById('profileImageInput').addEventListener('change', function(e) {
-    const file = e.target.files[0];
-    if(file){
-        const reader = new FileReader();
-        reader.onload = function(ev){
-            document.getElementById('previewImage').src = ev.target.result;
-        };
-        reader.readAsDataURL(file);
-    }
-});
-</script>
-@endpush
+        @push('js')
+            <script>
+            document.getElementById('profileImageInput').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if(file){
+                    const reader = new FileReader();
+                    reader.onload = function(ev){
+                        document.getElementById('previewImage').src = ev.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+            </script>
+        @endpush
 
 
 

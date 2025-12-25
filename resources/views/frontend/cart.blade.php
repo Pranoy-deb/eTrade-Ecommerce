@@ -9,7 +9,7 @@
                 <div class="axil-product-cart-wrap">
                     <div class="product-table-heading">
                         <h4 class="title">Your Cart</h4>
-                        <a href="{{ route('frontend.cart') }}#" class="cart-clear">Clear Shoping Cart</a>
+                        <a href="{{ route('frontend.cart') }}" class="cart-clear">Clear Shoping Cart</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table axil-product-table axil-cart-table mb--40">
@@ -30,9 +30,15 @@
                                 @endphp
                                 @foreach ($carts['data'] as $CartItem)
                                 <tr>
-                                    <td class="product-remove"><a href="{{ route('frontend.cart') }}" class="remove-wishlist"><i class="fal fa-times"></i></a></td>
-                                    <td class="product-thumbnail"><a href="single-product.html"><img src="{{asset('storage/'. $CartItem->product->featured_img)}}" alt="Digital Product"></a></td>
-                                    <td class="product-title"><a href="single-product.html">{{$CartItem->product->title}}</a></td>
+                                    <td class="product-remove">
+                                        <form method="POST" action="{{route('frontend.cart.delete')}}">
+                                            @csrf
+                                            <input type="hidden" name="product_id" value="{{$CartItem->product->id}}">
+                                        <button type="submit" class="remove-wishlist"><i class="fal fa-times"></i></button>
+                                        </form>
+                                    </td>
+                                    <td class="product-thumbnail"><a href="{{ route('frontend.product.single', $CartItem->product) }}"><img src="{{asset('storage/'. $CartItem->product->featured_img)}}" alt="Digital Product"></a></td>
+                                    <td class="product-title"><a href="{{ route('frontend.product.single', $CartItem->product) }}">{{$CartItem->product->title}}</a></td>
                                     @php
                                     $price = $CartItem->product->sellign_price && $CartItem->product->sellign_price >0 ? $CartItem->product->sellign_price : $CartItem->product->price;
                                     $total_price += $price * $CartItem->qty;

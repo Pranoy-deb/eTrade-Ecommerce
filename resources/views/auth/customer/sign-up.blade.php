@@ -34,15 +34,15 @@
                             @csrf
                             <div class="form-group">
                                 <label>First Name</label>
-                                <input type="text" class="form-control" name="fname" value="Pranoy">
-                                @error('fname')
+                                <input type="text" class="form-control" name="first_name" value="Pranoy">
+                                @error('first_name')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label>Last Name</label>
-                                <input type="text" class="form-control" name="lname" value="Deb">
-                                @error('lname')
+                                <input type="text" class="form-control" name="last_name" value="Deb">
+                                @error('last_name')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>

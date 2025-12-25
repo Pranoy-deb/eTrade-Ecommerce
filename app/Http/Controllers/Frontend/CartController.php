@@ -37,4 +37,13 @@ class CartController extends Controller
     function checkOutPage(){
       return view('frontend.checkout');
     }
+
+    function deleteCardItem(Request $request){
+        $customerId = auth('customer')->id();
+        $productId  = $request->product_id;
+
+        $cartItem = Cart::where('customer_id', $customerId)->where('product_id', $productId)->first();
+        $cartItem->delete();
+        return back();
+    }
 }

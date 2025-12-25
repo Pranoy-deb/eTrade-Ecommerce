@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use App\Models\Wishlist;
-
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Customer extends Authenticatable
+
+class Customer extends authenticatable
 {
     protected $guarded = ['id'];
 

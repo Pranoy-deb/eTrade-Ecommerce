@@ -23,6 +23,7 @@ Route::get('/product/{product:slug}', [HomeController::class, 'showSingleProduct
 // Cart page route
 Route::get('/cart/view', [CartController::class, 'viewCard'])->name('frontend.carts.view')->middleware('customer');
 Route::post('/add-to-cart', [CartController::class, 'addToCard'])->name('frontend.cart')->middleware('customer');
+Route::post('/deletecartitem', [CartController::class, 'deleteCardItem'])->name('frontend.cart.delete')->middleware('customer');
 
 // Checkout page route
 Route::get('/checkout', [CartController::class, 'checkOutPage'])->name('frontend.checkout')->middleware('customer');

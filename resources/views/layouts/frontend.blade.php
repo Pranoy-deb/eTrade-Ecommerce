@@ -620,7 +620,11 @@
                         <div class="item-img">
                             <a href="{{ route('frontend.product.single', $cartItem->product) }}"><img src="{{ asset('storage/'.$cartItem->product->featured_img)}}"
                                     alt="{{$cartItem->product->title}}"></a>
-                            <button class="close-btn"><i class="fas fa-times"></i></button>
+                            <form method="POST" action="{{route('frontend.cart.delete')}}">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{$cartItem->product->id}}">
+                            <button type="submit" class="close-btn"><i class="fas fa-times"></i></button>
+                            </form>
                         </div>
                         <div class="item-content">
                             {{-- <div class="product-rating">
