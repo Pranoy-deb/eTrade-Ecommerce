@@ -2,6 +2,7 @@
 @section('title', $product->title)
 @section('frontend')
 {{-- @dd($product->category->title) --}}
+{{-- @dd($reviews) --}}
 
         <!-- Start Shop Area  -->
         <div class="axil-single-product-area axil-section-gap pb--0 bg-color-white">
@@ -77,16 +78,22 @@
                                 <div class="inner">
                                     <h2 class="product-title">{{ $product->title }}</h2>
                                     <span class="price-amount">BDT {{ number_format(($product->sellign_price && $product->sellign_price > 0) ? $product->sellign_price : $product->price,2) }}</span>
+                                    @php
+                                        $filled = round($avg_rating);
+                                        $empty  = 5 - $filled;
+                                    @endphp
+
                                     <div class="product-rating">
                                         <div class="star-rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
+                                            @for ($i = 1; $i <= $filled; $i++)
+                                                <i class="fas fa-star"></i>
+                                            @endfor
+                                            @for ($i = 1; $i <= $empty; $i++)
+                                                <i class="far fa-star"></i>
+                                            @endfor
                                         </div>
                                         <div class="review-link">
-                                            <a href="single-product-3.html#">(<span>2</span> customer reviews)</a>
+                                            <a href="single-product-3.html#">(<span>{{count($reviews)}}</span> customer reviews)</a>
                                         </div>
                                     </div>
                                     <ul class="product-meta">
@@ -129,25 +136,31 @@
 
                                     </div>
 
-                                    <!-- Start Product Action Wrapper  -->
-                                    <form action="{{route('frontend.cart')}}" method="POST">
+                                    <form action="{{ route('frontend.cart') }}" method="POST">
                                         @csrf
-                                    <div class="product-action-wrapper d-flex-center">
-                                        <!-- Start Quentity Action  -->
-                                        <div class="pro-qty"><input type="text" name="qty" value="1"></div>
-                                       <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                        <!-- End Quentity Action  -->
-                                        @php
-                                           $checkWishlist = in_array($product->id, $wishlist);
-                                        @endphp
-                                        <!-- Start Product Action  -->
-                                        <ul class="product-action d-flex-center mb--0">
-                                            <li class="add-to-cart"><button type="submit" class="axil-btn btn-bg-primary">Add to Cart</button></li>
-                                            <li class="wishlist"><a href="{{ route('frontend.wishlist') }}" class="axil-btn wishlist-btn"><i class="{{ $checkWishlist ? 'fas fa-heart text-danger' : 'far fa-heart'}}"></i></a></li>
-                                        </ul>
-                                        <!-- End Product Action  -->
-                                    </div>
-                                </form>
+
+                                        <!-- Quantity (UNCHANGED) -->
+                                        <div class="product-action-wrapper d-flex-center mb-4">
+                                            <samp class="fs-3 text-dark">Qantity</samp>
+
+                                            <div class="pro-qty">
+                                                <input type="text" name="qty" value="1">
+                                            </div>
+
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                        </div>
+
+                                        <!-- Buttons (Responsive only) -->
+                                        <div class="d-flex flex-column flex-md-row gap-2">
+                                            <button type="submit" class="axil-btn btn btn-primary w-100 w-md-auto">
+                                                Add to Cart
+                                            </button>
+
+                                            <button type="submit" class="axil-btn btn btn-warning w-100 w-md-auto">
+                                                Buy Now
+                                            </button>
+                                        </div>
+                                    </form>
                                     <!-- End Product Action Wrapper  -->
                                 </div>
                             </div>
@@ -849,100 +862,66 @@
                                 <div class="row">
                                     <div class="col-lg-6 mb--40">
                                         <div class="axil-comment-area pro-desc-commnet-area">
-                                            <h5 class="title">01 Review for this product</h5>
+                                            <h5 class="title">{{count($reviews)}} Review for this product</h5>
                                             <ul class="comment-list">
-                                                <!-- Start Single Comment  -->
-                                                <li class="comment">
-                                                    <div class="comment-body">
-                                                        <div class="single-comment">
-                                                            <div class="comment-img">
-                                                                <img src="{{ asset('frontend/assets/images/blog/author-image-4.png')}}" alt="Author Images">
-                                                            </div>
-                                                            <div class="comment-inner">
-                                                                <h6 class="commenter">
-                                                                    <a class="hover-flip-item-wrapper" href="single-product-3.html#">
-                                                                        <span class="hover-flip-item">
-                                                                            <span data-text="Cameron Williamson">Eleanor Pena</span>
-                                                                        </span>
-                                                                    </a>
-                                                                    <span class="commenter-rating ratiing-four-star">
-                                                                        <a href="single-product-3.html#"><i class="fas fa-star"></i></a>
-                                                                        <a href="single-product-3.html#"><i class="fas fa-star"></i></a>
-                                                                        <a href="single-product-3.html#"><i class="fas fa-star"></i></a>
-                                                                        <a href="single-product-3.html#"><i class="fas fa-star"></i></a>
-                                                                        <a href="single-product-3.html#"><i class="fas fa-star empty-rating"></i></a>
-                                                                    </span>
-                                                                </h6>
-                                                                <div class="comment-text">
-                                                                    <p>“We’ve created a full-stack structure for our working workflow processes, were from the funny the century initial all the made, have spare to negatives. ” </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <!-- End Single Comment  -->
 
+                                                @foreach ($reviews as $review)
+                                                    
                                                 <!-- Start Single Comment  -->
                                                 <li class="comment">
                                                     <div class="comment-body">
                                                         <div class="single-comment">
                                                             <div class="comment-img">
-                                                                <img src="{{ asset('frontend/assets/images/blog/author-image-4.png')}}" alt="Author Images">
+                                                                <img 
+                                                                    src="{{ $review->customer->profile_imge 
+                                                                        ? asset('storage/' . $review->customer->profile_imge) 
+                                                                        : 'https://api.dicebear.com/9.x/notionists/svg?seed=' . $review->customer->first_name 
+                                                                    }}" 
+                                                                    alt="Author Image"
+                                                                    style="
+                                                                        width:60px;
+                                                                        height:60px;
+                                                                        border-radius:50%;
+                                                                        object-fit:cover;
+                                                                        border:2px solid #fff;
+                                                                        box-shadow:0 2px 6px rgba(0,0,0,0.15);
+                                                                    "
+                                                                >
                                                             </div>
                                                             <div class="comment-inner">
                                                                 <h6 class="commenter">
                                                                     <a class="hover-flip-item-wrapper" href="single-product-3.html#">
                                                                         <span class="hover-flip-item">
-                                                                            <span data-text="Rahabi Khan">Courtney Henry</span>
+                                                                            <span data-text="Cameron Williamson">{{$review->customer->first_name}}</span>
                                                                         </span>
                                                                     </a>
-                                                                    <span class="commenter-rating ratiing-four-star">
-                                                                        <a href="single-product-3.html#"><i class="fas fa-star"></i></a>
-                                                                        <a href="single-product-3.html#"><i class="fas fa-star"></i></a>
-                                                                        <a href="single-product-3.html#"><i class="fas fa-star"></i></a>
-                                                                        <a href="single-product-3.html#"><i class="fas fa-star"></i></a>
-                                                                        <a href="single-product-3.html#"><i class="fas fa-star"></i></a>
-                                                                    </span>
-                                                                </h6>
-                                                                <div class="comment-text">
-                                                                    <p>“We’ve created a full-stack structure for our working workflow processes, were from the funny the century initial all the made, have spare to negatives. ”</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <!-- End Single Comment  -->
+                                                                    @php
+                                                                        $rating = (int) $review->rating;
+                                                                        $empty = 5-$rating;
+                                                                    @endphp
 
-                                                <!-- Start Single Comment  -->
-                                                <li class="comment">
-                                                    <div class="comment-body">
-                                                        <div class="single-comment">
-                                                            <div class="comment-img">
-                                                                <img src="{{ asset('frontend/assets/images/blog/author-image-5.png')}}" alt="Author Images">
-                                                            </div>
-                                                            <div class="comment-inner">
-                                                                <h6 class="commenter">
-                                                                    <a class="hover-flip-item-wrapper" href="single-product-3.html#">
-                                                                        <span class="hover-flip-item">
-                                                                            <span data-text="Rahabi Khan">Devon Lane</span>
-                                                                        </span>
-                                                                    </a>
-                                                                    <span class="commenter-rating ratiing-four-star">
-                                                                        <a href="single-product-3.html#"><i class="fas fa-star"></i></a>
-                                                                        <a href="single-product-3.html#"><i class="fas fa-star"></i></a>
-                                                                        <a href="single-product-3.html#"><i class="fas fa-star"></i></a>
-                                                                        <a href="single-product-3.html#"><i class="fas fa-star"></i></a>
-                                                                        <a href="single-product-3.html#"><i class="fas fa-star"></i></a>
+                                                                    <span class="commenter-rating">
+                                                                        {{-- Filled stars --}}
+                                                                        @for ($i = 1; $i <= $rating; $i++)
+                                                                            <a><i class="fas fa-star"></i></a>
+                                                                        @endfor
+
+                                                                        {{-- Empty stars --}}
+                                                                        @for ($i = 1; $i <= $empty; $i++)
+                                                                            <a><i class="fas fa-star empty-rating"></i></a>
+                                                                        @endfor
                                                                     </span>
                                                                 </h6>
                                                                 <div class="comment-text">
-                                                                    <p>“We’ve created a full-stack structure for our working workflow processes, were from the funny the century initial all the made, have spare to negatives. ” </p>
+                                                                    <p>“ {{$review->msg}} ” </p>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </li>
                                                 <!-- End Single Comment  -->
+                                                @endforeach
+
                                             </ul>
                                         </div>
                                         <!-- End .axil-commnet-area -->
@@ -955,33 +934,41 @@
                                             <p>Your email address will not be published. Required fields are marked *</p>
                                             <div class="rating-wrapper d-flex-center mb--40">
                                                 Your Rating <span class="require">*</span>
-                                                <div class="reating-inner ml--20">
-                                                    <a href="single-product-3.html#"><i class="fal fa-star"></i></a>
-                                                    <a href="single-product-3.html#"><i class="fal fa-star"></i></a>
-                                                    <a href="single-product-3.html#"><i class="fal fa-star"></i></a>
-                                                    <a href="single-product-3.html#"><i class="fal fa-star"></i></a>
-                                                    <a href="single-product-3.html#"><i class="fal fa-star"></i></a>
-                                                </div>
+                                                <div id="star-rating" class="ml--15">
+                                                    <i class="far fa-star" data-value="1"></i>
+                                                    <i class="far fa-star" data-value="2"></i>
+                                                    <i class="far fa-star" data-value="3"></i>
+                                                    <i class="far fa-star" data-value="4"></i>
+                                                    <i class="far fa-star" data-value="5"></i>
+                                                </div> <br>            
+                                                @error('rating')
+                                                    <samp class="text-danger">{{$message}}</samp>
+                                                @enderror
                                             </div>
 
-                                            <form action="single-product-3.html#">
+
+                                            <form action="{{route('frontend.product.single.review')}}" method="POST">
+                                                @csrf
+<input type="hidden" name="rating" id="rating">
+                                                <input type="hidden" name="product_id" value="{{$product->id}}">
+                                                <input type="hidden" name="auth_user_id" value="{{auth('customer')->id()}}">
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form-group">
-                                                            <label>Other Notes (optional)</label>
-                                                            <textarea name="message" placeholder="Your Comment"></textarea>
+                                                            <label>Your Opinion</label>
+                                                            <textarea name="user_msg" placeholder="Your Comment"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 col-md-6 col-12">
                                                         <div class="form-group">
                                                             <label>Name <span class="require">*</span></label>
-                                                            <input id="name" type="text">
+                                                            <input id="name" name="" value="{{ auth('customer')->check() ? (auth('customer')->user()->first_name." ".auth('customer')->user()->last_name) : ''}}" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 col-md-6 col-12">
                                                         <div class="form-group">
                                                             <label>Email <span class="require">*</span> </label>
-                                                            <input id="email" type="email">
+                                                            <input id="email" name="" value="{{ auth('customer')->check() ? (auth('customer')->user()->email) : ''}}" type="email">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-12">
@@ -1035,8 +1022,8 @@
                                 <div class="inner">
                                     <h5 class="title"><a href="single-product.html">3D™ wireless headset</a></h5>
                                     <div class="product-price-variant">
-                                        <span class="price old-price">$30</span>
-                                        <span class="price current-price">$30</span>
+                                        <span class="price current-price">BDT 2500</span>
+                                        <span class="price old-price">BDT 3000</span>
                                     </div>
                                     <div class="color-variant-wrapper">
                                         <ul class="color-variant">
@@ -1074,8 +1061,8 @@
                                 <div class="inner">
                                     <h5 class="title"><a href="single-product.html">Media remote</a></h5>
                                     <div class="product-price-variant">
-                                        <span class="price old-price">$80</span>
-                                        <span class="price current-price">$50</span>
+                                         <span class="price current-price">BDT 2500</span>
+                                        <span class="price old-price">BDT 3000</span>
                                     </div>
                                     <div class="color-variant-wrapper">
                                         <ul class="color-variant">
@@ -1113,8 +1100,8 @@
                                 <div class="inner">
                                     <h5 class="title"><a href="single-product.html">HD camera</a></h5>
                                     <div class="product-price-variant">
-                                        <span class="price old-price">$60</span>
-                                        <span class="price current-price">$45</span>
+                                         <span class="price current-price">BDT 2500</span>
+                                        <span class="price old-price">BDT 3000</span>
                                     </div>
                                     <div class="color-variant-wrapper">
                                         <ul class="color-variant">
@@ -1152,8 +1139,8 @@
                                 <div class="inner">
                                     <h5 class="title"><a href="single-product.html">PS Remote Control</a></h5>
                                     <div class="product-price-variant">
-                                        <span class="price old-price">$70</span>
-                                        <span class="price current-price">$35</span>
+                                         <span class="price current-price">BDT 2500</span>
+                                        <span class="price old-price">BDT 3000</span>
                                     </div>
                                     <div class="color-variant-wrapper">
                                         <ul class="color-variant">
@@ -1191,8 +1178,8 @@
                                 <div class="inner">
                                     <h5 class="title"><a href="single-product.html">PS Remote Control</a></h5>
                                     <div class="product-price-variant">
-                                        <span class="price old-price">$50</span>
-                                        <span class="price current-price">$38</span>
+                                         <span class="price current-price">BDT 2500</span>
+                                        <span class="price old-price">BDT 3000</span>
                                     </div>
                                     <div class="color-variant-wrapper">
                                         <ul class="color-variant">
@@ -1231,8 +1218,8 @@
                                 <div class="inner">
                                     <h5 class="title"><a href="single-product.html">HD camera</a></h5>
                                     <div class="product-price-variant">
-                                        <span class="price old-price">$60</span>
-                                        <span class="price current-price">$45</span>
+                                        <span class="price current-price">BDT 2500</span>
+                                        <span class="price old-price">BDT 3000</span>
                                     </div>
                                     <div class="color-variant-wrapper">
                                         <ul class="color-variant">
@@ -1270,8 +1257,8 @@
                                 <div class="inner">
                                     <h5 class="title"><a href="single-product.html">PS Remote Control</a></h5>
                                     <div class="product-price-variant">
-                                        <span class="price old-price">$70</span>
-                                        <span class="price current-price">$35</span>
+                                         <span class="price current-price">BDT 2500</span>
+                                        <span class="price old-price">BDT 3000</span>
                                     </div>
                                     <div class="color-variant-wrapper">
                                         <ul class="color-variant">
@@ -1309,8 +1296,8 @@
                                 <div class="inner">
                                     <h5 class="title"><a href="single-product.html">PS5 Remote Control</a></h5>
                                     <div class="product-price-variant">
-                                        <span class="price old-price">$50</span>
-                                        <span class="price current-price">$38</span>
+                                         <span class="price current-price">BDT 2500</span>
+                                        <span class="price old-price">BDT 3000</span>
                                     </div>
                                     <div class="color-variant-wrapper">
                                         <ul class="color-variant">
@@ -1351,4 +1338,41 @@
             <!-- End .container -->
         </div>
         <!-- End Axil Newsletter Area  -->
+
+        @push('js')
+        <script>
+            const stars = document.querySelectorAll('#star-rating i');
+            const ratingInput = document.getElementById('rating');
+
+            stars.forEach(star => {
+                star.addEventListener('click', function () {
+                    const ratingValue = this.getAttribute('data-value');
+                    ratingInput.value = ratingValue;
+
+                    stars.forEach(s => {
+                        s.classList.remove('fas');
+                        s.classList.add('fal');
+                    });
+
+                    for (let i = 0; i < ratingValue; i++) {
+                        stars[i].classList.remove('fal');
+                        stars[i].classList.add('fas');
+                    }
+                });
+            });
+        </script>
+
+        @if($errors->any())
+        <script>
+            Swal.fire({
+                title: 'Validation Error',
+                text: '{{ $errors->first() }}',
+                icon: 'error',
+                confirmButtonText: 'Fix it'
+            });
+        </script>
+        @endif
+
+
+        @endpush
 @endsection

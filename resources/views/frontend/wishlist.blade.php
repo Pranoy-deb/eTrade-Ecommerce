@@ -21,7 +21,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($wishlist as $wishlist_item)
+                            @forelse ($wishlist as $wishlist_item)
                             <tr>
                                 <td class="product-remove">
                                     <form action="{{route('frontend.wishlist.delete')}}" method="POST">
@@ -43,7 +43,9 @@
                                     </form>
                                 </td>
                             </tr>
-                            @endforeach
+                            @empty
+                                <td class="text-center">You have no Faverit Item</td>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>

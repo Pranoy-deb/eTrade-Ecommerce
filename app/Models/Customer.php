@@ -14,4 +14,10 @@ class Customer extends authenticatable
     function wishlists(){
         return $this->hasMany(Wishlist::class, 'customer_id');
     }
+
+    function review(){
+        return $this->hasMany(Review::class);
+    }
+
+
 }

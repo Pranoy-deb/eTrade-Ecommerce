@@ -41,7 +41,8 @@
                                     <td class="product-title"><a href="{{ route('frontend.product.single', $CartItem->product) }}">{{$CartItem->product->title}}</a></td>
                                     @php
                                     $price = $CartItem->product->sellign_price && $CartItem->product->sellign_price >0 ? $CartItem->product->sellign_price : $CartItem->product->price;
-                                    $total_price += $price * $CartItem->qty;
+                                    $sub_total_price = $price * $CartItem->qty;
+                                    $total_price += $sub_total_price
                                     @endphp
                                     <td class="product-price" data-title="Price"><span class="currency-symbol">BDT </span>{{number_format($price,2)}}</td>
                                     <td class="product-quantity" data-title="Qty">
@@ -49,7 +50,7 @@
                                             <input type="number" class="quantity-input" value="{{$CartItem->qty}}">
                                         </div>
                                     </td>
-                                    <td class="product-subtotal" data-title="Subtotal"><span class="currency-symbol">BDT </span>{{number_format($total_price,2)}}</td>
+                                    <td class="product-subtotal" data-title="Subtotal"><span class="currency-symbol">BDT </span>{{number_format($sub_total_price,2)}}</td>
                                 </tr>                                
                                 @endforeach
                             </tbody>
@@ -76,7 +77,7 @@
                                         <tbody>
                                             <tr class="order-subtotal">
                                                 <td>Subtotal</td>
-                                                <td>$117.00</td>
+                                                <td>BDT {{number_format($total_price,2)}}</td>
                                             </tr>
                                             <tr class="order-shipping">
                                                 <td>Shipping</td>
@@ -87,26 +88,26 @@
                                                     </div>
                                                     <div class="input-group">
                                                         <input type="radio" id="radio2" name="shipping">
-                                                        <label for="radio2">Local: $35.00</label>
+                                                        <label for="radio2">Local: BDT 120.00</label>
                                                     </div>
                                                     <div class="input-group">
                                                         <input type="radio" id="radio3" name="shipping">
-                                                        <label for="radio3">Flat rate: $12.00</label>
+                                                        <label for="radio3">Flat rate: BDT 700.00</label>
                                                     </div>
                                                 </td>
                                             </tr>
                                             <tr class="order-tax">
                                                 <td>State Tax</td>
-                                                <td>$8.00</td>
+                                                <td>BDT 00.00</td>
                                             </tr>
                                             <tr class="order-total">
                                                 <td>Total</td>
-                                                <td class="order-total-amount">$125.00</td>
+                                                <td class="order-total-amount">BDT {{$total_price}}.00</td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
-                                <a href="checkout.html" class="axil-btn btn-bg-primary checkout-btn">Process to Checkout</a>
+                                <a href="{{route('frontend.checkout')}}" class="axil-btn btn-bg-primary checkout-btn">Process to Checkout</a>
                             </div>
                         </div>
                     </div>
