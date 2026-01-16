@@ -10,7 +10,7 @@
                         <div class="media">
                             <div class="thumbnail position-relative d-inline-block" style="width:130px; height:130px;">
                             <!-- Profile Image -->
-                            <img <img src="{{ auth('customer')->user()->profile_imge? asset('storage/' . auth('customer')->user()->profile_imge) : 'https://api.dicebear.com/9.x/notionists/svg?seed=' . auth('customer')->user()->name }}"
+                            <img src="{{ auth('customer')->user()->profile_imge? asset('storage/' . auth('customer')->user()->profile_imge) : 'https://api.dicebear.com/9.x/notionists/svg?seed=' . auth('customer')->user()->first_name }}"
                                 alt="Profile"
                                 class="rounded-circle border shadow-sm"
                                 style="width:100%; height:100%; object-fit:cover;">

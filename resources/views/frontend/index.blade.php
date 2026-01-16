@@ -821,8 +821,8 @@
                                         </div>
                                         <h5 class="title"><a href="{{ route('frontend.product.single', $product)}}">Demon's Souls</a></h5>
                                         <div class="product-price-variant">
-                                            <span class="price old-price">$40</span>
-                                            <span class="price current-price">$30</span>
+                                            <span class="price current-price">BDT 3000</span>
+                                            <span class="price old-price">BDT 4000</span>
                                         </div>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
@@ -863,8 +863,8 @@
                                         </div>
                                         <h5 class="title"><a href="{{ route('frontend.product.single', $product)}}">Google Home</a></h5>
                                         <div class="product-price-variant">
-                                            <span class="price old-price">$50</span>
-                                            <span class="price current-price">$40</span>
+                                            <span class="price current-price">BDT 4000</span>
+                                            <span class="price old-price">BDT 5000</span>
                                         </div>
                                     </div>
                                     <div class="product-hover-action">
@@ -909,8 +909,8 @@
                                         </div>
                                         <h5 class="title"><a href="{{ route('frontend.product.single', $product)}}">Netfilx Remot</a></h5>
                                         <div class="product-price-variant">
-                                            <span class="price old-price">$60</span>
-                                            <span class="price current-price">$45</span>
+                                            <span class="price current-price">BDT 4500</span>
+                                            <span class="price old-price">BDT 6000</span>
                                         </div>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
@@ -955,8 +955,8 @@
                                         </div>
                                         <h5 class="title"><a href="{{ route('frontend.product.single', $product)}}">Digital Accessories</a></h5>
                                         <div class="product-price-variant">
-                                            <span class="price old-price">$30</span>
-                                            <span class="price current-price">$20</span>
+                                            <span class="price current-price">BDT 2000</span>
+                                            <span class="price old-price">BDT 3000</span>
                                         </div>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
@@ -1000,8 +1000,8 @@
                                         </div>
                                         <h5 class="title"><a href="{{ route('frontend.product.single', $product)}}">PS5 Smart Remote</a></h5>
                                         <div class="product-price-variant">
-                                            <span class="price old-price">$50</span>
-                                            <span class="price current-price">$25</span>
+                                            <span class="price current-price">BDT 2500</span>
+                                            <span class="price old-price">BDT 5000</span>
                                         </div>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
@@ -1056,8 +1056,8 @@
                                     </div>
                                     <h6 class="product-title"><a href="{{ route('frontend.product.single', $product)}}">Media Remote</a></h6>
                                     <div class="product-price-variant">
-                                        <span class="price current-price">$29.99</span>
-                                        <span class="price old-price">$49.99</span>
+                                        <span class="price current-price">BDT 5000</span>
+                                        <span class="price old-price">BDT 6000</span>
                                     </div>
                                     <div class="product-cart">
                                         <a href="{{ route('frontend.cart') }}" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
@@ -1088,7 +1088,7 @@
                                     </div>
                                     <h6 class="product-title"><a href="{{ route('frontend.product.single', $product)}}">HD Camera</a></h6>
                                     <div class="product-price-variant">
-                                        <span class="price current-price">$49.99</span>
+                                        <span class="price current-price">BDT 5990</span>
                                     </div>
                                     <div class="product-cart">
                                         <a href="{{ route('frontend.cart') }}" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
@@ -1119,7 +1119,7 @@
                                     </div>
                                     <h6 class="product-title"><a href="{{ route('frontend.product.single', $product)}}">Gaming Controller</a></h6>
                                     <div class="product-price-variant">
-                                        <span class="price current-price">$50.00</span>
+                                        <span class="price current-price">BDT 5940</span>
                                     </div>
                                     <div class="product-cart">
                                         <a href="{{ route('frontend.cart') }}" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
@@ -1150,7 +1150,7 @@
                                     </div>
                                     <h6 class="product-title"><a href="{{ route('frontend.product.single', $product)}}">Wall Mount </a></h6>
                                     <div class="product-price-variant">
-                                        <span class="price current-price">$19.00</span>
+                                        <span class="price current-price">BDT 9990</span>
                                     </div>
                                     <div class="product-cart">
                                         <a href="{{ route('frontend.cart') }}" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
@@ -1181,7 +1181,7 @@
                                     </div>
                                     <h6 class="product-title"><a href="{{ route('frontend.product.single', $product)}}">Lenevo Laptop</a></h6>
                                     <div class="product-price-variant">
-                                        <span class="price current-price">$999.99</span>
+                                        <span class="price current-price">BDT 6480</span>
                                     </div>
                                     <div class="product-cart">
                                         <a href="{{ route('frontend.cart') }}" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
@@ -1213,7 +1213,7 @@
                                     <h6 class="product-title"><a href="{{ route('frontend.product.single', $product)}}">Juice Grinder Machine</a>
                                     </h6>
                                     <div class="product-price-variant">
-                                        <span class="price current-price">$99.00</span>
+                                        <span class="price current-price">BDT 6990</span>
                                     </div>
                                     <div class="product-cart">
                                         <a href="{{ route('frontend.cart') }}" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
@@ -1244,7 +1244,7 @@
                                     </div>
                                     <h6 class="product-title"><a href="{{ route('frontend.product.single', $product)}}">Wireless Headphone</a></h6>
                                     <div class="product-price-variant">
-                                        <span class="price current-price">$59.99</span>
+                                        <span class="price current-price">BDT 4598</span>
                                     </div>
                                     <div class="product-cart">
                                         <a href="{{ route('frontend.cart') }}" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
@@ -1275,7 +1275,7 @@
                                     </div>
                                     <h6 class="product-title"><a href="{{ route('frontend.product.single', $product)}}">Asus Zenbook Laptop</a></h6>
                                     <div class="product-price-variant">
-                                        <span class="price current-price">$899.00</span>
+                                        <span class="price current-price">BDT 8890</span>
                                     </div>
                                     <div class="product-cart">
                                         <a href="{{ route('frontend.cart') }}" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>

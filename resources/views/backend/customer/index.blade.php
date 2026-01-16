@@ -25,13 +25,13 @@
                                  class="rounded-circle" 
                                  style="width:45px; height:45px; object-fit:cover;">
                                 <samp class="fw-semibold text-dark ">
-                                    {{ $customer->name }}</samp>
+                                    {{ $customer->first_name }}</samp>
                         </td>
                         <td class="text-dark">
                             📧 {{ $customer->email }}
                         </td>
                         <td class="text-dark">
-                            🏠 {{ $customer->address }}
+                            🏠 {{ $customer->street_addr}}
                         </td>
                         <td class="text-dark">
                             {{ $customer->created_at->format('M d Y') }}<br>

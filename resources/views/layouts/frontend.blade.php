@@ -120,6 +120,12 @@
                                     <i class="flaticon-heart"></i>
                                 </a>
                             </li>
+                            {{-- <li class="shopping-cart">
+                                <a href="{{ route('frontend.wishlist') }}" class="cart-dropdown-btn">
+                                    <span class="cart-count">8</span>
+                                    <i class="flaticon-heart"></i>
+                                </a>
+                            </li> --}}
                             <li class="shopping-cart">
                                 <a href="{{ url('/') }}" class="cart-dropdown-btn">
                                     <span class="cart-count">{{$carts['count']}}</span>
@@ -154,10 +160,12 @@
                                         </form>
                                        @else
                                         <a href="{{ route('frontend.customer.login') }}" class="axil-btn btn-bg-primary">Login</a>
+                                        <div class="reg-footer text-center">No account yet? <a href="{{ route('frontend.customer.signup') }}"
+                                            class="btn-link">REGISTER HERE.</a>
+                                        </div>
                                         @endif
                                     </div>
-                                    <div class="reg-footer text-center">No account yet? <a href="{{ route('frontend.customer.signup') }}"
-                                            class="btn-link">REGISTER HERE.</a></div>
+                                    
                                 </div>
                             </li>
                             <li class="axil-mobile-toggle">
@@ -719,14 +727,14 @@
         });
         </script>
         @if(session('swal'))
-<script>
-    Swal.fire({
-        title: "{{ session('swal.title') }}",
-        text: "{{ session('swal.text') }}",
-        icon: "{{ session('swal.icon') }}",
-        draggable: true
-    });
-</script>
+        <script>
+            Swal.fire({
+                title: "{{ session('swal.title') }}",
+                text: "{{ session('swal.text') }}",
+                icon: "{{ session('swal.icon') }}",
+                draggable: true
+            });
+        </script>
 @endif
 
 
