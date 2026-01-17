@@ -68,6 +68,28 @@ class CustomerAuthController extends Controller
 
     public function updateProfile(Request $request){
 
+        $customerId = auth('customer')->id();
+        $customer   = Customer::findOrFail($customerId);
+        if ($request->hasFile('profile_imge')) {
+            // delete old image
+            if ($customer->profile_imge && Storage::disk('public')->exists($customer->profile_imge)) {
+                Storage::disk('public')->delete($customer->profile_imge);
+            }
+
+            // store new image
+            $path = $request->file('profile_imge')->store('cus_profile', 'public');
+
+            // update db
+            $customer->profile_imge = $path;
+            $customer->save();
+        }
+
+        return back();
+    }
+
+        
+
+    function updateProfileDetails(Request $request){
         $request->validate([
             'first_name' => 'required|string|max:255', 
             'last_name' => 'required|string|max:255', 
@@ -82,19 +104,7 @@ class CustomerAuthController extends Controller
         $customerId = auth('customer')->id();
         $customer   = Customer::findOrFail($customerId);
 
-        if ($request->hasFile('profile_imge')) {
-            // delete old image
-            if ($customer->profile_imge && Storage::disk('public')->exists($customer->profile_imge)) {
-                Storage::disk('public')->delete($customer->profile_imge);
-            }
-
-            // store new image
-            $path = $request->file('profile_imge')->store('cus_profile', 'public');
-
-            // update db
-            $customer->profile_imge = $path;
-            $customer->save();
-        }
+        
 
         $customer->first_name = $request->first_name;
         $customer->last_name = $request->last_name;
@@ -111,7 +121,9 @@ class CustomerAuthController extends Controller
 
         return back();
     }
+
+}
     
 
 
-}
+

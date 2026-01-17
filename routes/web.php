@@ -39,6 +39,7 @@ Route::post('/customer/register', [CustomerAuthController::class, 'register'])->
 Route::post('/customer/logout', [CustomerAuthController::class, 'logout'])->name('frontend.customer.logout');
 Route::get('/customer/my-profile', [CustomerAuthController::class, 'showProfile'])->name('frontend.customer.profile')->middleware('customer');
 Route::post('/customer/my-profile/update', [CustomerAuthController::class, 'updateProfile'])->name('frontend.customer.update.profile')->middleware('customer');
+Route::post('/customer/my-profile/update/details', [CustomerAuthController::class, 'updateProfileDetails'])->name('frontend.customer.update.profile.details')->middleware('customer');
 
 // Contact page route
 Route::get('/contact', [ContactController::class, 'contactPage'])->name('frontend.contact');

@@ -45,7 +45,7 @@
                                 <!-- Image Preview Box -->
                                 <div class="border rounded-3 mx-auto mb-4 shadow-sm" style="width:400px; height:400px; overflow:hidden;">
                                     <img id="previewImage"
-                                        src="https://api.dicebear.com/9.x/notionists/svg?seed={{ auth('customer')->user()->name }}"
+                                        src="{{ auth('customer')->user()->profile_imge? asset('storage/' . auth('customer')->user()->profile_imge) : 'https://api.dicebear.com/9.x/notionists/svg?seed=' . auth('customer')->user()->first_name }}"
                                         alt="Preview"
                                         style="width:100%; height:100%; object-fit:cover;">
                                 </div>
@@ -180,7 +180,7 @@
                                <div class="tab-pane fade" id="nav-account" role="tabpanel">
                                 <div class="col-lg-9">
                                     <div class="axil-dashboard-account">
-                                        <form method="POST" action="{{route('frontend.customer.update.profile')}}" class="account-details-form">
+                                        <form method="POST" action="{{route('frontend.customer.update.profile.details')}}" class="account-details-form">
                                             @csrf
                                             <div class="row">
 
@@ -285,7 +285,7 @@
                                                 <!-- Save Button -->
                                                 <div class="col-12">
                                                     <div class="form-group mb--0 mt-3">
-                                                    <button type="submit" class="axil-btn float-end btn-primary"> Save Changes </button>                                                    </div>
+                                                    <button type="submit" class="axil-btn btn btn-primary"> Save Changes </button>                                                    </div>
                                                 </div>
                                                 
 
