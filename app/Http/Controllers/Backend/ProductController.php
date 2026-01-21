@@ -14,7 +14,7 @@ use Nette\Utils\Json;
 class ProductController extends Controller
 {
     function index(){
-        $products = product::latest()->get();
+        $products = product::latest()->paginate(20);
         return view('backend.products.index',compact('products'));
     }
 

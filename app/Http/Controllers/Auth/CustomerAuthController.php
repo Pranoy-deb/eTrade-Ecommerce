@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -20,6 +21,8 @@ class CustomerAuthController extends Controller
     use RegistersUsers;
     use AuthenticatesUsers;
 
+
+    
 
     protected $redirectTo = '/customer/my-profile';
     // protected return redirect()->intended('/customer/my-profile');
@@ -87,9 +90,8 @@ class CustomerAuthController extends Controller
         return back();
     }
 
-        
-
     function updateProfileDetails(Request $request){
+
         $request->validate([
             'first_name' => 'required|string|max:255', 
             'last_name' => 'required|string|max:255', 
@@ -117,8 +119,6 @@ class CustomerAuthController extends Controller
         $customer->company = $request->company;
         
         $customer->update();
-        
-
         return back();
     }
 

@@ -64,9 +64,9 @@
                         </td>
                     </tr>
                     @endforeach
-
                 </tbody>
             </table>
+            <nav>{{$messages->links()}}</nav>
 
         </div>
 

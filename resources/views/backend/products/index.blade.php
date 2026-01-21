@@ -46,8 +46,8 @@
                     </tr>
                     @endforeach
                 </tbody>
-
             </table>
+            <nav>{{$products->links()}}</nav>
         </div>
 
     </div>
