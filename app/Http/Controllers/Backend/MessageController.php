@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class MessageController extends Controller
 {
     function showUserMsg(){
-        $messages = Contacts::orderBy('status')->latest()->get();
+        $messages = Contacts::orderBy('status')->latest()->paginate(30);
         return view('backend.message.index',compact('messages'));
     }
 

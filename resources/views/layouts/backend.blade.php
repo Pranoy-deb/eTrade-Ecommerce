@@ -150,10 +150,13 @@
                                         <div class="dropdown-divider"></div>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="auth-login-basic.html">
-                                            <i class="bx bx-power-off me-2"></i>
-                                            <span class="align-middle">Log Out</span>
-                                        </a>
+                                        <form method="POST" action="{{route('backend.admin.logout')}}">
+                                            @csrf
+                                            <button class="dropdown-item" >
+                                                <i class="bx bx-power-off me-2"></i>
+                                                <span class="align-middle">Log Out</span>
+                                            </button>
+                                        </form>
                                     </li>
                                 </ul>
                             </li>
@@ -184,13 +187,11 @@
                                 </script>
                                 , made with ❤️ by
                                 <a href="https://themeselection.com" target="_blank"
-                                    class="footer-link fw-bolder">ThemeSelection</a>
+                                    class="footer-link fw-bolder">PranoY</a>
                             </div>
                             <div>
                                 <a href="https://themeselection.com/license/" class="footer-link me-4"
                                     target="_blank">License</a>
-                                <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More
-                                    Themes</a>
 
                                 <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
                                     target="_blank" class="footer-link me-4">Documentation</a>

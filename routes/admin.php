@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AdminController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\CategoryController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Backend\MessageController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Models\Customer;
 use Faker\Guesser\Name;
+
 
 Route::middleware('auth')->group(function(){
     Route::get('/admin/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
