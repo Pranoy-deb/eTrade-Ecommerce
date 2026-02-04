@@ -35,15 +35,22 @@
     </li>
     <!-- Message -->
     <li class="menu-item {{ request()->routeIs('backend.message') ? 'active' : '' }}">
-            <a href="{{route('backend.message')}}" class="menu-link ">
-                <i class="menu-icon tf-icons bx bx-chat"></i>
-                <div data-i18n="Analytics">Message</div>
-            </a>
+        <a href="{{route('backend.message')}}" class="menu-link ">
+            <i class="menu-icon tf-icons bx bx-chat"></i>
+            <div data-i18n="Analytics">Message</div>
+        </a>
     </li>
     <!-- Customers -->
     <li class="menu-item {{ request()->routeIs('backend.customers') ? 'active' : '' }}">
-            <a href="{{route('backend.customers')}}" class="menu-link ">
-                <i class="menu-icon tf-icons bx bx-group"></i>
-                <div data-i18n="Analytics">Customers</div>
-            </a>
+        <a href="{{route('backend.customers')}}" class="menu-link ">
+            <i class="menu-icon tf-icons bx bx-group"></i>
+            <div data-i18n="Analytics">Customers</div>
+        </a>
     </li>
+    <!-- Customers Reviews -->
+    {{-- <li class="menu-item {{ request()->routeIs() ? 'active' : '' }}">
+        <a href="{{route()}}" class="menu-link ">
+            <i class="menu-icon tf-icons bx bx-star"></i>            
+            <div data-i18n="Analytics">Reviews</div>
+        </a>
+    </li> --}}
