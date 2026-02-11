@@ -48,9 +48,9 @@
         </a>
     </li>
     <!-- Customers Reviews -->
-    {{-- <li class="menu-item {{ request()->routeIs() ? 'active' : '' }}">
-        <a href="{{route()}}" class="menu-link ">
+    <li class="menu-item {{ request()->routeIs('backend.reviews') ? 'active' : '' }}">
+        <a href="{{route('backend.reviews')}}" class="menu-link ">
             <i class="menu-icon tf-icons bx bx-star"></i>            
             <div data-i18n="Analytics">Reviews</div>
         </a>
-    </li> --}}
+    </li>

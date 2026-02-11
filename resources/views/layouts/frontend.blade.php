@@ -528,86 +528,49 @@
     </div> --}}
     <!-- Product Quick View Modal End -->
 
-    <!-- Header Search Modal End -->
-    <div class="header-search-modal" id="header-search-modal">
-        <button class="card-close sidebar-close"><i class="fas fa-times"></i></button>
-        <div class="header-search-wrap">
-            <div class="card-header">
-                <form action="{{ url('/') }}">
-                    <div class="input-group">
-                        <input type="search" class="form-control" name="prod-search" id="prod-search"
-                            placeholder="Write Something....">
-                        <button type="submit" class="axil-btn btn-bg-primary"><i class="far fa-search"></i></button>
-                    </div>
-                </form>
-            </div>
-            <div class="card-body">
-                <div class="search-result-header">
-                    <h6 class="title">24 Result Found</h6>
-                    <a href="{{ route('frontend.shop') }}" class="view-all">View All</a>
+    <!-- Header Search Modal Start -->
+<div class="header-search-modal" id="header-search-modal">
+
+    <button class="card-close sidebar-close">
+        <i class="fas fa-times"></i>
+    </button>
+
+    <div class="header-search-wrap">
+
+        <!-- Search Input -->
+        <div class="card-header">
+            <form action="{{ route('search.product') }}" method="GET">
+                <div class="input-group">
+
+                    <input type="search"
+                        id="prod-search"
+                        name="search"
+                        class="form-control"
+                        placeholder="Search product...">
+
+                    <button type="submit" class="axil-btn btn-bg-primary">
+                        <i class="far fa-search"></i>
+                    </button>
                 </div>
-                <div class="psearch-results">
-                    <div class="axil-product-list">
-                        <div class="thumbnail">
-                            <a href="single-product.html">
-                                <img src="{{ asset('frontend/assets/images/product/electric/product-09.png')}}" alt="Yantiti Leather Bags">
-                            </a>
-                        </div>
-                        <div class="product-content">
-                            <div class="product-rating">
-                                <span class="rating-icon">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fal fa-star"></i>
-                                </span>
-                                <span class="rating-number"><span>100+</span> Reviews</span>
-                            </div>
-                            <h6 class="product-title"><a href="single-product.html">Media Remote</a></h6>
-                            <div class="product-price-variant">
-                                <span class="price current-price">$29.99</span>
-                                <span class="price old-price">$49.99</span>
-                            </div>
-                            <div class="product-cart">
-                                <a href="{{ route('frontend.cart') }}" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
-                                <a href="{{ route('frontend.wishlist') }}" class="cart-btn"><i class="fal fa-heart"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="axil-product-list">
-                        <div class="thumbnail">
-                            <a href="single-product.html">
-                                <img src="{{ asset('frontend/assets/images/product/electric/product-09.png')}}" alt="Yantiti Leather Bags">
-                            </a>
-                        </div>
-                        <div class="product-content">
-                            <div class="product-rating">
-                                <span class="rating-icon">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fal fa-star"></i>
-                                </span>
-                                <span class="rating-number"><span>100+</span> Reviews</span>
-                            </div>
-                            <h6 class="product-title"><a href="single-product.html">Media Remote</a></h6>
-                            <div class="product-price-variant">
-                                <span class="price current-price">$29.99</span>
-                                <span class="price old-price">$49.99</span>
-                            </div>
-                            <div class="product-cart">
-                                <a href="{{ route('frontend.cart') }}" class="cart-btn"><i class="fal fa-shopping-cart"></i></a>
-                                <a href="{{ route('frontend.wishlist') }}" class="cart-btn"><i class="fal fa-heart"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </form>
         </div>
+
+        <!-- Search Result Area -->
+        <div class="card-body">
+
+            <div class="search-result-header">
+                <h6 class="title">Search Results</h6>
+                <a href="{{ route('frontend.shop') }}" class="view-all">View All</a>
+            </div>
+
+            <div class="psearch-results"></div>
+
+        </div>
+
     </div>
-    <!-- Header Search Modal End -->
+</div>
+<!-- Header Search Modal End -->
+
 
 
     <div class="cart-dropdown" id="cart-dropdown">
@@ -696,6 +659,8 @@
     <div class="closeMask"></div>
 
    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ asset('frontend/assets/js/vendor/modernizr.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/vendor/jquery.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/vendor/popper.min.js') }}"></script>
@@ -712,7 +677,91 @@
     <script src="{{ asset('frontend/assets/js/vendor/counterup.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/vendor/waypoints.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+
+    <script>
+
+        $(document).ready(function(){
+
+            $('#prod-search').closest('form').on('submit', function(e){
+                e.preventDefault();
+            });
+
+            let timer;
+
+            $('#prod-search').on('keyup', function(){
+
+                clearTimeout(timer);
+
+                let search = $(this).val();
+
+                timer = setTimeout(function(){
+
+                    if(search.length < 1){
+                        $('.psearch-results').html('');
+                        return;
+                    }
+
+                    $.ajax({
+                        url: "/live-search",
+                        type: "GET",
+                        data: { search: search },
+
+                        success: function(res){
+
+                            let html = '';
+
+                            if(res.length === 0){
+                                html = `<p style="padding:10px">No Product Found</p>`;
+                            }
+
+                            res.forEach(product => {
+
+                                let productUrl = "/product/" + product.slug;
+
+                                let priceShow = (product.sellign_price && product.sellign_price > 0)
+                                    ? product.sellign_price
+                                    : product.price;
+
+                                html += `
+                                <div class="axil-product-list">
+
+                                    <a href="${productUrl}">
+                                        <div class="thumbnail">
+                                            <img src="/storage/${product.featured_img}" width="60">
+                                        </div>
+                                    </a>
+
+                                    <a href="${productUrl}">
+                                        <div class="product-content">
+                                            <h6>${product.title}</h6>
+                                            <span class="price current-price">
+                                                BDT ${priceShow}
+                                            </span>
+                                        </div>
+                                    </a>
+
+                                </div>
+                                `;
+                            });
+
+                            $('.psearch-results').html(html);
+
+                        }
+
+                    });
+
+                }, 300);
+
+            });
+
+        });
+
+    </script>
+
+
+
+
     <script>
         const Toast = Swal.mixin({
         toast: true,
@@ -727,15 +776,15 @@
         });
         </script>
         @if(session('swal'))
-        <script>
-            Swal.fire({
-                title: "{{ session('swal.title') }}",
-                text: "{{ session('swal.text') }}",
-                icon: "{{ session('swal.icon') }}",
-                draggable: true
-            });
-        </script>
-@endif
+            <script>
+                Swal.fire({
+                    title: "{{ session('swal.title') }}",
+                    text: "{{ session('swal.text') }}",
+                    icon: "{{ session('swal.icon') }}",
+                    draggable: true
+                });
+            </script>
+        @endif
 
 
       @stack('js')

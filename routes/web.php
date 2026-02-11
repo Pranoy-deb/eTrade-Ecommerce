@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\ShopController;
 use App\Http\Controllers\Frontend\AboutUsController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Auth\CustomerAuthController;
+use App\Http\Controllers\Frontend\SearchController;
 use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\Frontend\SingleProductPageController;
@@ -54,6 +55,12 @@ Route::get('/about-us', [AboutUsController::class, 'aboutUsPage'])->name('fronte
 Route::get('/wishlist', [WishlistController::class, 'wishlistPage'])->name('frontend.wishlist')->middleware('customer');
 Route::post('/wishlist/additem', [WishlistController::class, 'addWishlist'])->name('frontend.wishlist.add')->middleware('customer');
 Route::post('/wishlist/deleteitem', [WishlistController::class, 'deleteWishlist'])->name('frontend.wishlist.delete')->middleware('customer');
+
+//* Searching Product form DB
+// Route::get('/search/product' ,[SearchController::class, 'Searching'])->name('search.product');
+Route::get('/live-search', [SearchController::class,'LiveSearch'])->name('search.product');
+
+
 
 Auth::routes();
 
