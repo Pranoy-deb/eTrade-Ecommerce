@@ -949,7 +949,7 @@
 
                                             <form action="{{route('frontend.product.single.review')}}" method="POST">
                                                 @csrf
-<input type="hidden" name="rating" id="rating">
+                                                <input type="hidden" name="rating" id="rating">
                                                 <input type="hidden" name="product_id" value="{{$product->id}}">
                                                 <input type="hidden" name="auth_user_id" value="{{auth('customer')->id()}}">
                                                 <div class="row">
