@@ -8,11 +8,11 @@ use App\Http\Controllers\Frontend\ShopController;
 use App\Http\Controllers\Frontend\AboutUsController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Auth\CustomerAuthController;
+use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\SearchController;
 use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\Frontend\SingleProductPageController;
-
 
 
 // Home page route
@@ -57,10 +57,11 @@ Route::post('/wishlist/additem', [WishlistController::class, 'addWishlist'])->na
 Route::post('/wishlist/deleteitem', [WishlistController::class, 'deleteWishlist'])->name('frontend.wishlist.delete')->middleware('customer');
 
 //* Searching Product form DB
-// Route::get('/search/product' ,[SearchController::class, 'Searching'])->name('search.product');
 Route::get('/live-search', [SearchController::class,'LiveSearch'])->name('search.product');
 
-
+// Blog page route
+Route::get('/blog',[BlogController::class, 'showBlogPage'])->name('frontend.blog');
+Route::get('/blog/singlepage',[BlogController::class, 'singleBlogPage'])->name('frontend.blog.single');
 
 Auth::routes();
 
@@ -79,5 +80,4 @@ Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 // Show 404 page for undefined routes
 Route::fallback(function(){
     return response()->view('frontend.404', [], 404);
-
 });

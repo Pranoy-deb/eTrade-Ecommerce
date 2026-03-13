@@ -8,43 +8,24 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-    // function Searching(Request $request){
+    function LiveSearch(Request $request){
 
-    //     $search = $request->search;
+        $search = $request->search;
 
-    //     $products = Product::where(function($q) use ($search){
+        if(!$search){
+            return response()->json([]);
+        }
 
-    //         $q->where('title','LIKE',"%$search%")
-    //         ->orWhere('slug','LIKE',"%$search%")
-    //         ->orWhere('sku','LIKE',"%$search%")
-    //         ->orWhere('brand','LIKE',"%$search%")
-    //         ->orWhere('short_details','LIKE',"%$search%")
-    //         ->orWhere('features','LIKE',"%$search%");
+        $products = product::where('title','LIKE',"%$search%")
+            ->orWhere('slug','LIKE',"%$search%")
+            ->orWhere('sku','LIKE',"%$search%")
+            ->orWhere('brand','LIKE',"%$search%")
+            ->orWhere('short_details','LIKE',"%$search%")
+            ->orWhere('features','LIKE',"%$search%")
+            ->limit(5)
+            ->get();
 
-    //     })->get();
-
-    //     // return view('frontend.search', compact('products'));
-    //     return response()->json($products);
-    // }
-
-    public function LiveSearch(Request $request)
-{
-    $search = $request->search;
-
-    if(!$search){
-        return response()->json([]);
+        return response()->json($products);
     }
-
-    $products = Product::where('title','LIKE',"%$search%")
-        ->orWhere('slug','LIKE',"%$search%")
-        ->orWhere('sku','LIKE',"%$search%")
-        ->orWhere('brand','LIKE',"%$search%")
-        ->orWhere('short_details','LIKE',"%$search%")
-        ->orWhere('features','LIKE',"%$search%")
-        ->limit(5)
-        ->get();
-
-    return response()->json($products);
-}
 
 }

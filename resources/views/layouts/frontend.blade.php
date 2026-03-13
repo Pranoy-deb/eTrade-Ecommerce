@@ -91,18 +91,7 @@
                                     <a href="{{ route('frontend.shop') }}">Shop</a>
                                 </li>
                                 <li><a href="{{ route('frontend.about-us') }}">About</a></li>
-                                <li class="menu-item-has-children">
-                                    <a href="{{ url('/') }}">Blog</a>
-                                    <ul class="axil-submenu">
-                                        <li><a href="blog.html">Blog List</a></li>
-                                        <li><a href="blog-grid.html">Blog Grid</a></li>
-                                        <li><a href="blog-details.html">Standard Post</a></li>
-                                        <li><a href="blog-gallery.html">Gallery Post</a></li>
-                                        <li><a href="blog-video.html">Video Post</a></li>
-                                        <li><a href="blog-audio.html">Audio Post</a></li>
-                                        <li><a href="blog-quote.html">Quote Post</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="{{ route('frontend.blog') }}">Blog</a></li>
                                 <li><a href="{{ route('frontend.contact') }}">Contact</a></li>
                             </ul>
                         </nav>
